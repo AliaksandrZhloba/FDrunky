@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/caption_height"
+        android:layout_weight="0">
+
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:layout_weight="0"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_menu_black_24dp" />
+
+        <TextView
+            style="@style/AlcoApp.CaptionTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:text="@string/SelectEffectCaption" />
+    </FrameLayout>
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_above="@+id/id_from_your_LinearLayout"
+        android:layout_weight="0"
+        android:background="@drawable/shadow"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/caption_height"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lActiveArea"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/active_area_height"
+        android:layout_weight="0"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/AlcoApp.QuestionTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:fontFamily="roboto"
+            android:text="@string/DoYoHaveAParty"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="76dp" />
+
+        <TextView
+            style="@style/AlcoApp.QuestionTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:fontFamily="Roboot"
+            android:text="@string/AnyPlans"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="109dp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0"
+            android:foregroundGravity="center_vertical">
+
+            <RadioButton
+                android:id="@+id/rbToRelax"
+                style="@style/AlcoApp.EffectRadioButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/ToRelax"
+                tools:layout_editor_absoluteX="100dp"
+                tools:layout_editor_absoluteY="239dp" />
+
+            <RadioButton
+                android:id="@+id/rbToHaveAFun"
+                style="@style/AlcoApp.EffectRadioButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/ToHaveAFun"
+                tools:layout_editor_absoluteX="100dp"
+                tools:layout_editor_absoluteY="271dp" />
+
+            <RadioButton
+                android:id="@+id/rbToDrunkOver"
+                style="@style/AlcoApp.EffectRadioButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/ToDrunkOver"
+                tools:layout_editor_absoluteX="100dp"
+                tools:layout_editor_absoluteY="303dp" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/footer_height"
+        android:layout_weight="0"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnSelectEffect"
+            style="@style/AlcoApp.ActionButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center"
+            android:fontFamily="@font/roboto"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/ToRelaxButtonText" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">FunkyDrunky</string>
+
+    <!-- AGREEMENT SCREEN -->
+    <string name="user_agree_question">I agree</string>
+    <string name="continue_button_text">Continue</string>
+
+    <!-- AGREEMENT CONTENT SCREEN -->
+    <string name="agreement_content">
+        Program licence\nUser agreement\nSome other text\n
+    </string>
+
+
+    <!-- SELECT EFFECT SCREEN -->
+    <string name="SelectEffectCaption">Funky Drunky</string>
+    <string name="DoYoHaveAParty">Do you have a party tonight?</string>
+    <string name="AnyPlans">Any plans?</string>
+    <string name="ToRelax">To relax.</string>
+    <string name="ToRelaxButtonText">GREATE!</string>
+    <string name="ToHaveAFun">Let\'s have a fun!</string>
+    <string name="ToHaveAFunButtonText">WOW!</string>
+    <string name="ToDrunkOver">Legless...</string>
+    <string name="ToDrunkOverButtonText">REALLY?</string>
+
+    <!-- SELECT DRINK SCREEN -->
+    <string name="SelectDrinkCaption">Choose a drink</string>
+    <string name="WhatToDrink">What would you like to drink?</string>
+    <string name="DrinkWatermark">medium dry red wine</string>
+    <string name="HowMuch">HOW MUCH DO I NEED?</string>
+
+    <!-- CALCED RESULT SCREEN -->
+    <string name="WhereToGo">WHERE TO GO?</string>
+    <string name="GotIt">GOT IT!</string>
+
+    <!-- MENU -->
+    <string name="Menu_DrinkLog">DrinkLog</string>
+    <string name="Menu_AddNewDrink">Add new drink</string>
+    <string name="Menu_ChooseAPlace">Choose a place</string>
+    <string name="Menu_Account">Account</string>
+    <string name="Menu_Settings">Settings</string>
+    <string name="Menu_About">About</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_agreement">activity_agreement</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
