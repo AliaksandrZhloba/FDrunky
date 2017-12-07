@@ -17,6 +17,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import f.drunky.Entity.Drink;
 import f.drunky.Helpers.DrinkEffectHelper;
+import f.drunky.Helpers.DrinkHelper;
 import f.drunky.Helpers.StatusBarHelper;
 import f.drunky.Helpers.Utils;
 import f.drunky.Navigation.ChainFragment;
@@ -34,11 +35,7 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
 
     private Button _btnWhereToGo;
     private Button _btnGotButton;
-    private TextView _txtEffect;
-    private TextView _txtAction1;
-    private TextView _txtAction2;
-    private TextView _txtVolume;
-    private TextView _txtDrink;
+    private TextView _txtMessage;
     private TextView _txtSelectedDrink;
     private FrameLayout _cSelectedDrink;
     private ImageView _imgGlass;
@@ -79,16 +76,11 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
         _btnWhereToGo = getView().findViewById(R.id.btnWhereToGo);
         _btnGotButton = getView().findViewById(R.id.btnGotIt);
 
-        _txtEffect = getView().findViewById(R.id.txtEffect);
-        _txtAction1 = getView().findViewById(R.id.txtAction1);
-        _txtAction2 = getView().findViewById(R.id.txtAction2);
-        _txtVolume = getView().findViewById(R.id.txtVolume);
-        _txtDrink = getView().findViewById(R.id.txtDrink);
+        _txtMessage = getView().findViewById(R.id.txtMessage);
         _txtSelectedDrink = getView().findViewById(R.id.txtSelectedDrink);
         _imgGlass = getView().findViewById(R.id.imgGlass);
 
         _cSelectedDrink = getView().findViewById(R.id.fSelectedDrink);
-
 
         ImageButton btnBack = getView().findViewById(R.id.btnBack);
         btnBack.setOnClickListener(view -> presenter.goBack());
@@ -97,21 +89,36 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
     }
 
     @Override
-    public void setMessage(DrinkEffect effect, Drink drink) {
+    public void setMessage(DrinkEffect effect, Drink drink, int volume) {
         _drink = drink;
 
         _btnWhereToGo.setBackgroundColor(drink.getAppearance().getBackgroundColor());
         _btnGotButton.setBackgroundColor(drink.getAppearance().getBackgroundColor());
 
-        _txtEffect.setText(DrinkEffectHelper.toString(effect));
-        _txtAction1.setText(DrinkEffectHelper.getAction1(effect));
-        _txtAction2.setText(DrinkEffectHelper.getAction2(effect));
-        _txtVolume.setText(String.valueOf(DrinkEffectHelper.calcVolume(effect, drink)));
-        _txtDrink.setText(drink.getTitle());
+        _txtMessage.setText(getMessage(effect, drink, volume));
         _imgGlass.setImageBitmap(drink.getAppearance().getGlassPicture());
 
         _txtSelectedDrink.setText(drink.getTitle());
         _txtSelectedDrink.setTextColor(drink.getAppearance().getTextColor());
         _cSelectedDrink.setBackgroundColor(drink.getAppearance().getCaptionBackgroundColor());
+    }
+
+    private String getMessage(DrinkEffect effect, Drink drink, int volume) {
+        int messageId = 0;
+        switch (effect){
+            case ToRelax:
+                messageId = R.string.ToRelaxMessage;
+                break;
+
+            case ToHaveAFun:
+                messageId = R.string.ToHaveAFunMessage;
+                break;
+
+            case ToDrunkOver:
+                messageId = R.string.ToDrunkOverMessage;
+                break;
+        }
+
+        return String.format(getString(messageId), volume, drink.getTitle());
     }
 }

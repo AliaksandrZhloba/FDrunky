@@ -5,6 +5,7 @@ import com.arellomobile.mvp.MvpPresenter;
 
 import f.drunky.Entity.Drink;
 import f.drunky.FDrunkyApplication;
+import f.drunky.Helpers.DrinkEffectHelper;
 import f.drunky.Types.DrinkEffect;
 import f.drunky.mvp.views.CalcedResultView;
 
@@ -18,7 +19,8 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
         DrinkEffect effect = FDrunkyApplication.INSTANCE.SharedData.DrinkEffect;
         Drink drink = FDrunkyApplication.INSTANCE.SharedData.Drink;
 
-        getViewState().setMessage(effect, drink);
+        int volume = DrinkEffectHelper.calcVolume(effect, drink);
+        getViewState().setMessage(effect, drink, volume);
     }
 
     public void goBack() {

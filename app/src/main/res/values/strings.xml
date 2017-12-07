@@ -31,6 +31,9 @@
     <!-- CALCED RESULT SCREEN -->
     <string name="WhereToGo">WHERE TO GO?</string>
     <string name="GotIt">GOT IT!</string>
+    <string name="ToRelaxMessage">"To relax tonight don't drink\nmore than %d ml of\n%s."</string>
+    <string name="ToHaveAFunMessage">"To have a fun tonight don't drink\nmore than %d ml of\n%s."</string>
+    <string name="ToDrunkOverMessage">"To be legless tonight drink\nat least %d ml of\n%s."</string>
 
     <!-- MENU -->
     <string name="Menu_DrinkLog">DrinkLog</string>

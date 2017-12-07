@@ -11,5 +11,5 @@ import f.drunky.mvp.presenters.CalcedResultPresenter;
  */
 
 public interface CalcedResultView extends MvpView {
-    void setMessage(DrinkEffect effect, Drink drink);
+    void setMessage(DrinkEffect effect, Drink drink, int volume);
 }
