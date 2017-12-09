@@ -28,6 +28,11 @@
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_help_outline_black_24dp"
             android:title="@string/Menu_About" />
+
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_help_outline_black_24dp"
+            android:title="[MAP]" />
     </group>
 
 </menu>

@@ -137,6 +137,11 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
                 case R.id.nav_about:
                     presenter.gotoAbout();
                     break;
+
+                // debug
+                case R.id.nav_map:
+                    FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.MAP);
+                    break;
             }
 
             return false;

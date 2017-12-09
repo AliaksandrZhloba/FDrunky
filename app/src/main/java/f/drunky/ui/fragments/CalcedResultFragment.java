@@ -74,7 +74,10 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
     @Override
     public void onViewCreated(View v, @Nullable Bundle savedInstanceState) {
         _btnWhereToGo = getView().findViewById(R.id.btnWhereToGo);
+        _btnWhereToGo.setOnClickListener(l -> presenter.whereToGoClicked());
+
         _btnGotButton = getView().findViewById(R.id.btnGotIt);
+        _btnGotButton.setOnClickListener(l -> presenter.gotItClicked());
 
         _txtMessage = getView().findViewById(R.id.txtMessage);
         _txtSelectedDrink = getView().findViewById(R.id.txtSelectedDrink);
@@ -84,6 +87,8 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
 
         ImageButton btnBack = getView().findViewById(R.id.btnBack);
         btnBack.setOnClickListener(view -> presenter.goBack());
+
+        Button btnGotIt = getView().findViewById(R.id.btnGotIt);
 
         presenter.init();
     }
