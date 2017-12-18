@@ -3,7 +3,7 @@
 Personal alcohol guide and assistance.
 
 Gathering statistics, calculating required doze, observing state.
-Managing (searching, creating, following, giving advices) drink events.
+Managing (searching, creating, following, giving advices) drink events, parties, etc.
 Ordering and selling alcohol.
 Making fun.
 
