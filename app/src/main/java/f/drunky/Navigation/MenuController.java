@@ -5,7 +5,6 @@ package f.drunky.Navigation;
  */
 
 public abstract class MenuController {
-    public abstract void openMenu();
     public abstract void enableMenu();
     public abstract void disableMenu();
 }

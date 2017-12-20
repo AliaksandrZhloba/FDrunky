@@ -6,7 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -16,6 +20,7 @@ import f.drunky.Navigation.BackController;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.Navigation.ForwardToNewChain;
 import f.drunky.Navigation.MenuController;
+import f.drunky.Navigation.Names.ChainInfo;
 import f.drunky.Navigation.Names.Views;
 import f.drunky.R;
 import f.drunky.mvp.presenters.MainPresenter;
@@ -36,6 +41,10 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     private FrameLayout _flContent;
     private DrawerLayout _navDrawer;
+    private ActionBarDrawerToggle _toggle;
+    private NavigationView _navigationView;
+    private TextView _txtHeader;
+
 
     private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.flContent) {
         @Override
@@ -57,7 +66,8 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         protected Fragment createFragment(String screenKey, Object data) {
             try {
                 Fragment fragment = Views.GetFragment(screenKey).newInstance();
-                ((ChainFragment)fragment).chain = FDrunkyApplication.INSTANCE.getRouter().getCurrentChain();
+                ChainFragment chainFragment = (ChainFragment)fragment;
+                chainFragment.setChainInfo(FDrunkyApplication.INSTANCE.getRouter().getCurrentChainInfo());
                 return fragment;
             }
             catch (IllegalAccessException e) {
@@ -70,12 +80,21 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
         @Override
         protected void showSystemMessage(String message) {
-
+            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
         }
 
         @Override
         protected void exit() {
             finish();
+        }
+
+        @Override
+        public void applyCommand(Command command) {
+            super.applyCommand(command);
+
+            ChainInfo chain = FDrunkyApplication.INSTANCE.getRouter().getCurrentChainInfo();
+            _navigationView.setCheckedItem(chain.menuId);
+            _txtHeader.setText(chain.titleId);
         }
     };
 
@@ -88,18 +107,15 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     private MenuController menuController = new MenuController() {
         @Override
-        public void openMenu() {
-            _navDrawer.openDrawer(GravityCompat.START);
-        }
-
-        @Override
         public void enableMenu() {
             _navDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+            _toggle.setDrawerIndicatorEnabled(true);
         }
 
         @Override
         public void disableMenu() {
             _navDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            _toggle.setDrawerIndicatorEnabled(false);
         }
     };
 
@@ -124,26 +140,48 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //dirty fix
-        FDrunkyApplication.INSTANCE.setMenuController(menuController);
-
         _flContent = findViewById(R.id.flContent);
         _navDrawer = findViewById(R.id.drawer_layout);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(item -> {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        _txtHeader = findViewById(R.id.txtHeader);
+
+        //dirty fix
+        FDrunkyApplication.INSTANCE.setMenuController(menuController);
+
+
+        _toggle = new ActionBarDrawerToggle(
+                this, _navDrawer, toolbar, 0, 0);
+        _navDrawer.addDrawerListener(_toggle);
+        _toggle.syncState();
+
+        _navigationView = findViewById(R.id.nav_view);
+        _navigationView.setNavigationItemSelectedListener(item -> {
             _navDrawer.closeDrawer(GravityCompat.START);
             switch (item.getItemId()) {
+                case R.id.nav_condition:
+                    break;
+
+                case R.id.nav_calculation:
+                    presenter.gotoCalculation();
+                    break;
+
                 case R.id.nav_about:
                     presenter.gotoAbout();
                     break;
 
                 // debug
+                case R.id.nav_result:
+                    FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.CALC_RESULT);
+                    break;
+
                 case R.id.nav_map:
                     FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.MAP);
                     break;
             }
-
             return false;
         });
     }
@@ -155,8 +193,10 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         } else {
             super.onBackPressed();
             Fragment fragment = getCurrentFragment();
-            ChainFragment chainFragment = (ChainFragment)fragment;
-            FDrunkyApplication.INSTANCE.getRouter().setCurrentChain(chainFragment.chain);
+            ChainInfo chain = ((ChainFragment)fragment).getChainInfo();
+            FDrunkyApplication.INSTANCE.getRouter().setCurrentChainInfo(chain);
+            _navigationView.setCheckedItem(chain.menuId);
+            _txtHeader.setText(chain.titleId);
         }
     }
 

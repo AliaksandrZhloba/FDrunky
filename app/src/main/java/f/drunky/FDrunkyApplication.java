@@ -1,8 +1,11 @@
 package f.drunky;
 
 import android.app.Application;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 
 import f.drunky.Entity.Drink;
+import f.drunky.Entity.DrinkAppearance;
 import f.drunky.Navigation.BackController;
 import f.drunky.Navigation.FRouter;
 import f.drunky.Navigation.MenuController;
@@ -32,6 +35,14 @@ public class FDrunkyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+
+        /// DEBUG!!!!
+        SharedData.DrinkEffect = DrinkEffect.ToRelax;
+        SharedData.Drink = new Drink(1, "wine", 7, "Wine", "7.5",
+                new DrinkAppearance( Color.RED,  Color.RED,  Color.RED,  Color.WHITE, Bitmap.createBitmap(1,1, Bitmap.Config.ALPHA_8)),
+                Bitmap.createBitmap(1,1, Bitmap.Config.ALPHA_8));
+
 
         INSTANCE = this;
         cicerone = Cicerone.create(new FRouter());

@@ -1,6 +1,8 @@
 package f.drunky.ui.fragments;
 
 
+import android.content.Context;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -22,7 +24,6 @@ public class MapFragment extends ChainFragment implements MapView {
 
     @InjectPresenter
     MapPresenter presenter;
-
 
     public MapFragment() {
         // Required empty public constructor

@@ -1,32 +1,42 @@
 package f.drunky.Navigation;
 
+import f.drunky.Navigation.Names.ChainInfo;
 import ru.terrakok.cicerone.BaseRouter;
 import ru.terrakok.cicerone.commands.BackTo;
 import ru.terrakok.cicerone.commands.Forward;
 import ru.terrakok.cicerone.commands.Replace;
+import ru.terrakok.cicerone.commands.SystemMessage;
 
 /**
  * Created by AZhloba on 12/6/2017.
  */
 
 public class FRouter extends BaseRouter {
-    private String _curChain;
+    private ChainInfo _curChainInfo;
 
-    public String getCurrentChain() { return _curChain; }
-    public void setCurrentChain(String chain) { _curChain = chain; }
+    public ChainInfo getCurrentChainInfo() { return _curChainInfo; }
+    public void setCurrentChainInfo(ChainInfo chainInfo) { _curChainInfo = chainInfo; }
 
-    public void startNewChain(String chain, String screenKey) {
-        _curChain = chain;
+
+    public boolean isChain(ChainInfo chain) { return chain.chain.equals(_curChainInfo.chain); }
+
+    public void startNewChain(ChainInfo chainInfo) {
+        _curChainInfo = chainInfo;
         executeCommand(new BackTo(null));
-        executeCommand(new Replace(screenKey, null));
+        executeCommand(new Replace(chainInfo.startView, null));
     }
 
-    public void navigateToNewChain(String chain, String screenKey) {
-        _curChain = chain;
-        executeCommand(new ForwardToNewChain(screenKey, null));
+    public void navigateToNewChain(ChainInfo chainInfo) {
+        _curChainInfo = chainInfo;
+        executeCommand(new ForwardToNewChain(chainInfo.startView, null));
     }
 
     public void navigateTo(String screenKey) {
         executeCommand(new Forward(screenKey, null));
+    }
+
+
+    public void showSystemMessage(String message) {
+        executeCommand(new SystemMessage(message));
     }
 }

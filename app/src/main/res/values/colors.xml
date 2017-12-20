@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="actionButtonBackgroundColor">#000000</color>
+    <color name="mainColor">#FF4081</color>
+
+    <color name="background">#1E043D</color>
+    <color name="textColor">#E1BEE7</color>
+    <color name="colorPrimary">#1E043D</color>
+    <color name="colorPrimaryDark">#1E043D</color>
+    <color name="navigationBarColor">#1E043D</color>
     <color name="actionButtonDisabledBackgroundColor">#9d9d9d</color>
 
     <color name="statusBarColor">#000000</color>

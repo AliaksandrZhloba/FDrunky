@@ -18,7 +18,7 @@ import f.drunky.mvp.views.AgreementView;
 public class AgreementPresenter extends MvpPresenter<AgreementView> {
     public void setUserAgree(boolean agree) {
         if (agree) {
-            getViewState().setContinueButtonState(true, R.color.actionButtonBackgroundColor);
+            getViewState().setContinueButtonState(true, R.color.mainColor);
         }
         else {
             getViewState().setContinueButtonState(false, R.color.actionButtonDisabledBackgroundColor);
@@ -35,7 +35,10 @@ public class AgreementPresenter extends MvpPresenter<AgreementView> {
     public void continueClicked() {
         SettingsHelper.setIsFirstLaunch(false);
         FDrunkyApplication.INSTANCE.getMenuController().enableMenu();
-        FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.CALC_DRINK_DOSE, Views.SELECT_EFFECT);
+
+        FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.CALCULATION);
+        /*getViewState().setCheckedMenuItem(chain.menuId);
+        getViewState().setHeader(chain.titleId);*/
     }
 
     public void showAgreement() {

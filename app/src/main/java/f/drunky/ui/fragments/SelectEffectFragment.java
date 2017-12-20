@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
-import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import f.drunky.Navigation.ChainFragment;
@@ -25,8 +24,6 @@ public class SelectEffectFragment extends ChainFragment implements SelectEffectV
     SelectEffectPresenter presenter;
 
     private Button _btnSelectEffect;
-    private ImageButton _btnMenu;
-
 
     public SelectEffectFragment() {
         // Required empty public constructor
@@ -41,9 +38,6 @@ public class SelectEffectFragment extends ChainFragment implements SelectEffectV
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        _btnMenu = getView().findViewById(R.id.btnMenu);
-        _btnMenu.setOnClickListener(l -> presenter.ShowMenuClicked());
-
         _btnSelectEffect = getView().findViewById(R.id.btnSelectEffect);
         _btnSelectEffect.setOnClickListener(l -> presenter.SelectEffectClicked());
 

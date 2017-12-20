@@ -26,10 +26,4 @@ public class AgreementContentFragment extends ChainFragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_agreement_content, container, false);
     }
-
-    @Override
-    public void onViewCreated(View v, @Nullable Bundle savedInstanceState) {
-        ImageButton btnBack = getView().findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(view -> FDrunkyApplication.INSTANCE.getBackController().goBack());
-    }
 }

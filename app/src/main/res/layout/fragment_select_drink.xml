@@ -1,120 +1,101 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/caption_height"
-        android:layout_weight="0">
-
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"
-            android:background="@android:color/transparent"
-            android:padding="8dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_keyboard_backspace_black_24dp" />
-
-        <TextView
-            style="@style/AlcoApp.CaptionTextStyle"
-            android:layout_height="match_parent"
-            android:layout_margin="0dp"
-            android:text="@string/SelectDrinkCaption" />
-
-    </FrameLayout>
-
-    <View
-        android:id="@+id/shadow"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_above="@+id/id_from_your_LinearLayout"
-        android:background="@drawable/shadow" />
+    <TextView
+        style="@style/AlcoApp.QuestionTextStyle"
+        android:layout_marginTop="74dp"
+        android:gravity="top"
+        android:text="@string/WhatToDrink"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:id="@+id/lInput"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        android:layout_weight="0"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:padding="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnSearch"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="0"
+            android:background="@android:color/transparent"
+            android:padding="2dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_search_48dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/txtDrink"
+            style="@style/AlcoApp.BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="@string/DrinkWatermark"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:textAppearance="@style/DrinkTextStyle"
+            android:textSize="12dp" />
+
+        <ImageButton
+            android:id="@+id/btnMic"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="0"
+            android:background="@android:color/transparent"
+            android:padding="2dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_mic_48dp" />
 
     </LinearLayout>
+
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="312dp"
+        android:layout_height="2dp"
+        android:background="@drawable/rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lActiveArea" />
 
     <LinearLayout
         android:id="@+id/lActiveArea"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/active_area_height"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_weight="0"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnHowMuch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lInput">
 
-        <TextView
-            style="@style/AlcoApp.QuestionTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:fontFamily="roboto"
-            android:text="@string/WhatToDrink"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="76dp" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:layout_weight="0">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="2dp">
-
-                <ImageButton
-                    android:id="@+id/btnSearch"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_weight="0"
-                    android:background="@android:color/transparent"
-                    android:padding="2dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_search_black_48dp" />
-
-                <AutoCompleteTextView
-                    android:id="@+id/txtDrink"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="2dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:hint="@string/DrinkWatermark"
-                    android:imeOptions="actionSearch"
-                    android:singleLine="true"
-                    android:textAppearance="@style/DrinkTextStyle" />
-
-                <ImageButton
-                    android:id="@+id/btnMic"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="0"
-                    android:background="@android:color/transparent"
-                    android:padding="2dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_mic_black_48dp" />
-
-            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -135,21 +116,13 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/footer_height"
-        android:layout_weight="0"
-        android:gravity="center"
-        android:orientation="vertical">
+    <Button
+        android:id="@+id/btnHowMuch"
+        style="@style/AlcoApp.ActionButtonStyle"
+        android:layout_marginBottom="115dp"
+        android:text="@string/HowMuch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btnHowMuch"
-            style="@style/AlcoApp.ActionButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/HowMuch" />
-
-    </LinearLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

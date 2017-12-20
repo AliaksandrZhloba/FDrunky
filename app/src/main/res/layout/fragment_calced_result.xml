@@ -1,112 +1,61 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/fSelectedDrink"
+    <TextView
+        android:id="@+id/txtMessage"
+        style="@style/AlcoApp.QuestionTextStyle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/caption_height">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="74dp"
+        android:layout_weight="0"
+        android:fontFamily="roboto"
+        android:text="[drink]"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"
-            android:background="@android:color/transparent"
-            android:padding="8dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_keyboard_backspace_black_24dp" />
-
-        <TextView
-            android:id="@+id/txtSelectedDrink"
-            style="@style/AlcoApp.CaptionTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:text="[selected drink]" />
-    </FrameLayout>
-
-    <View
-        android:id="@+id/shadow"
-        android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        android:layout_above="@+id/id_from_your_LinearLayout"
-        android:background="@drawable/shadow"></View>
-
-    <LinearLayout
+    <!--<Button
+        android:id="@+id/btnWhereToGo"
+        style="@style/AlcoApp.ActionButtonStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center"
         android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:fontFamily="@font/roboto"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/WhereToGo" /> -->
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/lActiveArea"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/active_area_height"
+    <ImageView
+        android:id="@+id/imgGlass"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="210dp"
         android:layout_weight="0"
-        android:orientation="vertical">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txtMessage"
-            style="@style/AlcoApp.QuestionTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:fontFamily="roboto"
-            android:text="[drink]"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="76dp" />
+    <Button
+        android:id="@+id/btnGotIt"
+        style="@style/AlcoApp.ActionButtonStyle"
+        android:layout_width="152dp"
+        android:layout_marginBottom="115dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/roboto"
+        android:text="@string/GotIt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0">
-
-            <ImageView
-                android:id="@+id/imgGlass"
-                android:layout_width="240sp"
-                android:layout_height="240sp"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_weight="0" />
-        </FrameLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/footer_height"
-        android:layout_weight="0"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnWhereToGo"
-            style="@style/AlcoApp.ActionButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/WhereToGo" />
-
-        <Button
-            android:id="@+id/btnGotIt"
-            style="@style/AlcoApp.ActionButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto"
-            android:text="@string/GotIt" />
-    </LinearLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

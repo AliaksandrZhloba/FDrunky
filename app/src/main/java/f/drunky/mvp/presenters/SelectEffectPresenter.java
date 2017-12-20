@@ -61,8 +61,4 @@ public class SelectEffectPresenter extends MvpPresenter<SelectEffectView> {
         FDrunkyApplication.INSTANCE.SharedData.DrinkEffect = _effect;
         FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.SELECT_DRINK);
     }
-
-    public void ShowMenuClicked() {
-        FDrunkyApplication.INSTANCE.getMenuController().openMenu();
-    }
 }

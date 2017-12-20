@@ -23,11 +23,6 @@ public class SelectDrinkPresenter extends MvpPresenter<SelectDrinkView> {
     private List<Drink> _drinks;
     private List<Drink> _shownDrinks;
 
-
-    public void goBack() {
-        FDrunkyApplication.INSTANCE.getBackController().goBack();
-    }
-
     public void toCalcedResult(int position) {
         Drink drink = _shownDrinks.get(position);
 

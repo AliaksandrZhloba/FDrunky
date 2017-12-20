@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">FunkyDrunky</string>
 
+    <string name="condition_chain_title">Condition</string>
+    <string name="calculation_chain_title">Calculation</string>
+    <string name="about_chain_title">About</string>
+    <string name="agreement_chain_title">Funky Drunky</string>
+
     <!-- AGREEMENT SCREEN -->
     <string name="user_agree_question">I agree</string>
     <string name="continue_button_text">Continue</string>
@@ -16,7 +21,7 @@
     <string name="DoYoHaveAParty">Do you have a party tonight?</string>
     <string name="AnyPlans">Any plans?</string>
     <string name="ToRelax">To relax.</string>
-    <string name="ToRelaxButtonText">GREATE!</string>
+    <string name="ToRelaxButtonText">GREAT!</string>
     <string name="ToHaveAFun">Let\'s have a fun!</string>
     <string name="ToHaveAFunButtonText">WOW!</string>
     <string name="ToDrunkOver">Legless...</string>
@@ -40,14 +45,9 @@
 
 
     <!-- MENU -->
-    <string name="Menu_DrinkLog">DrinkLog</string>
-    <string name="Menu_AddNewDrink">Add new drink</string>
-    <string name="Menu_ChooseAPlace">Choose a place</string>
-    <string name="Menu_Account">Account</string>
+    <string name="Menu_Condition">Condition</string>
+    <string name="Menu_Calculation">Calculation</string>
     <string name="Menu_Settings">Settings</string>
     <string name="Menu_About">About</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_agreement">activity_agreement</string>
-
 
 </resources>

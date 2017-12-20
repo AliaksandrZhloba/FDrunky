@@ -9,8 +9,8 @@ import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.DbHelper;
 import f.drunky.Helpers.DbReader;
 import f.drunky.Helpers.SettingsHelper;
+import f.drunky.Navigation.Names.ChainInfo;
 import f.drunky.Navigation.Names.Chains;
-import f.drunky.Navigation.Names.Views;
 import f.drunky.mvp.views.MainView;
 
 /**
@@ -37,17 +37,23 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
         if (SettingsHelper.getIsFirstLaunch()) {
             FDrunkyApplication.INSTANCE.getMenuController().disableMenu();
-            FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.CALC_DRINK_DOSE, Views.AGREEMENT);
+            FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.AGREEMENT);
         }
         else {
-            FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.CALC_DRINK_DOSE, Views.SELECT_EFFECT);
+            FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.CALCULATION);
         }
     }
 
 
-    public void gotoAbout() {
-        if (!FDrunkyApplication.INSTANCE.getRouter().getCurrentChain().equals (Chains.AGREEMENT)) {
-            FDrunkyApplication.INSTANCE.getRouter().navigateToNewChain(Chains.AGREEMENT, Views.ABOUT);
+    public void gotoCalculation() {
+        if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.CALCULATION)) {
+            FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.CALCULATION);
         }
+    }
+
+    public void gotoAbout() {
+        if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.ABOUT)) {
+            FDrunkyApplication.INSTANCE.getRouter().navigateToNewChain(Chains.ABOUT);
+       }
     }
 }

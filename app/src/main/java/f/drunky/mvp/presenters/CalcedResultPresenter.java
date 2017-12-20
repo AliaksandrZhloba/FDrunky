@@ -35,6 +35,6 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
     }
 
     public void gotItClicked() {
-
+        FDrunkyApplication.INSTANCE.getRouter().showSystemMessage("Tra");
     }
 }

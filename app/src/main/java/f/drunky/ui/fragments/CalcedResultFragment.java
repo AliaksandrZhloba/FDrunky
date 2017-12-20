@@ -12,12 +12,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import f.drunky.Entity.Drink;
-import f.drunky.Helpers.DrinkEffectHelper;
-import f.drunky.Helpers.DrinkHelper;
 import f.drunky.Helpers.StatusBarHelper;
 import f.drunky.Helpers.Utils;
 import f.drunky.Navigation.ChainFragment;
@@ -33,11 +30,9 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
     CalcedResultPresenter presenter;
 
 
-    private Button _btnWhereToGo;
-    private Button _btnGotButton;
+    //private Button _btnWhereToGo;
+    private Button _btnGotIt;
     private TextView _txtMessage;
-    private TextView _txtSelectedDrink;
-    private FrameLayout _cSelectedDrink;
     private ImageView _imgGlass;
 
 
@@ -49,22 +44,6 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        int duration = getContext().getResources().getInteger(R.integer.slide_animation_duration);
-        StatusBarHelper.setStatusBarColorWithAnimation(getActivity(), _drink.getAppearance().getStatusBarColor(), duration);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        int duration = getContext().getResources().getInteger(R.integer.slide_animation_duration);
-        StatusBarHelper.setStatusBarColorWithAnimation(getActivity(), Utils.getThemeColor(getView().getContext(), R.attr.colorPrimaryDark), duration);
-    }
-
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -73,22 +52,14 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
 
     @Override
     public void onViewCreated(View v, @Nullable Bundle savedInstanceState) {
-        _btnWhereToGo = getView().findViewById(R.id.btnWhereToGo);
-        _btnWhereToGo.setOnClickListener(l -> presenter.whereToGoClicked());
+        //_btnWhereToGo = getView().findViewById(R.id.btnWhereToGo);
+        //_btnWhereToGo.setOnClickListener(l -> presenter.whereToGoClicked());
 
-        _btnGotButton = getView().findViewById(R.id.btnGotIt);
-        _btnGotButton.setOnClickListener(l -> presenter.gotItClicked());
+        _btnGotIt = getView().findViewById(R.id.btnGotIt);
+        _btnGotIt.setOnClickListener(l -> presenter.gotItClicked());
 
         _txtMessage = getView().findViewById(R.id.txtMessage);
-        _txtSelectedDrink = getView().findViewById(R.id.txtSelectedDrink);
         _imgGlass = getView().findViewById(R.id.imgGlass);
-
-        _cSelectedDrink = getView().findViewById(R.id.fSelectedDrink);
-
-        ImageButton btnBack = getView().findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(view -> presenter.goBack());
-
-        Button btnGotIt = getView().findViewById(R.id.btnGotIt);
 
         presenter.init();
     }
@@ -97,15 +68,8 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
     public void setMessage(DrinkEffect effect, Drink drink, int volume) {
         _drink = drink;
 
-        _btnWhereToGo.setBackgroundColor(drink.getAppearance().getBackgroundColor());
-        _btnGotButton.setBackgroundColor(drink.getAppearance().getBackgroundColor());
-
         _txtMessage.setText(getMessage(effect, drink, volume));
         _imgGlass.setImageBitmap(drink.getAppearance().getGlassPicture());
-
-        _txtSelectedDrink.setText(drink.getTitle());
-        _txtSelectedDrink.setTextColor(drink.getAppearance().getTextColor());
-        _cSelectedDrink.setBackgroundColor(drink.getAppearance().getCaptionBackgroundColor());
     }
 
     private String getMessage(DrinkEffect effect, Drink drink, int volume) {

@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import java.util.List;
@@ -101,9 +100,6 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
             String input = _txtDrink.getText().toString();
             presenter.search(input);
         });
-
-        ImageButton btnBack = getView().findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(view -> presenter.goBack());
     }
 
 
@@ -142,7 +138,7 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
         else {
             _txtNotFound.setVisibility(View.GONE);
             _btnCalcHowMuch.setEnabled(true);
-            _btnCalcHowMuch.setBackgroundColor(getActivity().getColor(R.color.actionButtonBackgroundColor));
+            _btnCalcHowMuch.setBackgroundColor(getActivity().getColor(R.color.mainColor));
             _lDrinks.setVisibility(View.VISIBLE);
             _lDrinks.setAdapter(new DrinksAdapter(drinks));
         }
