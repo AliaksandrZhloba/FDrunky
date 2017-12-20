@@ -86,4 +86,24 @@
         <item name="android:fontFamily">@font/roboto</item>
     </style>
 
+
+    <style name="AlcoApp.BaseDialogButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:background">#00000000</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="AlcoApp.YesDialogButtonStyle" parent="AlcoApp.BaseDialogButtonStyle">
+        <item name="android:textColor">@color/mainColor</item>
+    </style>
+
+    <style name="AlcoApp.NoDialogButtonStyle" parent="AlcoApp.BaseDialogButtonStyle">
+        <item name="android:textColor">#4A148C</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_down</item>
+    </style>
+
 </resources>

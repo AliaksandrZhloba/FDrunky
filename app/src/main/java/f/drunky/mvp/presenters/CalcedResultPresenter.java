@@ -11,6 +11,7 @@ import f.drunky.Helpers.DrinkEffectHelper;
 import f.drunky.Navigation.Names.Views;
 import f.drunky.Types.DrinkEffect;
 import f.drunky.mvp.views.CalcedResultView;
+import f.drunky.ui.dialogs.AskToFillProfileDialog;
 
 /**
  * Created by AZhloba on 10/15/2017.
@@ -24,6 +25,8 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
 
         int volume = DrinkEffectHelper.calcVolume(effect, drink);
         getViewState().setMessage(effect, drink, volume);
+
+        getViewState().showAskToFillProfileDialog();
     }
 
     public void whereToGoClicked() {
@@ -31,6 +34,10 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
     }
 
     public void gotItClicked() {
-        FDrunkyApplication.INSTANCE.getRouter().showSystemMessage("Tra");
+        
+    }
+
+    public void askToFillProfile_OkClicked() {
+
     }
 }

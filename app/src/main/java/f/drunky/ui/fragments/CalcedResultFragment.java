@@ -1,6 +1,8 @@
 package f.drunky.ui.fragments;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -22,9 +24,12 @@ import f.drunky.R;
 import f.drunky.Types.DrinkEffect;
 import f.drunky.mvp.presenters.CalcedResultPresenter;
 import f.drunky.mvp.views.CalcedResultView;
+import f.drunky.ui.dialogs.AskToFillProfileDialog;
 
 
 public class CalcedResultFragment extends ChainFragment implements CalcedResultView {
+    private static final int ASK_TO_FILL_PROFILE = 1;
+
 
     @InjectPresenter
     CalcedResultPresenter presenter;
@@ -70,6 +75,27 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
 
         _txtMessage.setText(getMessage(effect, drink, volume));
         _imgGlass.setImageBitmap(drink.getAppearance().getGlassPicture());
+    }
+
+    @Override
+    public void showAskToFillProfileDialog() {
+        AskToFillProfileDialog askDialog = new AskToFillProfileDialog();
+        askDialog.setTargetFragment(this, ASK_TO_FILL_PROFILE);
+
+        askDialog.show( getFragmentManager(), null);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case ASK_TO_FILL_PROFILE:
+                    presenter.askToFillProfile_OkClicked();
+                    break;
+            }
+        }
     }
 
     private String getMessage(DrinkEffect effect, Drink drink, int volume) {

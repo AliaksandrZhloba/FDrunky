@@ -40,6 +40,12 @@
     <string name="ToHaveAFunMessage">"To have a fun tonight don't drink\nmore than %d ml of\n%s."</string>
     <string name="ToDrunkOverMessage">"To be legless tonight drink\nat least %d ml of\n%s."</string>
 
+    <!-- ASK TO FILL PROFILE DIALOG -->
+    <string name="AskToFillProfile_Title">Calculation</string>
+    <string name="AskToFillProfile_Text">To get a more precise calculation, please, fill the profile.</string>
+    <string name="AskToFillProfile_Ok">OK</string>
+    <string name="AskToFillProfile_Skip">SKIP</string>
+
     <!-- MAP -->
     <string name="PlaceWatermark">Choose a place</string>
 
