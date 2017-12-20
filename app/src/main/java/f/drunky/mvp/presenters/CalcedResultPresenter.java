@@ -26,10 +26,6 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
         getViewState().setMessage(effect, drink, volume);
     }
 
-    public void goBack() {
-        FDrunkyApplication.INSTANCE.getBackController().goBack();
-    }
-
     public void whereToGoClicked() {
         FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.MAP);
     }

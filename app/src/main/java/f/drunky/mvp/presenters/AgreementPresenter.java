@@ -37,8 +37,6 @@ public class AgreementPresenter extends MvpPresenter<AgreementView> {
         FDrunkyApplication.INSTANCE.getMenuController().enableMenu();
 
         FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.CALCULATION);
-        /*getViewState().setCheckedMenuItem(chain.menuId);
-        getViewState().setHeader(chain.titleId);*/
     }
 
     public void showAgreement() {

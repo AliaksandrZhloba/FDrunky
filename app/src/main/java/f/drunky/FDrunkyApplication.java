@@ -6,7 +6,6 @@ import android.graphics.Color;
 
 import f.drunky.Entity.Drink;
 import f.drunky.Entity.DrinkAppearance;
-import f.drunky.Navigation.BackController;
 import f.drunky.Navigation.FRouter;
 import f.drunky.Navigation.MenuController;
 import f.drunky.Types.DrinkEffect;
@@ -28,7 +27,6 @@ public class FDrunkyApplication extends Application {
 
     public static FDrunkyApplication INSTANCE;
     private Cicerone<FRouter> cicerone;
-    private BackController _backController;
     private MenuController _menuController;
 
 
@@ -54,19 +52,6 @@ public class FDrunkyApplication extends Application {
 
     public FRouter getRouter() {
         return cicerone.getRouter();
-    }
-
-
-    public void setBackController(BackController backNavigator) {
-        _backController = backNavigator;
-    }
-
-    public BackController getBackController() {
-        return _backController;
-    }
-
-    public void removeBackController() {
-        _backController = null;
     }
 
     public void setMenuController(MenuController menuController) {

@@ -16,7 +16,6 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import f.drunky.FDrunkyApplication;
-import f.drunky.Navigation.BackController;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.Navigation.ForwardToNewChain;
 import f.drunky.Navigation.MenuController;
@@ -98,13 +97,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         }
     };
 
-    private BackController backController = new BackController() {
-        @Override
-        public void goBack() {
-            onBackPressed();
-        }
-    };
-
     private MenuController menuController = new MenuController() {
         @Override
         public void enableMenu() {
@@ -124,7 +116,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         super.onResume();
         FDrunkyApplication.INSTANCE.getNavigatorHolder().setNavigator(navigator);
         FDrunkyApplication.INSTANCE.setMenuController(menuController);
-        FDrunkyApplication.INSTANCE.setBackController(backController);
     }
 
     @Override
@@ -132,7 +123,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         super.onPause();
         FDrunkyApplication.INSTANCE.getNavigatorHolder().removeNavigator();
         FDrunkyApplication.INSTANCE.removeMenuController();
-        FDrunkyApplication.INSTANCE.removeBackController();
     }
 
     @Override
