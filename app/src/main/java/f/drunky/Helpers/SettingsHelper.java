@@ -12,7 +12,8 @@ import f.drunky.FDrunkyApplication;
 
 public class SettingsHelper {
     private static final String APP_PREFERENCES = "fdrunkysettings";
-    private static final String APP_PREFERENCES_FIRST_LAUNCH = "first_launch";
+    private static final String FIRST_LAUNCH = "first_launch";
+    private static final String LANGUAGE = "language";
 
     private static SharedPreferences _preferences;
 
@@ -23,10 +24,19 @@ public class SettingsHelper {
     }
 
     public static boolean getIsFirstLaunch() {
-        return _preferences.getBoolean(APP_PREFERENCES_FIRST_LAUNCH, true);
+        return _preferences.getBoolean(FIRST_LAUNCH, true);
     }
 
     public static void setIsFirstLaunch(boolean value) {
-        _preferences.edit().putBoolean(APP_PREFERENCES_FIRST_LAUNCH, value).commit();
+        _preferences.edit().putBoolean(FIRST_LAUNCH, value).commit();
+    }
+
+
+    public static String getLanguage() {
+        return _preferences.getString(LANGUAGE, "en");
+    }
+
+    public static void setLanguage(String language) {
+        _preferences.edit().putString(LANGUAGE, language).commit();
     }
 }

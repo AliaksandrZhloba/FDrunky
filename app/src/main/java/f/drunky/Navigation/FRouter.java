@@ -1,5 +1,7 @@
 package f.drunky.Navigation;
 
+import f.drunky.Navigation.Commands.ForwardToNewChain;
+import f.drunky.Navigation.Commands.RemoveCurrent;
 import f.drunky.Navigation.Names.ChainInfo;
 import ru.terrakok.cicerone.BaseRouter;
 import ru.terrakok.cicerone.commands.BackTo;
@@ -22,6 +24,8 @@ public class FRouter extends BaseRouter {
 
     public void startNewChain(ChainInfo chainInfo) {
         _curChainInfo = chainInfo;
+
+        executeCommand(new RemoveCurrent());
         executeCommand(new BackTo(null));
         executeCommand(new Replace(chainInfo.startView, null));
     }

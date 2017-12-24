@@ -1,5 +1,8 @@
 package f.drunky.ui.activities;
 
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -8,6 +11,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,9 +19,13 @@ import android.widget.Toast;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
+import java.util.Locale;
+
 import f.drunky.FDrunkyApplication;
+import f.drunky.LanguageController;
 import f.drunky.Navigation.ChainFragment;
-import f.drunky.Navigation.ForwardToNewChain;
+import f.drunky.Navigation.FNavigator;
+import f.drunky.Navigation.Commands.ForwardToNewChain;
 import f.drunky.Navigation.MenuController;
 import f.drunky.Navigation.Names.ChainInfo;
 import f.drunky.Navigation.Names.Views;
@@ -25,7 +33,6 @@ import f.drunky.R;
 import f.drunky.mvp.presenters.MainPresenter;
 import f.drunky.mvp.views.MainView;
 import ru.terrakok.cicerone.Navigator;
-import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 import ru.terrakok.cicerone.commands.Command;
 import ru.terrakok.cicerone.commands.Forward;
 import ru.terrakok.cicerone.commands.Replace;
@@ -45,7 +52,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     private TextView _txtHeader;
 
 
-    private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.flContent) {
+    private Navigator navigator = new FNavigator(getSupportFragmentManager(), R.id.flContent) {
         @Override
         protected void setupFragmentTransactionAnimation(Command command, Fragment currentFragment, Fragment nextFragment, FragmentTransaction fragmentTransaction) {
             if (command instanceof ForwardToNewChain ||
@@ -97,6 +104,25 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         }
     };
 
+    private LanguageController languageController = new LanguageController() {
+        @Override
+        public void setLanguage(String language) {
+            if (!language.equals(getCurrentLanguage())) {
+                setCurrentLanguage(language);
+
+                Locale mylocale = new Locale(language);
+                Resources resources = getResources();
+                DisplayMetrics dm = resources.getDisplayMetrics();
+                Configuration conf = resources.getConfiguration();
+                conf.locale = mylocale;
+                resources.updateConfiguration(conf, dm);
+                Intent refreshIntent = new Intent(MainActivity.this, MainActivity.class);
+                finish();
+                startActivity(refreshIntent);
+            }
+        }
+    };
+
     private MenuController menuController = new MenuController() {
         @Override
         public void enableMenu() {
@@ -116,6 +142,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         super.onResume();
         FDrunkyApplication.INSTANCE.getNavigatorHolder().setNavigator(navigator);
         FDrunkyApplication.INSTANCE.setMenuController(menuController);
+        FDrunkyApplication.INSTANCE.LanguageController = languageController;
     }
 
     @Override
@@ -123,6 +150,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         super.onPause();
         FDrunkyApplication.INSTANCE.getNavigatorHolder().removeNavigator();
         FDrunkyApplication.INSTANCE.removeMenuController();
+        FDrunkyApplication.INSTANCE.LanguageController = null;
     }
 
     @Override
@@ -141,6 +169,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
         //dirty fix
         FDrunkyApplication.INSTANCE.setMenuController(menuController);
+        FDrunkyApplication.INSTANCE.LanguageController = languageController;
 
 
         _toggle = new ActionBarDrawerToggle(
@@ -151,27 +180,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         _navigationView = findViewById(R.id.nav_view);
         _navigationView.setNavigationItemSelectedListener(item -> {
             _navDrawer.closeDrawer(GravityCompat.START);
-            switch (item.getItemId()) {
-                case R.id.nav_condition:
-                    break;
-
-                case R.id.nav_calculation:
-                    presenter.gotoCalculation();
-                    break;
-
-                case R.id.nav_about:
-                    presenter.gotoAbout();
-                    break;
-
-                // debug
-                case R.id.nav_result:
-                    FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.CALC_RESULT);
-                    break;
-
-                case R.id.nav_map:
-                    FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.MAP);
-                    break;
-            }
+            presenter.navigate(item.getItemId());
             return false;
         });
     }

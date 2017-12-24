@@ -1,6 +1,5 @@
-package f.drunky.Navigation;
+package f.drunky.Navigation.Commands;
 
-import ru.terrakok.cicerone.commands.Command;
 import ru.terrakok.cicerone.commands.Forward;
 
 /**

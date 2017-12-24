@@ -54,6 +54,7 @@ public class FDrunkyApplication extends Application {
         return cicerone.getRouter();
     }
 
+
     public void setMenuController(MenuController menuController) {
         _menuController = menuController;
     }
@@ -65,4 +66,7 @@ public class FDrunkyApplication extends Application {
     public void removeMenuController() {
         _menuController = null;
     }
+
+
+    public LanguageController LanguageController;
 }

@@ -11,6 +11,8 @@ import f.drunky.Helpers.DbReader;
 import f.drunky.Helpers.SettingsHelper;
 import f.drunky.Navigation.Names.ChainInfo;
 import f.drunky.Navigation.Names.Chains;
+import f.drunky.Navigation.Names.Views;
+import f.drunky.R;
 import f.drunky.mvp.views.MainView;
 
 /**
@@ -35,6 +37,9 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
         SettingsHelper.init();
 
+        //String language = SettingsHelper.getLanguage();
+        //FDrunkyApplication.INSTANCE.LanguageController.setLanguage(language);
+
         if (SettingsHelper.getIsFirstLaunch()) {
             FDrunkyApplication.INSTANCE.getMenuController().disableMenu();
             FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.AGREEMENT);
@@ -45,15 +50,50 @@ public class MainPresenter extends MvpPresenter<MainView> {
     }
 
 
-    public void gotoCalculation() {
+    public void navigate(int itemId) {
+        switch (itemId) {
+            case R.id.nav_condition:
+                break;
+
+            case R.id.nav_calculation:
+                gotoCalculation();
+                break;
+
+            case R.id.nav_settings:
+                gotoSettings();
+                break;
+
+            case R.id.nav_about:
+                gotoAbout();
+                break;
+
+            // debug
+            case R.id.nav_result:
+                FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.CALC_RESULT);
+                break;
+
+            case R.id.nav_map:
+                FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.MAP);
+                break;
+        }
+    }
+
+
+    private void gotoCalculation() {
         if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.CALCULATION)) {
             FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.CALCULATION);
         }
     }
 
-    public void gotoAbout() {
+    private void gotoSettings() {
+        if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.SETTINGS)) {
+            FDrunkyApplication.INSTANCE.getRouter().navigateToNewChain(Chains.SETTINGS);
+        }
+    }
+
+    private void gotoAbout() {
         if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.ABOUT)) {
             FDrunkyApplication.INSTANCE.getRouter().navigateToNewChain(Chains.ABOUT);
-       }
+        }
     }
 }

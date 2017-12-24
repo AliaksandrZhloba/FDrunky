@@ -34,7 +34,7 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
     }
 
     public void gotItClicked() {
-        
+
     }
 
     public void askToFillProfile_OkClicked() {

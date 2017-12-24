@@ -25,6 +25,6 @@
         android:background="#1E043D"
         app:itemTextAppearance="@style/NavDrawerTextStyle"
         app:itemIconTint="@color/drawer_item"
-        app:itemTextColor="@color/drawer_item"/>
+        app:itemTextColor="@color/mainColor"/>
 
 </android.support.v4.widget.DrawerLayout>

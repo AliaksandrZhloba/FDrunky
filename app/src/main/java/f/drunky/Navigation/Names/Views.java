@@ -11,6 +11,7 @@ import f.drunky.ui.fragments.CalcedResultFragment;
 import f.drunky.ui.fragments.MapFragment;
 import f.drunky.ui.fragments.SelectDrinkFragment;
 import f.drunky.ui.fragments.SelectEffectFragment;
+import f.drunky.ui.fragments.SettingsFragment;
 
 /**
  * Created by AZhloba on 12/5/2017.
@@ -24,6 +25,7 @@ public class Views {
     public static final String AGREEMENT = "AGREEMENT";
     public static final String AGREEMENT_CONTENT = "AGREEMENT_CONTENT";
     public static final String ABOUT = "ABOUT";
+    public static final String SETTINGS = "SETTINGS";
 
 
     private static HashMap<String, Class<? extends Fragment>> _views = FillViews();
@@ -37,6 +39,7 @@ public class Views {
         views.put(AGREEMENT, AgreementFragment.class);
         views.put(AGREEMENT_CONTENT, AgreementContentFragment.class);
         views.put(ABOUT, AboutFragment.class);
+        views.put(SETTINGS, SettingsFragment.class);
 
         return views;
     }

@@ -5,6 +5,7 @@
     <string name="calculation_chain_title">Calculation</string>
     <string name="about_chain_title">About</string>
     <string name="agreement_chain_title">Funky Drunky</string>
+    <string name="settings_chain_title">Settings</string>
 
     <!-- AGREEMENT SCREEN -->
     <string name="user_agree_question">I agree</string>
@@ -46,6 +47,10 @@
     <string name="AskToFillProfile_Ok">OK</string>
     <string name="AskToFillProfile_Skip">SKIP</string>
 
+    <!-- SETTINGS SCREEN -->
+    <string name="Settings_English">English</string>
+    <string name="Settings_Russian">Русский</string>
+
     <!-- MAP -->
     <string name="PlaceWatermark">Choose a place</string>
 
@@ -55,5 +60,6 @@
     <string name="Menu_Calculation">Calculation</string>
     <string name="Menu_Settings">Settings</string>
     <string name="Menu_About">About</string>
+
 
 </resources>

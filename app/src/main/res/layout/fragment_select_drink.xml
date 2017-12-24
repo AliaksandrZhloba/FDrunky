@@ -71,7 +71,7 @@
         android:id="@+id/myRectangleView"
         android:layout_width="312dp"
         android:layout_height="2dp"
-        android:background="@drawable/rectangle"
+        android:background="@drawable/line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/lActiveArea" />
