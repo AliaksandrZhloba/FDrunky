@@ -30,14 +30,14 @@
     <style name="AlcoApp.BaseTextStyle" parent="@android:style/Widget.TextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColor">@color/appTextColor</item>
         <item name="android:fontFamily">@font/roboto</item>
     </style>
 
     <style name="AlcoApp.QuestionTextStyle" parent="@android:style/Widget.TextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColor">@color/appTextColor</item>
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">24dp</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
@@ -107,5 +107,14 @@
     </style>
 
 
+    <style name="AlcoApp.ProfileDataTextInputLayoutStyle" parent="AlcoApp.BaseTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:shadowColor">#4A148C</item>
+        <item name="android:textColorHighlight">#4A148C</item>
+        <item name="android:textColorHint">@color/appTextColor</item>
+        <item name="android:textColor">@color/appTextColor</item>
+        <item name="android:textSize">16dp</item>
+    </style>
 
 </resources>

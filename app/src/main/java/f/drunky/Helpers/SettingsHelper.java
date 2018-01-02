@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import f.drunky.Entity.Language;
 import f.drunky.FDrunkyApplication;
 
 /**
@@ -33,7 +34,7 @@ public class SettingsHelper {
 
 
     public static String getLanguage() {
-        return _preferences.getString(LANGUAGE, "en");
+        return _preferences.getString(LANGUAGE, LanguageHelper.En.Code);
     }
 
     public static void setLanguage(String language) {

@@ -20,3 +20,4 @@ Androind Studio, java.
 Using:
 Moxy fo MVP (https://github.com/Arello-Mobile/Moxy)
 Cicerone for Navigation (https://github.com/terrakok/Cicerone)
+KeyboardVisibilityEvent (https://github.com/yshrsmz/KeyboardVisibilityEvent)

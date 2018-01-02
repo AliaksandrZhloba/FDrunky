@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import java.util.List;
 
 import f.drunky.Navigation.Commands.RemoveCurrent;
+import f.drunky.R;
 import ru.terrakok.cicerone.android.SupportFragmentNavigator;
 import ru.terrakok.cicerone.commands.Command;
 
@@ -28,7 +29,7 @@ public abstract class FNavigator extends SupportFragmentNavigator {
     @Override
     public void applyCommand(Command command) {
         if (command instanceof RemoveCurrent) {
-            Fragment currentFragment = getVisibleFragment();
+            Fragment currentFragment = fragmentManager.findFragmentById(R.id.flContent);
             if (currentFragment != null) {
                 fragmentManager.beginTransaction().remove(currentFragment).setCustomAnimations(0, 0, 0, 0).commit();
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -37,17 +38,5 @@ public abstract class FNavigator extends SupportFragmentNavigator {
         else {
             super.applyCommand(command);
         }
-    }
-
-
-    private Fragment getVisibleFragment(){
-        List<Fragment> fragments = fragmentManager.getFragments();
-        if(fragments != null){
-            for(Fragment fragment : fragments){
-                if(fragment != null && fragment.isVisible())
-                    return fragment;
-            }
-        }
-        return null;
     }
 }

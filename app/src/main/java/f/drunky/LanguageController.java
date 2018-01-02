@@ -5,7 +5,7 @@ package f.drunky;
  */
 
 public abstract class LanguageController {
-    private String _currentLanguage = "en";
+    private String _currentLanguage = null;
 
     public String getCurrentLanguage() { return _currentLanguage; }
     public void setCurrentLanguage(String language) { _currentLanguage = language; }

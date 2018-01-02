@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import f.drunky.Entity.Language;
 import f.drunky.FDrunkyApplication;
+import f.drunky.Helpers.LanguageHelper;
 import f.drunky.Helpers.SettingsHelper;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.R;
@@ -37,13 +39,18 @@ public class SettingsFragment extends ChainFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        String language = SettingsHelper.getLanguage();
 
-        String[] languageNames = new String[] { getString(R.string.Settings_English), getString(R.string.Settings_Russian) };
-        List<String> languages =  Arrays.asList("en", "ru");
-        _languageId = languages.indexOf(language);
+        List<String> languages = LanguageHelper.getAvailableLanguages();
+        String curLanguage = SettingsHelper.getLanguage();
 
-        ArrayAdapter<String> languagesAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, languageNames);
+        _languageId = 0;
+        for (_languageId = 0; _languageId < languages.size(); _languageId++) {
+            if (languages.get(_languageId).equals(curLanguage)) {
+                break;
+            }
+        }
+
+        ArrayAdapter<String> languagesAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, languages);
         languagesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         Spinner spLanguage = getActivity().findViewById(R.id.spLanguages);
@@ -56,9 +63,9 @@ public class SettingsFragment extends ChainFragment {
                 if (_languageId != i) {
                     _languageId = i;
 
-                    String locale = languages.get(i);
-                    FDrunkyApplication.INSTANCE.LanguageController.setLanguage(locale);
-                    SettingsHelper.setLanguage(locale);
+                    String lang = languages.get(i);
+                    FDrunkyApplication.INSTANCE.LanguageController.setLanguage(lang);
+                    SettingsHelper.setLanguage(lang);
                 }
             }
 

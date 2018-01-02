@@ -43,4 +43,6 @@ dependencies {
     compile 'ru.terrakok.cicerone:cicerone:2.1.0'
 
     compile 'ru.yandex:yandexmapkit:2.5.4@aar'
+
+    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
 }

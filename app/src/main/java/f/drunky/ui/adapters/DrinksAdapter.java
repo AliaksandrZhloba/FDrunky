@@ -18,20 +18,17 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkDetai
 
     public static class DrinkDetailsViewHolder extends RecyclerView.ViewHolder {
         private TextView _txtTitle;
-        private TextView _txtPrice;
         private ImageView _imgPicture;
 
 
         public DrinkDetailsViewHolder(View v) {
             super(v);
             _txtTitle = v.findViewById(R.id.txtTitle);
-            _txtPrice = v.findViewById(R.id.txtPrice);
             _imgPicture = v.findViewById(R.id.imgPicture);
         }
 
         public void setDrink(Drink drink) {
             _txtTitle.setText(drink.getTitle());
-            _txtPrice.setText(drink.getPrice());
             _imgPicture.setImageBitmap(drink.getBottlePicture());
         }
     }

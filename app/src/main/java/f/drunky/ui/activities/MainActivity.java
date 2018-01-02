@@ -22,6 +22,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.Locale;
 
 import f.drunky.FDrunkyApplication;
+import f.drunky.Helpers.SettingsHelper;
 import f.drunky.LanguageController;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.Navigation.FNavigator;
@@ -109,15 +110,10 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         public void setLanguage(String language) {
             if (!language.equals(getCurrentLanguage())) {
                 setCurrentLanguage(language);
-
-                Locale mylocale = new Locale(language);
-                Resources resources = getResources();
-                DisplayMetrics dm = resources.getDisplayMetrics();
-                Configuration conf = resources.getConfiguration();
-                conf.locale = mylocale;
-                resources.updateConfiguration(conf, dm);
-                Intent refreshIntent = new Intent(MainActivity.this, MainActivity.class);
+                setLanguage(language);
                 finish();
+
+                Intent refreshIntent = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(refreshIntent);
             }
         }
@@ -156,6 +152,12 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SettingsHelper.init();
+
+        String language = SettingsHelper.getLanguage();
+        setLanguage(language);
+
         setContentView(R.layout.activity_main);
 
         _flContent = findViewById(R.id.flContent);
@@ -201,5 +203,15 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     public Fragment getCurrentFragment() {
         return getSupportFragmentManager().findFragmentById(R.id.flContent);
+    }
+
+
+    private void setLanguage(String language) {
+        Locale mylocale = new Locale(language);
+        Resources resources = getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        Configuration conf = resources.getConfiguration();
+        conf.locale = mylocale;
+        resources.updateConfiguration(conf, dm);
     }
 }

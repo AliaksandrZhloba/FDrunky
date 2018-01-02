@@ -1,6 +1,7 @@
 package f.drunky.ui.fragments;
 
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,18 +13,28 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+import net.yslibrary.android.keyboardvisibilityevent.Unregistrar;
+
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import f.drunky.Entity.Drink;
+import f.drunky.Helpers.AnimationHelper;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.R;
 import f.drunky.mvp.presenters.SelectDrinkPresenter;
@@ -41,6 +52,15 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
     private TextView _txtNotFound;
     private RecyclerView _lDrinks;
     private AutoCompleteTextView _txtDrink;
+    private Unregistrar _unregistrar;
+    private TextView _txtQuestion;
+    private LinearLayout _lInput;
+
+    private int _questionInitTopMargin;
+    private int _questionFinishTopMargin;
+    private int _inputInitTopMargin;
+    private int _inputFinishTopMargin;
+    private int _duration;
 
 
     public SelectDrinkFragment() {
@@ -76,7 +96,7 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
         _txtDrink = getView().findViewById(R.id.txtDrink);
         _txtDrink.setThreshold(1);
         _txtDrink.setOnItemClickListener((adapterView, view, position, l) -> {
-            HideSoftKeyboard(view);
+            HideSoftKeyboard();
             String input = (String) adapterView.getItemAtPosition(position);
             presenter.search(input);
         });
@@ -88,7 +108,7 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
                 String input = textView.getText().toString();
                 presenter.search(input);
 
-                HideSoftKeyboard(textView);
+                HideSoftKeyboard();
                 return true;
             }
             return false;
@@ -96,16 +116,28 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
 
         ImageButton btnSearch = getView().findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(view -> {
-            HideSoftKeyboard(view);
+            HideSoftKeyboard();
             String input = _txtDrink.getText().toString();
             presenter.search(input);
         });
+
+        _txtQuestion = getView().findViewById(R.id.txtQuestion);
+        ViewGroup.MarginLayoutParams  lpQuestion = (ViewGroup.MarginLayoutParams)_txtQuestion.getLayoutParams();
+        _questionInitTopMargin = lpQuestion.topMargin;
+        _questionFinishTopMargin = 14;
+
+        _lInput = getView().findViewById(R.id.lInput);
+        ViewGroup.MarginLayoutParams  lpInput = (ViewGroup.MarginLayoutParams)_lInput.getLayoutParams();
+        _inputInitTopMargin = lpInput.topMargin;
+        _inputFinishTopMargin = 100;
+
+        _duration = 200;
     }
 
 
-    private void HideSoftKeyboard(View view) {
+    private void HideSoftKeyboard() {
         InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        in.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0);
+        in.hideSoftInputFromWindow(getView().getApplicationWindowToken(), 0);
     }
 
     private int getSelectedDrinkIndex() {
@@ -142,5 +174,31 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
             _lDrinks.setVisibility(View.VISIBLE);
             _lDrinks.setAdapter(new DrinksAdapter(drinks));
         }
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        _unregistrar.unregister();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        _unregistrar = KeyboardVisibilityEvent.registerEventListener(
+                getActivity(),
+                isOpen -> {
+                    if (isOpen) {
+                        AnimationHelper.animateTopMargin(_txtQuestion, _questionInitTopMargin, _questionFinishTopMargin, _duration);
+                        AnimationHelper.animateTopMargin(_lInput, _inputInitTopMargin, _inputFinishTopMargin, _duration);
+                    }
+                    else {
+                        AnimationHelper.animateTopMargin(_txtQuestion, _questionFinishTopMargin, _questionInitTopMargin, _duration);
+                        AnimationHelper.animateTopMargin(_lInput, _inputFinishTopMargin, _inputInitTopMargin, _duration);
+                    }
+                });
     }
 }

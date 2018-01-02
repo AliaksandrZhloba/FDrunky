@@ -33,6 +33,8 @@
     <string name="WhatToDrink">What would you like to drink?</string>
     <string name="DrinkWatermark">medium dry red wine</string>
     <string name="HowMuch">HOW MUCH DO I NEED?</string>
+    <string name="MoreAboutIt">MORE ABOUT IT</string>
+    <string name="NothingWasFound">Nothing was found. Try again.</string>
 
     <!-- CALCED RESULT SCREEN -->
     <string name="WhereToGo">WHERE TO GO?</string>
@@ -50,6 +52,11 @@
     <!-- SETTINGS SCREEN -->
     <string name="Settings_English">English</string>
     <string name="Settings_Russian">Русский</string>
+    <string name="Settings_Gender">Gender</string>
+    <string name="Settings_Male">Male</string>
+    <string name="Settings_Female">Female</string>
+    <string name="Settings_Age">Age</string>
+    <string name="Settings_Weight">Weight</string>
 
     <!-- MAP -->
     <string name="PlaceWatermark">Choose a place</string>

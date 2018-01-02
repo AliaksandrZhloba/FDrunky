@@ -35,8 +35,6 @@ public class MainPresenter extends MvpPresenter<MainView> {
         dbHelper.createDataBase();
         DbReader.init(dbHelper);
 
-        SettingsHelper.init();
-
         //String language = SettingsHelper.getLanguage();
         //FDrunkyApplication.INSTANCE.LanguageController.setLanguage(language);
 
