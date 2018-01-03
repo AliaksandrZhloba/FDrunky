@@ -11,11 +11,11 @@ import f.drunky.R;
  */
 
 public class GenderHelper {
-    private static final Gender Empty = new Gender("", R.string.Empty);
+    private static final Gender Empty = new Gender("", R.string.Gender);
     public static final Gender Male = new Gender("M", R.string.Male);
     public static final Gender Female = new Gender("F", R.string.Female);
 
-    private static final List<Gender> _genders = Arrays.asList(Male, Female);
+    private static final List<Gender> _genders = Arrays.asList(Empty, Male, Female);
 
 
     public static List<Gender> getGenders() {

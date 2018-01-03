@@ -108,8 +108,7 @@ public class SettingsFragment extends ChainFragment implements SettingsView {
                     try {
                         float weight = Float.parseFloat(text);
                         presenter.weightChanged(weight);
-                    } catch (Exception e) {
-                    }
+                    } catch (Exception e) { }
                 }
             }
 
@@ -185,24 +184,19 @@ public class SettingsFragment extends ChainFragment implements SettingsView {
 
             @Override
             public @NonNull View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                if (position == 0) {
-                    return initialSelection(false);
-                }
                 return createItemView(position, convertView, parent);
-            }
-
-            @Override
-            public int getCount() {
-                return super.getCount() + 1; // Adjust for initial selection item
             }
 
             private View createItemView(int position, View convertView, ViewGroup parent){
                 final View view = mInflater.inflate(mResource, parent, false);
 
                 TextView txtGenderSpinnerItem = view.findViewById(R.id.txtGenderSpinnerItem);
-                Gender genderData = genders.get(position - 1);
+                Gender genderData = genders.get(position);
 
                 txtGenderSpinnerItem.setText(getText(genderData.UiStringId));
+                if (position == 0) {
+                    txtGenderSpinnerItem.setTextColor(getActivity().getColor(R.color.genderHintTextColor));
+                }
 
                 return view;
             }
