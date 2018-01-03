@@ -21,21 +21,20 @@
 
     <TextView
         android:id="@+id/txtName"
+        style="@style/AlcoApp.BaseTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/roboto"
         android:text="[Name]"
-        android:textColor="@android:color/black"
         android:textSize="14dp" />
 
     <TextView
         android:id="@+id/txtLogin"
+        style="@style/AlcoApp.BaseTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="[Login]"
-        android:textColor="#89000000"
         android:textSize="12dp" />
 
 </LinearLayout>

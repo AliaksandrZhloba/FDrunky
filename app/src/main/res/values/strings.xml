@@ -50,13 +50,12 @@
     <string name="AskToFillProfile_Skip">SKIP</string>
 
     <!-- SETTINGS SCREEN -->
-    <string name="Settings_English">English</string>
-    <string name="Settings_Russian">Русский</string>
-    <string name="Settings_Gender">Gender</string>
-    <string name="Settings_Male">Male</string>
-    <string name="Settings_Female">Female</string>
-    <string name="Settings_Age">Age</string>
-    <string name="Settings_Weight">Weight</string>
+    <string name="Gender">Gender</string>
+    <string name="Empty"></string>
+    <string name="Male">Male</string>
+    <string name="Female">Female</string>
+    <string name="Age">Age</string>
+    <string name="Weight">Weight</string>
 
     <!-- MAP -->
     <string name="PlaceWatermark">Choose a place</string>

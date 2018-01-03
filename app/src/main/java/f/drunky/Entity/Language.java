@@ -6,10 +6,10 @@ package f.drunky.Entity;
 
 public class Language {
     public String Code;
-    public int UiStringId;
+    public String UiString;
 
-    public Language(String code, int uiStringId) {
+    public Language(String code, String uiString) {
         Code = code;
-        UiStringId = uiStringId;
+        UiString = uiString;
     }
 }

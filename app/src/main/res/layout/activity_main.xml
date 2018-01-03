@@ -5,9 +5,9 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    android:background="@color/background">
+    tools:openDrawer="start">
 
     <include
         layout="@layout/app_bar_main"
@@ -19,12 +19,12 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="#1E043D"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer"
-        android:background="#1E043D"
-        app:itemTextAppearance="@style/NavDrawerTextStyle"
         app:itemIconTint="@color/drawer_item"
-        app:itemTextColor="@color/mainColor"/>
+        app:itemTextAppearance="@style/NavDrawerTextStyle"
+        app:itemTextColor="@color/mainColor"
+        app:menu="@menu/activity_main_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

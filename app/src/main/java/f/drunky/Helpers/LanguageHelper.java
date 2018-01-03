@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import f.drunky.Entity.Language;
+import f.drunky.FDrunkyApplication;
 import f.drunky.R;
 
 /**
@@ -12,11 +13,10 @@ import f.drunky.R;
  */
 
 public class LanguageHelper {
-    public static Language En = new Language("En", R.string.Settings_English);
-    public static Language Ru = new Language("Ru", R.string.Settings_Russian);
+    public static final Language En = new Language("En", "English");
+    public static final Language Ru = new Language("Ru", "Русский");
 
-    private static List<Language> _languages = Arrays.asList(En, Ru);
-    private static List<String> _languagesCodes = Arrays.asList(En.Code, Ru.Code);
+    private static final List<Language> _languages = Arrays.asList(En, Ru);
 
 
     public static Language findLanguage(String code) throws Exception {
@@ -29,7 +29,7 @@ public class LanguageHelper {
         throw new Exception("unknown language code: " + code);
     }
 
-    public static List<String> getAvailableLanguages() {
-        return _languagesCodes;
+    public static List<Language> getLanguages() {
+        return _languages;
     }
 }
