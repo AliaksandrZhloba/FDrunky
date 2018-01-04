@@ -117,4 +117,10 @@
         <item name="android:textSize">16dp</item>
     </style>
 
+    <style name="AlcoApp.ProfileDataTextInputLayoutTheme" parent="TextAppearance.AppCompat">
+        <item name="colorAccent">@color/auxiliaryColor</item>
+        <item name="colorControlNormal">@color/auxiliaryColor</item>
+        <item name="colorControlActivated">@color/mainColor</item>
+    </style>
+
 </resources>

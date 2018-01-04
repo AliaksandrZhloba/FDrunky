@@ -195,7 +195,7 @@ public class SettingsFragment extends ChainFragment implements SettingsView {
 
                 txtGenderSpinnerItem.setText(getText(genderData.UiStringId));
                 if (position == 0) {
-                    txtGenderSpinnerItem.setTextColor(getActivity().getColor(R.color.genderHintTextColor));
+                    txtGenderSpinnerItem.setTextColor(getActivity().getColor(R.color.auxiliaryColor));
                 }
 
                 return view;

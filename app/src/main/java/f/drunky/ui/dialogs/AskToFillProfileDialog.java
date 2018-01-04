@@ -2,6 +2,7 @@ package f.drunky.ui.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -36,7 +37,18 @@ public class AskToFillProfileDialog extends DialogFragment {
         });
 
         Button btnSkip = view.findViewById(R.id.btnSkip);
-        btnSkip.setOnClickListener(l -> dismiss());
+        btnSkip.setOnClickListener(l -> {
+            dismiss();
+            getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_CANCELED, null);
+        });
+
+
+        /*getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+
+            }
+        });*/
 
         return builder.create();
     }

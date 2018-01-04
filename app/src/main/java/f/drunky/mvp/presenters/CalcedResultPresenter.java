@@ -19,6 +19,8 @@ import f.drunky.ui.dialogs.AskToFillProfileDialog;
 
 @InjectViewState
 public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
+    private boolean _askToFillProfile = true;
+
     public void init() {
         DrinkEffect effect = FDrunkyApplication.INSTANCE.SharedData.DrinkEffect;
         Drink drink = FDrunkyApplication.INSTANCE.SharedData.Drink;
@@ -26,7 +28,9 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
         int volume = DrinkEffectHelper.calcVolume(effect, drink);
         getViewState().setMessage(effect, drink, volume);
 
-        getViewState().showAskToFillProfileDialog();
+        if (_askToFillProfile) {
+            getViewState().showAskToFillProfileDialog();
+        }
     }
 
     public void whereToGoClicked() {
@@ -38,6 +42,11 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
     }
 
     public void askToFillProfile_OkClicked() {
+        _askToFillProfile = false;
+        FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.SETTINGS);
+    }
 
+    public void askToFillProfile_SkipClicked() {
+        _askToFillProfile = false;
     }
 }

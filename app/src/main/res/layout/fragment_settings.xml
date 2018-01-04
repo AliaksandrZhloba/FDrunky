@@ -16,7 +16,6 @@
         android:layout_marginTop="18dp"
         android:backgroundTint="#FF4081"
         android:popupBackground="@color/background"
-        android:tooltipText="@string/Gender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,14 +49,13 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="4dp"
             android:layout_marginStart="24dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:theme="@style/AlcoApp.ProfileDataTextInputLayoutTheme">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/txtAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="4dp"
                 android:hint="@string/Age"
                 android:inputType="number"
                 android:textColor="@color/appTextColor"
@@ -70,14 +68,15 @@
             style="@style/AlcoApp.ProfileDataTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:theme="@style/AlcoApp.ProfileDataTextInputLayoutTheme">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/txtWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:layout_marginStart="4dp"
                 android:hint="@string/Weight"
                 android:inputType="number|numberDecimal"
                 android:textColor="@color/appTextColor"

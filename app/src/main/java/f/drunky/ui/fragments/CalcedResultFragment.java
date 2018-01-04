@@ -82,17 +82,21 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
         AskToFillProfileDialog askDialog = new AskToFillProfileDialog();
         askDialog.setTargetFragment(this, ASK_TO_FILL_PROFILE);
 
-        askDialog.show( getFragmentManager(), null);
+        askDialog.show(getFragmentManager(), null);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == Activity.RESULT_OK) {
-            switch (requestCode) {
-                case ASK_TO_FILL_PROFILE:
+        if (requestCode == ASK_TO_FILL_PROFILE) {
+            switch (resultCode) {
+                case Activity.RESULT_OK:
                     presenter.askToFillProfile_OkClicked();
+                    break;
+
+                case Activity.RESULT_CANCELED:
+                    presenter.askToFillProfile_SkipClicked();
                     break;
             }
         }
