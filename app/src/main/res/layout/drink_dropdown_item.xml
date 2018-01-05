@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/txtTitle"
+    style="@style/AlcoApp.BaseTextStyle"
     android:layout_width="match_parent"
-    android:layout_height="36dp"
-    android:layout_margin="2dp"
-    android:gravity="center_vertical"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:text="TextView"
-        android:textAppearance="@style/DrinkDropDownTextStyle" />
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:text="TextView"
+    android:textAppearance="@style/DrinkDropDownTextStyle"
+    android:textSize="20dp" />

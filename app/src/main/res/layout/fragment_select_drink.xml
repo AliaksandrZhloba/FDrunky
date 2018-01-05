@@ -50,6 +50,7 @@
             android:background="@android:color/transparent"
             android:hint="@string/DrinkWatermark"
             android:imeOptions="actionSearch"
+            android:popupBackground="@drawable/autocomplete_drinks_dropdown"
             android:singleLine="true"
             android:textSize="20dp" />
 
