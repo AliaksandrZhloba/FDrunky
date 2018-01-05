@@ -16,7 +16,6 @@
         Program licence\nUser agreement\nSome other text\n
     </string>
 
-
     <!-- SELECT EFFECT SCREEN -->
     <string name="SelectEffectCaption">Funky Drunky</string>
     <string name="DoYoHaveAParty">Do you have a party tonight?</string>
@@ -46,12 +45,11 @@
     <!-- ASK TO FILL PROFILE DIALOG -->
     <string name="AskToFillProfile_Title">Calculation</string>
     <string name="AskToFillProfile_Text">To get a more precise calculation, please, fill the profile.</string>
-    <string name="AskToFillProfile_Ok">OK</string>
-    <string name="AskToFillProfile_Skip">SKIP</string>
+    <string name="Ok">OK</string>
+    <string name="Skip">SKIP</string>
 
     <!-- SETTINGS SCREEN -->
     <string name="Gender">Gender</string>
-    <string name="Empty"></string>
     <string name="Male">Male</string>
     <string name="Female">Female</string>
     <string name="Age">Age</string>
@@ -66,6 +64,5 @@
     <string name="Menu_Calculation">Calculation</string>
     <string name="Menu_Settings">Settings</string>
     <string name="Menu_About">About</string>
-
 
 </resources>

@@ -8,4 +8,8 @@ public class UserProfileModel {
     public String Gender;
     public Integer Age;
     public Float Weight;
+
+    public boolean isFilled() {
+        return Gender != null && Age != null && Weight != null;
+    }
 }
