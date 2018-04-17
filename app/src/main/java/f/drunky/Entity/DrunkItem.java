@@ -2,7 +2,10 @@ package f.drunky.Entity;
 
 import java.util.Date;
 
-public class DrinkItem {
+import f.drunky.R;
+
+
+public class DrunkItem {
     private Date _useTime;
     private Drink _drink;
     private int _volume;
@@ -20,7 +23,7 @@ public class DrinkItem {
     }
 
 
-    public DrinkItem(Date useTime, Drink drink, int volume) {
+    public DrunkItem(Date useTime, Drink drink, int volume) {
         _useTime = useTime;
         _drink = drink;
         _volume = volume;

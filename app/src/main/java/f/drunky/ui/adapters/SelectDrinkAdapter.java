@@ -13,7 +13,7 @@ import f.drunky.Entity.Drink;
 import f.drunky.R;
 
 
-public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkDetailsViewHolder> {
+public class SelectDrinkAdapter extends RecyclerView.Adapter<SelectDrinkAdapter.DrinkDetailsViewHolder> {
     private List<Drink> _drinks;
 
     public static class DrinkDetailsViewHolder extends RecyclerView.ViewHolder {
@@ -33,12 +33,12 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkDetai
         }
     }
 
-    public DrinksAdapter(List<Drink> drinks) {
+    public SelectDrinkAdapter(List<Drink> drinks) {
         _drinks = drinks;
     }
 
     @Override
-    public DrinksAdapter.DrinkDetailsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SelectDrinkAdapter.DrinkDetailsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.drink_details_item, parent, false);
         DrinkDetailsViewHolder vh = new DrinkDetailsViewHolder(v);
@@ -53,10 +53,5 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkDetai
     @Override
     public int getItemCount() {
         return _drinks.size();
-    }
-
-
-    public Drink GetCurrentDrink(int pos) {
-        return _drinks.get(pos);
     }
 }

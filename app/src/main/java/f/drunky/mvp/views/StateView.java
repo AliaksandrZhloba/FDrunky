@@ -2,11 +2,10 @@ package f.drunky.mvp.views;
 
 import com.arellomobile.mvp.MvpView;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import f.drunky.Entity.DrinkItem;
+import f.drunky.Entity.DrunkItem;
 
 public interface StateView extends MvpView {
-    void setList(List<DrinkItem> drinks);
-    void backPressed();
+    void setList(ArrayList<DrunkItem> drinks);
 }

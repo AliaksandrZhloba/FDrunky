@@ -1,7 +1,6 @@
 package f.drunky.ui.fragments;
 
 
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,8 +12,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
@@ -26,10 +23,7 @@ import android.widget.TextView;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 import net.yslibrary.android.keyboardvisibilityevent.Unregistrar;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -40,7 +34,7 @@ import f.drunky.R;
 import f.drunky.mvp.presenters.SelectDrinkPresenter;
 import f.drunky.mvp.views.SelectDrinkView;
 import f.drunky.ui.adapters.DrinkAutoCompleteAdapter;
-import f.drunky.ui.adapters.DrinksAdapter;
+import f.drunky.ui.adapters.SelectDrinkAdapter;
 
 
 public class SelectDrinkFragment extends ChainFragment implements SelectDrinkView {
@@ -172,10 +166,9 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
             _btnCalcHowMuch.setEnabled(true);
             _btnCalcHowMuch.setBackgroundColor(getActivity().getColor(R.color.mainColor));
             _lDrinks.setVisibility(View.VISIBLE);
-            _lDrinks.setAdapter(new DrinksAdapter(drinks));
+            _lDrinks.setAdapter(new SelectDrinkAdapter(drinks));
         }
     }
-
 
     @Override
     public void onPause() {

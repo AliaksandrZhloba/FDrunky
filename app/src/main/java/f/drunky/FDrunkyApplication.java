@@ -5,11 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import f.drunky.Entity.Drink;
 import f.drunky.Entity.DrinkAppearance;
-import f.drunky.Entity.DrinkItem;
+import f.drunky.Entity.DrunkItem;
 import f.drunky.Navigation.FRouter;
 import f.drunky.Navigation.MenuController;
 import f.drunky.Types.DrinkEffect;
@@ -26,7 +25,7 @@ public class FDrunkyApplication extends Application {
         public Drink Drink;
         public int Volume;
 
-        public ArrayList<DrinkItem> DrinkList;
+        public ArrayList<DrunkItem> DrunkList;
     }
 
 

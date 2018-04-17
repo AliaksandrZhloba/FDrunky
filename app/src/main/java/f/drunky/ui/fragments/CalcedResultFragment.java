@@ -5,21 +5,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import f.drunky.Entity.Drink;
-import f.drunky.Helpers.StatusBarHelper;
-import f.drunky.Helpers.Utils;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.R;
 import f.drunky.Types.DrinkEffect;
@@ -65,7 +60,7 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
         _btnGotIt.setOnClickListener(l -> presenter.gotItClicked());
 
         _txtMessage = getView().findViewById(R.id.txtMessage);
-        _imgGlass = getView().findViewById(R.id.imgGlass);
+        _imgGlass = getView().findViewById(R.id.imgPicture);
     }
 
     @Override

@@ -34,7 +34,7 @@
         android:text="@string/WhereToGo" /> -->
 
     <ImageView
-        android:id="@+id/imgGlass"
+        android:id="@+id/imgPicture"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center_vertical|center_horizontal"
