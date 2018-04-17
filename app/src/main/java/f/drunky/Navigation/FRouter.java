@@ -39,6 +39,11 @@ public class FRouter extends BaseRouter {
         executeCommand(new Forward(screenKey, null));
     }
 
+    public void navigateToChainStart() {
+        executeCommand(new RemoveCurrent());
+        executeCommand(new BackTo(null));
+    }
+
 
     public void showSystemMessage(String message) {
         executeCommand(new SystemMessage(message));

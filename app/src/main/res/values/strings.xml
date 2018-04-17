@@ -55,6 +55,10 @@
     <string name="Age">Age</string>
     <string name="Weight">Weight</string>
 
+    <!-- STATE SCREEN -->
+    <string name="RecentryDrunk">Recently drunk</string>
+    <string name="CanDrive">You can drive in about {0} h.</string>
+
     <!-- MAP -->
     <string name="PlaceWatermark">Choose a place</string>
 
@@ -64,5 +68,8 @@
     <string name="Menu_Calculation">Calculation</string>
     <string name="Menu_Settings">Settings</string>
     <string name="Menu_About">About</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

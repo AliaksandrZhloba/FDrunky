@@ -1,5 +1,6 @@
 package f.drunky.ui.activities;
 
+import android.app.backup.BackupHelper;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -27,6 +28,7 @@ import f.drunky.LanguageController;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.Navigation.FNavigator;
 import f.drunky.Navigation.Commands.ForwardToNewChain;
+import f.drunky.Navigation.IBackHandler;
 import f.drunky.Navigation.MenuController;
 import f.drunky.Navigation.Names.ChainInfo;
 import f.drunky.Navigation.Names.Views;
@@ -192,12 +194,18 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         if (_navDrawer.isDrawerOpen(GravityCompat.START)) {
             _navDrawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
             Fragment fragment = getCurrentFragment();
-            ChainInfo chain = ((ChainFragment)fragment).getChainInfo();
-            FDrunkyApplication.INSTANCE.getRouter().setCurrentChainInfo(chain);
-            _navigationView.setCheckedItem(chain.menuId);
-            _txtHeader.setText(chain.titleId);
+            if (fragment instanceof IBackHandler) {
+                IBackHandler backHandler = (IBackHandler)fragment;
+                backHandler.onBackPressed();
+            }
+            else {
+                ChainInfo chain = ((ChainFragment) fragment).getChainInfo();
+                super.onBackPressed();
+                FDrunkyApplication.INSTANCE.getRouter().setCurrentChainInfo(chain);
+                _navigationView.setCheckedItem(chain.menuId);
+                _txtHeader.setText(chain.titleId);
+            }
         }
     }
 
