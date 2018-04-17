@@ -95,8 +95,8 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
             presenter.search(input);
         });
         _txtDrink.setOnEditorActionListener((textView, actionId, keyEvent) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH
-                    || (keyEvent.getAction() == KeyEvent.KEYCODE_ENTER)) {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                (keyEvent.getAction() == KeyEvent.KEYCODE_ENTER)) {
                 _txtDrink.dismissDropDown();
 
                 String input = textView.getText().toString();

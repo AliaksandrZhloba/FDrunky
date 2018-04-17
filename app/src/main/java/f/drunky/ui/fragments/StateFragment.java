@@ -31,6 +31,7 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     StatePresenter presenter;
 
     private RecyclerView _lDrinks;
+    private DrunkItemsAdapter _lDrinksAdapted;
 
 
     public StateFragment() {
@@ -56,15 +57,20 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
 
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(_lDrinks);
-
-        _lDrinks.setAdapter(new DrunkItemsAdapter(FDrunkyApplication.INSTANCE.SharedData.DrunkList));
     }
 
 
     @Override
     public void setList(ArrayList<DrunkItem> drinks) {
-
+        _lDrinksAdapted = new DrunkItemsAdapter(drinks);
+        _lDrinks.setAdapter(_lDrinksAdapted);
     }
+
+    @Override
+    public void refreshList() {
+        getActivity().runOnUiThread(() -> _lDrinksAdapted.notifyDataSetChanged());
+    }
+
 
     @Override
     public void onBackPressed() {
