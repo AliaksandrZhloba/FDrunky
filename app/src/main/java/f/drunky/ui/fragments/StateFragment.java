@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -26,6 +27,10 @@ import f.drunky.ui.adapters.DrunkItemsAdapter;
 
 
 public class StateFragment extends ChainFragment implements StateView, IBackHandler {
+
+    public interface OnContextMenuItemClickListener {
+        void onClicked(DrunkItem item, MenuItem menuItem);
+    }
 
     @InjectPresenter
     StatePresenter presenter;
@@ -62,13 +67,45 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
 
     @Override
     public void setList(ArrayList<DrunkItem> drinks) {
-        _lDrinksAdapted = new DrunkItemsAdapter(drinks);
+        _lDrinksAdapted = new DrunkItemsAdapter(drinks, new OnContextMenuItemClickListener() {
+            @Override
+            public void onClicked(DrunkItem item, MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.drunk_item_context_menu_info:
+                        presenter.showDrinkInfo(item);
+                        break;
+
+                    case R.id.drunk_item_context_menu_repeat:
+                        presenter.repeatDrink(item);
+                        break;
+
+                    case R.id.drunk_item_context_menu_cancel:
+                        presenter.cancelDrink(item);
+                        break;
+                }
+            }
+        });
         _lDrinks.setAdapter(_lDrinksAdapted);
     }
 
     @Override
-    public void refreshList() {
+    public void refreshUseTime() {
         getActivity().runOnUiThread(() -> _lDrinksAdapted.notifyDataSetChanged());
+    }
+
+    @Override
+    public void refreshList() {
+        _lDrinksAdapted.notifyDataSetChanged();
+    }
+
+    @Override
+    public void notifyItemInserted(int position) {
+        _lDrinksAdapted.notifyItemInserted(position);
+    }
+
+    @Override
+    public void notifyItemRemoved(int position) {
+        _lDrinksAdapted.notifyItemRemoved(position);
     }
 
 

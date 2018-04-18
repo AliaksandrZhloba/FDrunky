@@ -14,7 +14,6 @@
         <item name="color">@color/mainColor</item>
     </style>
 
-
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -121,6 +120,13 @@
         <item name="colorAccent">@color/auxiliaryColor</item>
         <item name="colorControlNormal">@color/auxiliaryColor</item>
         <item name="colorControlActivated">@color/mainColor</item>
+    </style>
+
+    <style name="AlcoApp.DrunkItemContextMenuStyle" parent="@android:style/Widget.PopupMenu">
+        <item name="android:textColor">@color/appTextColor</item>
+        <item name="android:itemBackground">@color/background</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:fontFamily">@font/roboto</item>
     </style>
 
 </resources>

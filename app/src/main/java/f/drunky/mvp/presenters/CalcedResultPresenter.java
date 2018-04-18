@@ -11,6 +11,7 @@ import f.drunky.Entity.DrunkItem;
 import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.DrinkEffectHelper;
 import f.drunky.Helpers.SettingsHelper;
+import f.drunky.Helpers.TimeHelper;
 import f.drunky.Navigation.Names.Views;
 import f.drunky.Types.DrinkEffect;
 import f.drunky.mvp.models.UserProfileModel;
@@ -34,7 +35,7 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
             FDrunkyApplication.INSTANCE.SharedData.DrunkList = new ArrayList<>();
         }
 
-        DrunkItem item = new DrunkItem(Calendar.getInstance().getTime(), FDrunkyApplication.INSTANCE.SharedData.Drink, FDrunkyApplication.INSTANCE.SharedData.Volume);
+        DrunkItem item = new DrunkItem(TimeHelper.now(), FDrunkyApplication.INSTANCE.SharedData.Drink, FDrunkyApplication.INSTANCE.SharedData.Volume);
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(0, item);
 
         FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.STATE);
