@@ -12,8 +12,6 @@ Mobile app (Android).
 
 Idea: Eugene Sidorov
 Implementation: Aliaksandr Zhloba
-Also: Sergey Galaktionov
-
 
 Androind Studio, java.
 
