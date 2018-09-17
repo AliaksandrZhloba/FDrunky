@@ -1,9 +1,7 @@
 package f.drunky.Entity;
 
-import java.sql.Time;
 import java.util.Date;
 
-import f.drunky.Helpers.TimeHelper;
 import f.drunky.R;
 
 
@@ -29,9 +27,5 @@ public class DrunkItem {
         _useTime = useTime;
         _drink = drink;
         _volume = volume;
-    }
-
-    public DrunkItem Clone() {
-        return new DrunkItem(TimeHelper.now(), _drink, _volume);
     }
 }
