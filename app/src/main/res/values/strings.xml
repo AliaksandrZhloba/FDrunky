@@ -57,10 +57,16 @@
 
     <!-- STATE SCREEN -->
     <string name="RecentryDrunk">Recently drunk</string>
-    <string name="CanDrive">You can drive in about {0} h.</string>
+    <string name="CanDrive">You can drive.</string>
+    <string name="CanDriveIn">You can drive in about {0} h.</string>
     <string name="DrunkItemTitle">%d ml %s</string>
     <string name="DiffMinutes">%d min.</string>
     <string name="DiffHoursMinutes">%d h. %d min.</string>
+    <string name="Sober">Sober</string>
+    <string name="Mille">Mille: %.2f </string>
+    <string name="Info">Info</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Repeat">Repeat</string>
 
     <!-- MAP -->
     <string name="PlaceWatermark">Choose a place</string>
