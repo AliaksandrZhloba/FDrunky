@@ -56,7 +56,7 @@
     <string name="Weight">Weight</string>
 
     <!-- STATE SCREEN -->
-    <string name="RecentryDrunk">Recently drunk</string>
+    <string name="RecentlyDrunk">Recently drunk</string>
     <string name="CanDrive">You can drive.</string>
     <string name="CanDriveIn">You can drive in about {0} h.</string>
     <string name="DrunkItemTitle">%d ml %s</string>
