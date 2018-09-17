@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">FunkyDrunky</string>
+
+    <string name="condition_chain_title">Состояние</string>
+    <string name="calculation_chain_title">Расчёт</string>
+    <string name="about_chain_title">О программе</string>
+    <string name="agreement_chain_title">Funky Drunky</string>
+    <string name="settings_chain_title">Настройки</string>
+
+    <!-- AGREEMENT SCREEN -->
+    <string name="user_agree_question">Согласен</string>
+    <string name="continue_button_text">Продолжить</string>
+
+    <!-- AGREEMENT CONTENT SCREEN -->
+    <string name="agreement_content">
+        Program licence\nUser agreement\nSome other text\n
+    </string>
+
+    <!-- SELECT EFFECT SCREEN -->
+    <string name="SelectEffectCaption">Funky Drunky</string>
+    <string name="DoYoHaveAParty">Do you have a party tonight?</string>
+    <string name="AnyPlans">Какие планы?</string>
+    <string name="ToRelax">Расслабиться:)</string>
+    <string name="ToRelaxButtonText">ОТЛИЧНО!</string>
+    <string name="ToHaveAFun">Повеселиться!</string>
+    <string name="ToHaveAFunButtonText">УХ ТЫ!</string>
+    <string name="ToDrunkOver">Напиться...</string>
+    <string name="ToDrunkOverButtonText">СЕРЬЁЗНО?</string>
+
+    <!-- SELECT DRINK SCREEN -->
+    <string name="SelectDrinkCaption">Выберите напиток</string>
+    <string name="WhatToDrink">Что будете пить?</string>
+    <string name="DrinkWatermark">medium dry red wine</string>
+    <string name="HowMuch">СКОЛЬКО МНЕ НУЖНО?</string>
+    <string name="MoreAboutIt">ИНФОРМАЦИЯ</string>
+    <string name="NothingWasFound">Ничего не найдено. Попробуйте ещё.</string>
+
+    <!-- CALCED RESULT SCREEN -->
+    <string name="WhereToGo">КУДА ПОЙТИ?</string>
+    <string name="GotIt">ПОНЯЛ!</string>
+    <string name="ToRelaxMessage">"Чтобы расслабиться, хватит\n%d мл %s."</string>
+    <string name="ToHaveAFunMessage">"Чтобы повеселиться, хватит\n%d мл %s."</string>
+    <string name="ToDrunkOverMessage">"Чтобы напиться, надо не меньше\n%d мл %s."</string>
+
+    <!-- ASK TO FILL PROFILE DIALOG -->
+    <string name="AskToFillProfile_Title">Рассчёт</string>
+    <string name="AskToFillProfile_Text">Чтобы получить более точный рассчёт, пожалуйста, заполните профиль.</string>
+    <string name="Ok">OK</string>
+    <string name="Skip">Не сейчас</string>
+
+    <!-- SETTINGS SCREEN -->
+    <string name="Gender">Пол</string>
+    <string name="Male">Мужской</string>
+    <string name="Female">Женский</string>
+    <string name="Age">Возраст</string>
+    <string name="Weight">Вес</string>
+
+    <!-- STATE SCREEN -->
+    <string name="RecentlyDrunk">Недавно выпито</string>
+    <string name="CanDrive">Можно за руль.</string>
+    <string name="CanDriveIn">Можно водить примерно через {0} ч.</string>
+    <string name="DrunkItemTitle">%d мл %s</string>
+    <string name="DiffMinutes">%d мин.</string>
+    <string name="DiffHoursMinutes">%d ч. %d мин.</string>
+    <string name="Sober">Трезвый</string>
+    <string name="Mille">Промилле: %.2f </string>
+    <string name="Info">Info</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Repeat">Repeat</string>
+
+    <!-- MAP -->
+    <string name="PlaceWatermark">Choose a place</string>
+
+
+    <!-- MENU -->
+    <string name="Menu_Condition">Состояние</string>
+    <string name="Menu_Calculation">Рассчёт</string>
+    <string name="Menu_Settings">Настройки</string>
+    <string name="Menu_About">О программе</string>
+
+</resources>
