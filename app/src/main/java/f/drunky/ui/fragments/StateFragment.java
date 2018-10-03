@@ -10,6 +10,7 @@ import android.support.v7.widget.SnapHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
@@ -32,6 +33,7 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
 
     private RecyclerView _lDrinks;
     private DrunkItemsAdapter _lDrinksAdapted;
+    private TextView _txtSober;
 
 
     public StateFragment() {
@@ -48,6 +50,8 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
 
     @Override
     public void onViewCreated(View v, @Nullable Bundle savedInstanceState) {
+        _txtSober = getView().findViewById(R.id.txtSober);
+
         _lDrinks = getView().findViewById(R.id.lDrinks);
         _lDrinks.setHasFixedSize(true);
 
@@ -64,11 +68,25 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     public void setList(ArrayList<DrunkItem> drinks) {
         _lDrinksAdapted = new DrunkItemsAdapter(drinks);
         _lDrinks.setAdapter(_lDrinksAdapted);
+
+        if (_lDrinksAdapted.getItemCount() == 0) {
+            _txtSober.setVisibility(View.VISIBLE);
+            _lDrinks.setVisibility(View.INVISIBLE);
+        }
+        else {
+            _txtSober.setVisibility(View.GONE);
+            _lDrinks.setVisibility(View.VISIBLE);
+            _lDrinksAdapted.notifyDataSetChanged();
+        }
     }
 
     @Override
     public void refreshList() {
-        getActivity().runOnUiThread(() -> _lDrinksAdapted.notifyDataSetChanged());
+        getActivity().runOnUiThread(() -> {
+            if (_lDrinksAdapted.getItemCount() > 0) {
+                _lDrinksAdapted.notifyDataSetChanged();
+            }
+        });
     }
 
 

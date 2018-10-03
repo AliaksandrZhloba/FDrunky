@@ -30,10 +30,6 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
     }
 
     public void gotItClicked() {
-        if (FDrunkyApplication.INSTANCE.SharedData.DrunkList == null) {
-            FDrunkyApplication.INSTANCE.SharedData.DrunkList = new ArrayList<>();
-        }
-
         DrunkItem item = new DrunkItem(Calendar.getInstance().getTime(), FDrunkyApplication.INSTANCE.SharedData.Drink, FDrunkyApplication.INSTANCE.SharedData.Volume);
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(0, item);
 

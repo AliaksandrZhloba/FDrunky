@@ -9,7 +9,6 @@ import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.DbHelper;
 import f.drunky.Helpers.DbReader;
 import f.drunky.Helpers.SettingsHelper;
-import f.drunky.Navigation.Names.ChainInfo;
 import f.drunky.Navigation.Names.Chains;
 import f.drunky.Navigation.Names.Views;
 import f.drunky.R;
@@ -50,7 +49,8 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
     public void navigate(int itemId) {
         switch (itemId) {
-            case R.id.nav_condition:
+            case R.id.nav_state:
+                gotoState();
                 break;
 
             case R.id.nav_calculation:
@@ -76,6 +76,12 @@ public class MainPresenter extends MvpPresenter<MainView> {
         }
     }
 
+
+    private void gotoState() {
+        if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.STATE)) {
+            FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.STATE);
+        }
+    }
 
     private void gotoCalculation() {
         if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.CALCULATION)) {

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FunkyDrunky</string>
 
-    <string name="condition_chain_title">Condition</string>
+    <string name="state_chain_title">State</string>
     <string name="calculation_chain_title">Calculation</string>
     <string name="about_chain_title">About</string>
     <string name="agreement_chain_title">Funky Drunky</string>

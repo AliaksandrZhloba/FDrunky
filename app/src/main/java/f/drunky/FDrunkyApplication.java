@@ -25,7 +25,7 @@ public class FDrunkyApplication extends Application {
         public Drink Drink;
         public int Volume;
 
-        public ArrayList<DrunkItem> DrunkList;
+        public ArrayList<DrunkItem> DrunkList = new ArrayList<>();
     }
 
 

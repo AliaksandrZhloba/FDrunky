@@ -10,6 +10,10 @@ public class TimeDiffHelper {
     public static String getPassedTime(Date from) {
         Date now = Calendar.getInstance().getTime();
         long diff = now.getTime() - from.getTime();
+
+        if (diff < 60 * 1000)
+            return "";
+
         long diffMinutes = diff / (60 * 1000);
         long diffHours = diff / (60 * 60 * 1000);
 
