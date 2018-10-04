@@ -21,21 +21,28 @@ public class StatePresenter extends MvpPresenter<StateView> {
 
     @Override
     protected void onFirstViewAttach() {
-        getViewState().setList(FDrunkyApplication.INSTANCE.SharedData.DrunkList);
+        if (FDrunkyApplication.INSTANCE.SharedData.DrunkList.size() > 0) {
+            getViewState().setList(FDrunkyApplication.INSTANCE.SharedData.DrunkList);
 
-        _timer = new Timer("timerName");
-        _timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                getViewState().refreshList();
-            }
-        }, 1000, 1000);
+            _timer = new Timer("timerName");
+            _timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    getViewState().refreshList();
+                }
+            }, 1000, 1000);
+        }
+        else {
+            getViewState().showSober();
+        }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        _timer.cancel();
+
+        if (_timer != null)
+            _timer.cancel();
     }
 
     public void backPressed() {

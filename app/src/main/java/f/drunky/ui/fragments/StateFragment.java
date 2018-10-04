@@ -69,15 +69,9 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
         _lDrinksAdapted = new DrunkItemsAdapter(drinks);
         _lDrinks.setAdapter(_lDrinksAdapted);
 
-        if (_lDrinksAdapted.getItemCount() == 0) {
-            _txtSober.setVisibility(View.VISIBLE);
-            _lDrinks.setVisibility(View.INVISIBLE);
-        }
-        else {
-            _txtSober.setVisibility(View.GONE);
-            _lDrinks.setVisibility(View.VISIBLE);
-            _lDrinksAdapted.notifyDataSetChanged();
-        }
+        _txtSober.setVisibility(View.GONE);
+        _lDrinks.setVisibility(View.VISIBLE);
+        _lDrinksAdapted.notifyDataSetChanged();
     }
 
     @Override
@@ -87,6 +81,12 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
                 _lDrinksAdapted.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public void showSober() {
+        _lDrinks.setVisibility(View.INVISIBLE);
+        _txtSober.setVisibility(View.VISIBLE);
     }
 
 
