@@ -17,17 +17,21 @@ public class DrunkItemsAdapter extends RecyclerView.Adapter<DrunkItemsAdapter.Dr
 
     private List<DrunkItem> _drunkItems;
 
+    public void remove(int swipedPosition) {
+        _drunkItems.remove(swipedPosition);
+    }
+
     public static class DrunkItemViewHolder extends RecyclerView.ViewHolder {
         private TextView _txtTitle;
         private TextView _txtTime;
         private ImageView _imgPicture;
-        private String _titleStringformat;
+        private String _titleStringFormat;
 
 
         public DrunkItemViewHolder(View v) {
             super(v);
 
-            _titleStringformat = v.getResources().getString(R.string.DrunkItemTitle);
+            _titleStringFormat = v.getResources().getString(R.string.DrunkItemTitle);
 
             _txtTitle = v.findViewById(R.id.txtTitle);
             _txtTime = v.findViewById(R.id.txtTime);
@@ -35,7 +39,7 @@ public class DrunkItemsAdapter extends RecyclerView.Adapter<DrunkItemsAdapter.Dr
         }
 
         public void setDrink(DrunkItem drink) {
-            String title = String.format(_titleStringformat, drink.getVolume(), drink.getDrink().getTitle());
+            String title = String.format(_titleStringFormat, drink.getVolume(), drink.getDrink().getTitle());
             String passedTime = TimeDiffHelper.getPassedTime(drink.getUseTime());
 
             _txtTitle.setText(title);
@@ -46,6 +50,18 @@ public class DrunkItemsAdapter extends RecyclerView.Adapter<DrunkItemsAdapter.Dr
 
     public DrunkItemsAdapter(List<DrunkItem> drunkItems) {
         _drunkItems = drunkItems;
+    }
+
+    public void removeItem(int position) {
+        _drunkItems.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, _drunkItems.size());
+    }
+
+    public void restoreItem(DrunkItem item, int position) {
+        _drunkItems.add(position, item);
+        // notify item added by position
+        notifyItemInserted(position);
     }
 
     @Override
@@ -59,7 +75,8 @@ public class DrunkItemsAdapter extends RecyclerView.Adapter<DrunkItemsAdapter.Dr
 
     @Override
     public void onBindViewHolder(DrunkItemViewHolder holder, int position) {
-        holder.setDrink(_drunkItems.get(position));
+        DrunkItem item = _drunkItems.get(position);
+        holder.setDrink(item);
     }
 
     @Override

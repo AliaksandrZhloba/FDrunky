@@ -5,10 +5,14 @@ import android.os.CountDownTimer;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import f.drunky.Entity.DrunkItem;
 import f.drunky.FDrunkyApplication;
+import f.drunky.Helpers.DbReader;
+import f.drunky.Helpers.DrinkHelper;
 import f.drunky.Navigation.Names.Chains;
 import f.drunky.mvp.views.StateView;
 
@@ -21,6 +25,13 @@ public class StatePresenter extends MvpPresenter<StateView> {
 
     @Override
     protected void onFirstViewAttach() {
+
+        DbReader.loadDrinks();
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 80));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 90));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 100));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 120));
+
         if (FDrunkyApplication.INSTANCE.SharedData.DrunkList.size() > 0) {
             getViewState().setList(FDrunkyApplication.INSTANCE.SharedData.DrunkList);
 
@@ -28,7 +39,7 @@ public class StatePresenter extends MvpPresenter<StateView> {
             _timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    getViewState().refreshList();
+                    //getViewState().refreshList();
                 }
             }, 1000, 1000);
         }
