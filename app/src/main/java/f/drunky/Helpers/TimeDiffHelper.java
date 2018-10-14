@@ -14,8 +14,8 @@ public class TimeDiffHelper {
         if (diff < 60 * 1000)
             return "";
 
-        long diffMinutes = diff / (60 * 1000);
         long diffHours = diff / (60 * 60 * 1000);
+        long diffMinutes = diff / (60 * 1000) - diffHours * 60;
 
         if (diffHours > 0) {
             String hmFormat = FDrunkyApplication.INSTANCE.getResources().getString(R.string.DiffHoursMinutes);
