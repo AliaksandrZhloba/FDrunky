@@ -39,7 +39,7 @@ public class StatePresenter extends MvpPresenter<StateView> {
             _timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    //getViewState().refreshList();
+                    getViewState().refreshList();
                 }
             }, 1000, 1000);
         }
