@@ -57,10 +57,10 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     private DrunkItemsAdapter _lDrinksAdapted;
     private TextView _txtSober;
 
-    private ItemTouchHelper.SimpleCallback _simpleItemTouchCallback;
     private ArrayList<DrunkItem> _drinks;
 
     private Paint p = new Paint();
+    private SwipeToDeleteCallback _swipeToDeleteCallback;
 
 
     public StateFragment() {
@@ -105,16 +105,13 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     }
 
     private void setUpItemTouchHelper() {
-        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
+        _swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
-
-
                 final int position = viewHolder.getAdapterPosition();
                 final DrunkItem item =  _drinks.get(position);
 
                 _lDrinksAdapted.removeItem(position);
-
 
                 Snackbar snackbar = Snackbar.make(getView().findViewById(R.id.stateLayout), "Item was removed from the list.", Snackbar.LENGTH_LONG);
                 snackbar.setAction("UNDO", new View.OnClickListener() {
@@ -129,23 +126,16 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
                 snackbar.show();
             }
         };
-        ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(swipeToDeleteCallback);
+        ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(_swipeToDeleteCallback);
         mItemTouchHelper.attachToRecyclerView(_lDrinks);
     }
 
     @Override
     public void refreshList() {
         getActivity().runOnUiThread(() -> {
-            /*if (_lDrinksAdapted.getItemCount() > 0) {
-                for (int i = 0; i < _lDrinksAdapted.getItemCount(); i++) {
-                    int flags = _simpleItemTouchCallback.getMovementFlags(_lDrinks, _lDrinks.findViewHolderForAdapterPosition(i));
-                    if (flags != ItemTouchHelper.ACTION_STATE_IDLE) {
-                        return;
-                    }
-                }
-
+            if (_lDrinksAdapted.getItemCount() > 0 && !_swipeToDeleteCallback.isSwiping()) {
                 _lDrinksAdapted.notifyDataSetChanged();
-            }*/
+            }
         });
     }
 

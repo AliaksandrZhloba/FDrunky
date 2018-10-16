@@ -26,6 +26,12 @@ abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
     private int intrinsicWidth;
     private int intrinsicHeight;
 
+    private boolean _isSwiping;
+
+    public boolean isSwiping() {
+        return _isSwiping;
+    }
+
 
     public SwipeToDeleteCallback(Context context) {
         mContext = context;
@@ -61,8 +67,11 @@ abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
         if (isCancelled) {
             clearCanvas(c, itemView.getRight() + dX, (float) itemView.getTop(), (float) itemView.getRight(), (float) itemView.getBottom());
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            _isSwiping = false;
             return;
         }
+
+        _isSwiping = true;
 
         mBackground.setColor(backgroundColor);
         mBackground.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom());
