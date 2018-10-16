@@ -31,6 +31,14 @@ public class StatePresenter extends MvpPresenter<StateView> {
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 90));
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 100));
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 120));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 80));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 90));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 100));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 120));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 80));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 90));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 100));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 120));
 
         FDrunkyApplication.INSTANCE.SharedData.State.Mille = 120;
         FDrunkyApplication.INSTANCE.SharedData.State.CanDriveInHours = 8;
