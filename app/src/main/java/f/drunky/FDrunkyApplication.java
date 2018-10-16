@@ -5,8 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
+import f.drunky.Entity.State;
 import f.drunky.Entity.Drink;
 import f.drunky.Entity.DrinkAppearance;
 import f.drunky.Entity.DrunkItem;
@@ -27,6 +27,7 @@ public class FDrunkyApplication extends Application {
         public int Volume;
 
         public ArrayList<DrunkItem> DrunkList = new ArrayList<>();
+        public State State = new State();
     }
 
 

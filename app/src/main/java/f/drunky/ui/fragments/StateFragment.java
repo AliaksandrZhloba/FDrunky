@@ -1,24 +1,11 @@
 package f.drunky.ui.fragments;
 
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Shader;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
@@ -34,6 +21,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.ArrayList;
 
 import f.drunky.Entity.DrunkItem;
+import f.drunky.Entity.State;
+import f.drunky.FDrunkyApplication;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.Navigation.IBackHandler;
 import f.drunky.R;
@@ -41,12 +30,6 @@ import f.drunky.mvp.presenters.StatePresenter;
 import f.drunky.mvp.views.StateView;
 import f.drunky.ui.adapters.DrunkItemsAdapter;
 import f.drunky.ui.adapters.SwipeToDeleteCallback;
-
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper.Callback;
-
-import static android.support.v7.widget.helper.ItemTouchHelper.LEFT;
-import static android.support.v7.widget.helper.ItemTouchHelper.RIGHT;
 
 public class StateFragment extends ChainFragment implements StateView, IBackHandler {
 
@@ -56,6 +39,8 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     private RecyclerView _lDrinks;
     private DrunkItemsAdapter _lDrinksAdapted;
     private TextView _txtSober;
+    private TextView _txtDriveAvailability;
+    private TextView _txtMille;
 
     private ArrayList<DrunkItem> _drinks;
 
@@ -77,6 +62,8 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     @Override
     public void onViewCreated(View v, @Nullable Bundle savedInstanceState) {
         _txtSober = getView().findViewById(R.id.txtSober);
+        _txtMille = getView().findViewById(R.id.txtMille);
+        _txtDriveAvailability = getView().findViewById(R.id.txtDriveAvailability);
 
         _lDrinks = getView().findViewById(R.id.lDrinks);
         _lDrinks.setHasFixedSize(true);
@@ -100,6 +87,8 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
         _txtSober.setVisibility(View.GONE);
         _lDrinks.setVisibility(View.VISIBLE);
         _lDrinksAdapted.notifyDataSetChanged();
+
+        UpdateState();
 
         setUpItemTouchHelper();
     }
@@ -140,9 +129,36 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     }
 
     @Override
+    public void refreshState() {
+        getActivity().runOnUiThread(() -> {
+            UpdateState();
+        });
+    }
+
+    private void UpdateState() {
+        State state = FDrunkyApplication.INSTANCE.SharedData.State;
+        if (state.Mille == 0) {
+            _txtMille.setVisibility(View.INVISIBLE);
+        }
+        else {
+            _txtMille.setText(String.format(getString(R.string.Mille), state.Mille));
+            _txtMille.setVisibility(View.VISIBLE);
+        }
+
+        if (state.CanDriveInHours == 0) {
+            _txtDriveAvailability.setText(R.string.CanDrive);
+        }
+        else {
+            _txtDriveAvailability.setText(String.format(getString(R.string.CanDriveIn), state.CanDriveInHours));
+        }
+    }
+
+    @Override
     public void showSober() {
         _lDrinks.setVisibility(View.INVISIBLE);
         _txtSober.setVisibility(View.VISIBLE);
+        _txtMille.setVisibility(View.INVISIBLE);
+        _txtDriveAvailability.setText(R.string.CanDrive);
     }
 
 

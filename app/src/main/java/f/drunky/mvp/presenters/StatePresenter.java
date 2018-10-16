@@ -32,6 +32,10 @@ public class StatePresenter extends MvpPresenter<StateView> {
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 100));
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(new DrunkItem(Calendar.getInstance().getTime(), DbReader.getDrinks().get(0), 120));
 
+        FDrunkyApplication.INSTANCE.SharedData.State.Mille = 120;
+        FDrunkyApplication.INSTANCE.SharedData.State.CanDriveInHours = 8;
+        FDrunkyApplication.INSTANCE.SharedData.State.Value = 75;
+
         if (FDrunkyApplication.INSTANCE.SharedData.DrunkList.size() > 0) {
             getViewState().setList(FDrunkyApplication.INSTANCE.SharedData.DrunkList);
 
@@ -39,13 +43,19 @@ public class StatePresenter extends MvpPresenter<StateView> {
             _timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
+                    recalcState();
                     getViewState().refreshList();
+                    getViewState().refreshState();
                 }
             }, 1000, 1000);
         }
         else {
             getViewState().showSober();
         }
+    }
+
+    private void recalcState() {
+
     }
 
     @Override

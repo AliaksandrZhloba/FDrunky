@@ -9,5 +9,6 @@ import f.drunky.Entity.DrunkItem;
 public interface StateView extends MvpView {
     void setList(ArrayList<DrunkItem> drinks);
     void refreshList();
+    void refreshState();
     void showSober();
 }
