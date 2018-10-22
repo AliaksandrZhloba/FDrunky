@@ -29,7 +29,7 @@ public class SelectDrinkAdapter extends RecyclerView.Adapter<SelectDrinkAdapter.
 
         public void setDrink(Drink drink) {
             _txtTitle.setText(drink.getTitle());
-            _imgPicture.setImageBitmap(drink.getBottlePicture());
+            _imgPicture.setImageBitmap(drink.getImage());
         }
     }
 

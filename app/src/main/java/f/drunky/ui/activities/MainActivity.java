@@ -1,6 +1,5 @@
 package f.drunky.ui.activities;
 
-import android.app.backup.BackupHelper;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -174,7 +173,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         //dirty fix
         FDrunkyApplication.INSTANCE.setMenuController(menuController);
         FDrunkyApplication.INSTANCE.LanguageController = languageController;
-
 
         _toggle = new ActionBarDrawerToggle(
                 this, _navDrawer, toolbar, 0, 0);

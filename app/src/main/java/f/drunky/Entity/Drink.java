@@ -9,37 +9,24 @@ import android.graphics.Bitmap;
 public class Drink {
     private int _id;
     private String _title;
-    private String _price;
-    private double _degree;
-    private String _category;
-    private DrinkAppearance _appearance;
-    private Bitmap _bottlePicture;
+    private double _alcohol;
+    private Bitmap _image;
 
 
     public int getId() {
         return _id;
     }
     public String getTitle() { return _title; }
-    public String getPrice() { return _price; }
-    public double getDegree() {
-        return _degree;
+    public double getAlcohol() {
+        return _alcohol;
     }
-    public String getCategory() {
-        return _category;
-    }
-    public Bitmap getBottlePicture() { return _bottlePicture; }
-
-    public DrinkAppearance getAppearance() { return _appearance; }
+    public Bitmap getImage() { return _image; }
 
 
-    public Drink(int id, String category, double degree, String title, String price, DrinkAppearance appearance, Bitmap bottlePicture) {
+    public Drink(int id, double alcohol, String title, Bitmap image) {
         _id = id;
         _title = title;
-        _price = price;
-        _degree = degree;
-        _category = category;
-        _bottlePicture = bottlePicture;
-
-        _appearance = appearance;
+        _alcohol = alcohol;
+        _image = image;
     }
 }

@@ -68,7 +68,7 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
         _drink = drink;
 
         _txtMessage.setText(getMessage(effect, drink, volume));
-        _imgGlass.setImageBitmap(drink.getAppearance().getGlassPicture());
+        _imgGlass.setImageBitmap(drink.getImage());
     }
 
     @Override

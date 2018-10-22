@@ -1,14 +1,14 @@
 package f.drunky;
 
 import android.app.Application;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Hashtable;
 
 import f.drunky.Entity.State;
 import f.drunky.Entity.Drink;
-import f.drunky.Entity.DrinkAppearance;
 import f.drunky.Entity.DrunkItem;
 import f.drunky.Navigation.FRouter;
 import f.drunky.Navigation.MenuController;
@@ -22,6 +22,10 @@ import ru.terrakok.cicerone.NavigatorHolder;
 
 public class FDrunkyApplication extends Application {
     public class SharedData {
+        public HashMap<String, ArrayList<Drink>> Catalog = new HashMap<>();
+        public ArrayList<String> Categories= new ArrayList<>();;
+        public ArrayList<Drink> Drinks= new ArrayList<>();;
+
         public DrinkEffect DrinkEffect;
         public Drink Drink;
         public int Volume;
@@ -41,14 +45,6 @@ public class FDrunkyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-
-        /// DEBUG!!!!
-        SharedData.DrinkEffect = DrinkEffect.ToRelax;
-        SharedData.Drink = new Drink(1, "wine", 7, "Wine", "7.5",
-                new DrinkAppearance( Color.RED,  Color.RED,  Color.RED,  Color.WHITE, Bitmap.createBitmap(1,1, Bitmap.Config.ALPHA_8)),
-                Bitmap.createBitmap(1,1, Bitmap.Config.ALPHA_8));
-
 
         INSTANCE = this;
         cicerone = Cicerone.create(new FRouter());

@@ -44,7 +44,7 @@ public class DrunkItemsAdapter extends RecyclerView.Adapter<DrunkItemsAdapter.Dr
 
             _txtTitle.setText(title);
             _txtTime.setText(passedTime);
-            _imgPicture.setImageBitmap(drink.getDrink().getBottlePicture());
+            _imgPicture.setImageBitmap(drink.getDrink().getImage());
         }
     }
 

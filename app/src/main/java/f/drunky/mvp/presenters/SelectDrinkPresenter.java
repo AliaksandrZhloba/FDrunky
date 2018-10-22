@@ -19,9 +19,7 @@ import f.drunky.mvp.views.SelectDrinkView;
 
 @InjectViewState
 public class SelectDrinkPresenter extends MvpPresenter<SelectDrinkView> {
-    private List<String> _categories = DrinkHelper.GetCategories();
-    private List<Drink> _drinks;
-    private List<Drink> _shownDrinks;
+     private List<Drink> _shownDrinks;
 
     public void toCalcedResult(int position) {
         Drink drink = _shownDrinks.get(position);
@@ -31,18 +29,15 @@ public class SelectDrinkPresenter extends MvpPresenter<SelectDrinkView> {
     }
 
     public void search(String input) {
-        _shownDrinks = DrinkHelper.FindDrinks(input, _categories, _drinks);
+        _shownDrinks = DrinkHelper.FindDrinks(input);
         getViewState().showSearchResult(_shownDrinks);
     }
 
     @Override
     protected void onFirstViewAttach() {
-        DbReader.loadDrinks();
-
-        _shownDrinks = _drinks = DbReader.getDrinks();
-
+        _shownDrinks = FDrunkyApplication.INSTANCE.SharedData.Drinks;
 
         getViewState().setCalcButtonState(false, R.color.actionButtonDisabledBackgroundColor);
-        getViewState().setupDrinkSearch(_categories, _drinks);
+        getViewState().setupDrinkSearch(FDrunkyApplication.INSTANCE.SharedData.Categories, _shownDrinks);
     }
 }

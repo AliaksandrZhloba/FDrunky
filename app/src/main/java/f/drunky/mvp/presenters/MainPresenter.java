@@ -5,6 +5,11 @@ import android.content.Context;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
+
+import f.drunky.Entity.Drink;
 import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.DbHelper;
 import f.drunky.Helpers.DbReader;
@@ -33,6 +38,8 @@ public class MainPresenter extends MvpPresenter<MainView> {
         DbHelper dbHelper = new DbHelper(context);
         dbHelper.createDataBase();
         DbReader.init(dbHelper);
+        DbReader.loadDrinks();
+
 
         //String language = SettingsHelper.getLanguage();
         //FDrunkyApplication.INSTANCE.LanguageController.setLanguage(language);
