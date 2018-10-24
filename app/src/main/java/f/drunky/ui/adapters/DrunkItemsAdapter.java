@@ -39,12 +39,12 @@ public class DrunkItemsAdapter extends RecyclerView.Adapter<DrunkItemsAdapter.Dr
         }
 
         public void setDrink(DrunkItem drink) {
-            String title = String.format(_titleStringFormat, drink.getVolume(), drink.getDrink().getTitle());
+            String title = String.format(_titleStringFormat, drink.getVolume(), drink.getDrink());
             String passedTime = TimeDiffHelper.getPassedTime(drink.getUseTime());
 
             _txtTitle.setText(title);
             _txtTime.setText(passedTime);
-            _imgPicture.setImageBitmap(drink.getDrink().getImage());
+            _imgPicture.setImageBitmap(drink.getImage());
         }
     }
 

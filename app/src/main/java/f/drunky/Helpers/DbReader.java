@@ -4,16 +4,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
 
 import f.drunky.Entity.Drink;
+import f.drunky.Entity.DrunkItem;
 import f.drunky.FDrunkyApplication;
 
 /**
@@ -33,33 +30,65 @@ public class DbReader {
         String sql;
         Cursor mCur;
 
-        SQLiteDatabase db = _dbHelper.openDataBase();
+        SQLiteDatabase dbDrinks = _dbHelper.openDrinksDataBase();
 
         sql = "SELECT Id, Category, Title, Alcohol, Image, Info FROM Drinks";
-        mCur = db.rawQuery(sql, null);
-        mCur.moveToFirst();
-        do
-        {
-            int id = mCur.getInt(0);
-            String category = mCur.getString(1);
-            String title = mCur.getString(2);
-            float alcohol = mCur.getFloat(3);
-            byte[] imgByte = mCur.getBlob(4);
-            Bitmap img = BitmapFactory.decodeByteArray(imgByte, 0, imgByte.length);
-            String info = mCur.getString(5);
+        mCur = dbDrinks.rawQuery(sql, null);
+        if (mCur.moveToFirst()) {
+            do {
+                int id = mCur.getInt(0);
+                String category = mCur.getString(1);
+                String title = mCur.getString(2);
+                float alcohol = mCur.getFloat(3);
+                byte[] imgByte = mCur.getBlob(4);
+                Bitmap img = BitmapFactory.decodeByteArray(imgByte, 0, imgByte.length);
+                String info = mCur.getString(5);
 
-            Drink drink = new Drink(id, alcohol, title, img);
-            String[] categories = category.split(",");
-            for (String cat: categories) {
-                if (!FDrunkyApplication.INSTANCE.SharedData.Catalog.containsKey(cat)) {
-                    FDrunkyApplication.INSTANCE.SharedData.Categories.add(cat);
-                    FDrunkyApplication.INSTANCE.SharedData.Catalog.put(cat, new ArrayList<>());
+                Drink drink = new Drink(id, alcohol, title, img);
+                String[] categories = category.split(",");
+                for (String cat : categories) {
+                    if (!FDrunkyApplication.INSTANCE.SharedData.Catalog.containsKey(cat)) {
+                        FDrunkyApplication.INSTANCE.SharedData.Categories.add(cat);
+                        FDrunkyApplication.INSTANCE.SharedData.Catalog.put(cat, new ArrayList<>());
+                    }
+
+                    FDrunkyApplication.INSTANCE.SharedData.Catalog.get(cat).add(drink);
                 }
 
-                FDrunkyApplication.INSTANCE.SharedData.Catalog.get(cat).add(drink);
-            }
+                FDrunkyApplication.INSTANCE.SharedData.Drinks.add(drink);
+            } while (mCur.moveToNext());
+        }
 
-            FDrunkyApplication.INSTANCE.SharedData.Drinks.add(drink);
-        } while (mCur.moveToNext());
+        dbDrinks.close();
+    }
+
+    public static void loadLog() {
+        String sql;
+        Cursor mCur;
+
+        SQLiteDatabase dbLog = _dbHelper.openLogDataBase();
+
+        sql = "SELECT UseTime, Drink, Image, Alcohol, Volume FROM Log";
+        mCur = dbLog.rawQuery(sql, null);
+        if (mCur.moveToFirst())
+        {
+            {
+                String useTime = mCur.getString(0);
+                String drink = mCur.getString(1);
+                byte[] imgByte = mCur.getBlob(2);
+                Bitmap img = BitmapFactory.decodeByteArray(imgByte, 0, imgByte.length);
+                double alcohol = mCur.getDouble(3);
+                int volume = mCur.getInt(4);
+
+                try {
+                    DrunkItem item = new DrunkItem(DateHelper.FromString(useTime), drink, img, alcohol, volume);
+                    FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(item);
+                }
+                catch (ParseException e)
+                { }
+            } while (mCur.moveToNext());
+        }
+
+        dbLog.close();
     }
 }

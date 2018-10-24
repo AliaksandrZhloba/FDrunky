@@ -23,8 +23,8 @@ import ru.terrakok.cicerone.NavigatorHolder;
 public class FDrunkyApplication extends Application {
     public class SharedData {
         public HashMap<String, ArrayList<Drink>> Catalog = new HashMap<>();
-        public ArrayList<String> Categories= new ArrayList<>();;
-        public ArrayList<Drink> Drinks= new ArrayList<>();;
+        public ArrayList<String> Categories = new ArrayList<>();;
+        public ArrayList<Drink> Drinks = new ArrayList<>();;
 
         public DrinkEffect DrinkEffect;
         public Drink Drink;

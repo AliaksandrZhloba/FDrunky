@@ -47,8 +47,8 @@ public class SelectEffectPresenter extends MvpPresenter<SelectEffectView> {
 
     private void loadData() {
         /*DbHelper dbHelper = new DbHelper(getAttachedViews());
-        dbHelper.createDataBase();
-        //dbHelper.openDataBase();
+        dbHelper.createDataBases();
+        //dbHelper.openDrinksDataBase();
 
         DbReader reader = new DbReader(dbHelper);
         _categories = reader.LoadCategories();

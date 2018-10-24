@@ -3,7 +3,7 @@ package f.drunky.mvp.presenters;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.Calendar;
 
 import f.drunky.Entity.Drink;
@@ -30,7 +30,9 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
     }
 
     public void gotItClicked() {
-        DrunkItem item = new DrunkItem(Calendar.getInstance().getTime(), FDrunkyApplication.INSTANCE.SharedData.Drink, FDrunkyApplication.INSTANCE.SharedData.Volume);
+        Date time = Calendar.getInstance().getTime();
+        Drink drink = FDrunkyApplication.INSTANCE.SharedData.Drink;
+        DrunkItem item = new DrunkItem(time, drink.getTitle(), drink.getImage(), drink.getAlcohol(), FDrunkyApplication.INSTANCE.SharedData.Volume);
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(0, item);
 
         FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.STATE);

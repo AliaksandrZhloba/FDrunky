@@ -6,13 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import f.drunky.Entity.Drink;
 
 /**
  * Created by AZhloba on 10/5/2017.
@@ -20,7 +17,8 @@ import f.drunky.Entity.Drink;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static String DB_PATH;                  // полный путь к базе данных
-    private static String DB_NAME = "fdrunky.db";
+    private static String DRINKS_DB_NAME = "fdrunky-drinks.db";
+    private static String LOG_DB_NAME = "fdrunky-log.db";
     private static final int SCHEMA = 1;            // версия базы данных
 
     public static final String DRINKS_TABLE_NAME = "Drinks";
@@ -28,11 +26,10 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     private Context _context;
-    private SQLiteDatabase _dbase;
 
 
     public DbHelper(Context context) {
-        super(context, DB_NAME, null, SCHEMA);
+        super(context, DRINKS_DB_NAME, null, SCHEMA);
 
         _context = context;
         DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
@@ -46,26 +43,36 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) { }
 
 
-    public void createDataBase() {
-        boolean dbExist = checkDataBase();
-
-        if (!dbExist) {
+    public void createDataBases() {
+        boolean dbDrinksExist = checkDataBase(DRINKS_DB_NAME);
+        if (!dbDrinksExist) {
             this.getReadableDatabase();
 
             try {
-                copyDataBase();
+                copyDataBase(DRINKS_DB_NAME);
             } catch (IOException e) {
-                throw new Error("Error copying database");
+                throw new Error("Error copying Drinks database");
+            }
+        }
+
+        boolean dbLogExist = checkDataBase(LOG_DB_NAME);
+        if (!dbDrinksExist) {
+            this.getReadableDatabase();
+
+            try {
+                copyDataBase(LOG_DB_NAME);
+            } catch (IOException e) {
+                throw new Error("Error copying Logs database");
             }
         }
     }
 
 
-    private boolean checkDataBase() {
+    private boolean checkDataBase(String dbName) {
         SQLiteDatabase checkDB = null;
 
         try {
-            String myPath = DB_PATH + DB_NAME;
+            String myPath = DB_PATH + dbName;
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
         } catch (SQLiteException e){
             //база еще не существует
@@ -80,12 +87,12 @@ public class DbHelper extends SQLiteOpenHelper {
      * Копирует базу из папки assets заместо созданной локальной БД
      * Выполняется путем копирования потока байтов.
      **/
-    private void copyDataBase() throws IOException{
+    private void copyDataBase(String dbName) throws IOException{
         //Открываем локальную БД как входящий поток
-        InputStream myInput = _context.getAssets().open(DB_NAME);
+        InputStream myInput = _context.getAssets().open(dbName);
 
         //Путь ко вновь созданной БД
-        String outFileName = DB_PATH + DB_NAME;
+        String outFileName = DB_PATH + dbName;
 
         //Открываем пустую базу данных как исходящий поток
         OutputStream myOutput = new FileOutputStream(outFileName);
@@ -104,17 +111,17 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
-    public SQLiteDatabase openDataBase() throws SQLException {
-        String mPath = DB_PATH + DB_NAME;
-        //открываем БД
-        _dbase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.OPEN_READWRITE);
-        return _dbase;
+    public SQLiteDatabase openDrinksDataBase() throws SQLException {
+        return openDataBase(DRINKS_DB_NAME);
     }
 
-    @Override
-    public synchronized void close() {
-        if(_dbase != null)
-            _dbase.close();
-        super.close();
+    public SQLiteDatabase openLogDataBase() throws SQLException {
+        return openDataBase(LOG_DB_NAME);
+    }
+
+    private SQLiteDatabase openDataBase(String dbName) throws SQLException {
+        String mPath = DB_PATH + dbName;
+        //открываем БД
+        return SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.OPEN_READWRITE);
     }
 }
