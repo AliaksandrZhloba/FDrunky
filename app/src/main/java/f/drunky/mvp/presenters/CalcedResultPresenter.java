@@ -9,6 +9,7 @@ import java.util.Calendar;
 import f.drunky.Entity.Drink;
 import f.drunky.Entity.DrunkItem;
 import f.drunky.FDrunkyApplication;
+import f.drunky.Helpers.DbReader;
 import f.drunky.Helpers.DrinkEffectHelper;
 import f.drunky.Helpers.SettingsHelper;
 import f.drunky.Navigation.Names.Views;
@@ -34,6 +35,7 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
         Drink drink = FDrunkyApplication.INSTANCE.SharedData.Drink;
         DrunkItem item = new DrunkItem(time, drink.getTitle(), drink.getImage(), drink.getAlcohol(), FDrunkyApplication.INSTANCE.SharedData.Volume);
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(0, item);
+        DbReader.saveLogItem(item);
 
         FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.STATE);
     }

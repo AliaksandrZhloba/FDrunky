@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import f.drunky.Entity.DrunkItem;
 import f.drunky.Entity.State;
 import f.drunky.FDrunkyApplication;
+import f.drunky.Helpers.DbHelper;
+import f.drunky.Helpers.DbReader;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.Navigation.IBackHandler;
 import f.drunky.R;
@@ -31,6 +33,8 @@ import f.drunky.mvp.views.StateView;
 import f.drunky.ui.adapters.DrunkItemsAdapter;
 import f.drunky.ui.adapters.SwipeToDeleteCallback;
 
+
+//TODO: Move logic to Presenter?
 public class StateFragment extends ChainFragment implements StateView, IBackHandler {
 
     @InjectPresenter
@@ -98,17 +102,16 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
                 final int position = viewHolder.getAdapterPosition();
-                final DrunkItem item =  _drinks.get(position);
+                final DrunkItem item = _drinks.get(position);
 
                 _lDrinksAdapted.removeItem(position);
+                DbReader.deleteLogItem(item);
 
                 Snackbar snackbar = Snackbar.make(getView().findViewById(R.id.stateLayout), "Item was removed from the list.", Snackbar.LENGTH_LONG);
-                snackbar.setAction("UNDO", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        _lDrinksAdapted.restoreItem(item, position);
-                        _lDrinks.scrollToPosition(position);
-                    }
+                snackbar.setAction("UNDO", view -> {
+                    _lDrinksAdapted.restoreItem(item, position);
+                    _lDrinks.scrollToPosition(position);
+                    DbReader.saveLogItem(item);
                 });
 
                 snackbar.setActionTextColor(Color.YELLOW);

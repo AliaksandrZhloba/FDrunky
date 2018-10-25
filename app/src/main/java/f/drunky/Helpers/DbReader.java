@@ -1,13 +1,14 @@
 package f.drunky.Helpers;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import java.text.ParseException;
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import f.drunky.Entity.Drink;
 import f.drunky.Entity.DrunkItem;
@@ -63,16 +64,15 @@ public class DbReader {
     }
 
     public static void loadLog() {
-        String sql;
-        Cursor mCur;
-
         SQLiteDatabase dbLog = _dbHelper.openLogDataBase();
 
-        sql = "SELECT UseTime, Drink, Image, Alcohol, Volume FROM Log";
-        mCur = dbLog.rawQuery(sql, null);
+        ArrayList<DrunkItem> items = new ArrayList<>();
+
+        String sql = "SELECT UseTime, Drink, Image, Alcohol, Volume FROM Log";
+        Cursor mCur = dbLog.rawQuery(sql, null);
         if (mCur.moveToFirst())
         {
-            {
+            do {
                 String useTime = mCur.getString(0);
                 String drink = mCur.getString(1);
                 byte[] imgByte = mCur.getBlob(2);
@@ -81,14 +81,36 @@ public class DbReader {
                 int volume = mCur.getInt(4);
 
                 try {
-                    DrunkItem item = new DrunkItem(DateHelper.FromString(useTime), drink, img, alcohol, volume);
-                    FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(item);
+                    DrunkItem item = new DrunkItem(DateHelper.fromString(useTime), drink, img, alcohol, volume);
+                    items.add(0, item);
                 }
                 catch (ParseException e)
                 { }
             } while (mCur.moveToNext());
         }
 
+        Collections.sort(items, (o1, o2) -> o2.getUseTime().compareTo(o1.getUseTime()));
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.addAll(items);
+        dbLog.close();
+    }
+
+    public static void saveLogItem(DrunkItem item) {
+        SQLiteDatabase dbLog = _dbHelper.openLogDataBase();
+
+        ContentValues values = new ContentValues();
+        values.put("UseTime", DateHelper.toString(item.getUseTime()));
+        values.put("Drink", item.getDrink());
+        values.put("Image", BitmapHelper.getBytes(item.getImage()));
+        values.put("Alcohol", item.getAlcohol());
+        values.put("Volume", item.getVolume());
+
+        dbLog.insert("Log", null, values);
+        dbLog.close();
+    }
+
+    public static void deleteLogItem(DrunkItem item) {
+        SQLiteDatabase dbLog = _dbHelper.openLogDataBase();
+        dbLog.delete("Log", "UseTime =?", new String[] { DateHelper.toString(item.getUseTime()) });
         dbLog.close();
     }
 }
