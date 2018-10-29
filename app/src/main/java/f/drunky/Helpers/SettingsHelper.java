@@ -74,7 +74,7 @@ public class SettingsHelper {
     public static UserProfileModel loadUserProfile() {
         // TODO: implement cache
 
-        int age = _preferences.getInt (AGE, INVALID_AGE_VALUE);
+        int age = _preferences.getInt(AGE, INVALID_AGE_VALUE);
         float weight = _preferences.getFloat(WEIGHT, INVALID_WEIGHT_VALUE);
         String gender = _preferences.getString(GENDER, null);
 
