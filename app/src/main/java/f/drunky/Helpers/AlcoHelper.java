@@ -31,6 +31,10 @@ public class AlcoHelper {
             Date time = log.get(0).getUseTime();
             for (DrunkItem logItem: log)
             {
+                if (logItem.getUseTime().getTime() > curTime.getTime()) {
+                    break;
+                }
+
                 long ds = TimeUnit.MILLISECONDS.convert(logItem.getUseTime().getTime() - time.getTime(), TimeUnit.MILLISECONDS);
                 double c_cur = c - Betta60 * ds / (60 * 60 * 1000);
                 if (c_cur < 0) {

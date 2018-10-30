@@ -38,6 +38,22 @@ public class AcloModelUnitTest {
         assertEquals(0, AlcoHelper.calcMille(log, userProfile, new Date(290 * 60 * 1000)), DIF_DELTA);
     }
 
+    @Test
+    public void multiItem_isCorrect() throws Exception {
+        UserProfileModel userProfile = GetUnfilledUserProfile();
+        ArrayList<DrunkItem> log = new ArrayList<>();
+
+        log.add(new DrunkItem(new Date(0), null, null, 5, 250));
+        log.add(new DrunkItem(new Date(30 * 60 * 1000), null, null, 5, 250));
+
+        assertEquals(0.165680473, AlcoHelper.calcMille(log, userProfile, new Date(0)), DIF_DELTA);
+        assertEquals(0.14734714, AlcoHelper.calcMille(log, userProfile, new Date(10 * 60 * 1000)), DIF_DELTA);
+        assertEquals(0.276360947, AlcoHelper.calcMille(log, userProfile, new Date(30 * 60 * 1000)), DIF_DELTA);
+        assertEquals(0.221360947, AlcoHelper.calcMille(log, userProfile, new Date(60 * 60 * 1000)), DIF_DELTA);
+        assertEquals(0.111360947, AlcoHelper.calcMille(log, userProfile, new Date(120 * 60 * 1000)), DIF_DELTA);
+        assertEquals(0, AlcoHelper.calcMille(log, userProfile, new Date(190 * 60 * 1000)), DIF_DELTA);
+    }
+
 
     private UserProfileModel GetUnfilledUserProfile() {
         UserProfileModel userProfileModel = new UserProfileModel();
