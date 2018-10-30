@@ -1,15 +1,12 @@
 package f.drunky.Helpers;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
 
-import f.drunky.Entity.Language;
 import f.drunky.FDrunkyApplication;
-import f.drunky.mvp.models.UserProfileModel;
-import f.drunky.mvp.models.UserSettingsModel;
+import f.drunky.mvp.models.UserProfile;
+import f.drunky.mvp.models.UserSettings;
 
 /**
  * Created by AZhloba on 12/3/2017.
@@ -52,17 +49,17 @@ public class SettingsHelper {
     }
 
 
-    public static UserSettingsModel loadUserSettings() {
+    public static UserSettings loadUserSettings() {
         // TODO: implement cache
         String language = _preferences.getString(LANGUAGE, LanguageHelper.En.Code);
 
-        UserSettingsModel userSettings = new UserSettingsModel();
+        UserSettings userSettings = new UserSettings();
         userSettings.Language = language;
 
         return userSettings;
     }
 
-    public static void saveUserSettings(UserSettingsModel userSettings) {
+    public static void saveUserSettings(UserSettings userSettings) {
         SharedPreferences.Editor editor = _preferences.edit();
 
         editor.putString(LANGUAGE, userSettings.Language);
@@ -71,14 +68,14 @@ public class SettingsHelper {
     }
 
 
-    public static UserProfileModel loadUserProfile() {
+    public static UserProfile loadUserProfile() {
         // TODO: implement cache
 
         int age = _preferences.getInt(AGE, INVALID_AGE_VALUE);
         float weight = _preferences.getFloat(WEIGHT, INVALID_WEIGHT_VALUE);
         String gender = _preferences.getString(GENDER, null);
 
-        UserProfileModel userProfile = new UserProfileModel();
+        UserProfile userProfile = new UserProfile();
         if (age != INVALID_AGE_VALUE) userProfile.Age = age;
         if (weight != INVALID_WEIGHT_VALUE) userProfile.Weight = weight;
         if (gender != null) userProfile.Gender = gender;
@@ -86,7 +83,7 @@ public class SettingsHelper {
         return userProfile;
     }
 
-    public static void saveUserProfile(UserProfileModel userProfile) {
+    public static void saveUserProfile(UserProfile userProfile) {
         SharedPreferences.Editor editor = _preferences.edit();
 
         if (userProfile.Age != null) {

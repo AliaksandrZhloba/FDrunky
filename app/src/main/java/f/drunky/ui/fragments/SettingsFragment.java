@@ -10,7 +10,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -24,8 +23,8 @@ import f.drunky.Entity.Gender;
 import f.drunky.Entity.Language;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.R;
-import f.drunky.mvp.models.UserProfileModel;
-import f.drunky.mvp.models.UserSettingsModel;
+import f.drunky.mvp.models.UserProfile;
+import f.drunky.mvp.models.UserSettings;
 import f.drunky.mvp.presenters.SettingsPresenter;
 import f.drunky.mvp.views.SettingsView;
 
@@ -232,7 +231,7 @@ public class SettingsFragment extends ChainFragment implements SettingsView {
 
 
     @Override
-    public void setUserProfile(UserProfileModel userProfile) {
+    public void setUserProfile(UserProfile userProfile) {
         _genderNum = -1;
         for (int i = 0; i < _genders.size(); i++) {
             if (_genders.get(i).Code.equals(userProfile.Gender)) {
@@ -253,7 +252,7 @@ public class SettingsFragment extends ChainFragment implements SettingsView {
     }
 
     @Override
-    public void setUserSettings(UserSettingsModel userSettings) {
+    public void setUserSettings(UserSettings userSettings) {
         _languageNum = -1;
         for (int i = 0; i < _languages.size(); i++) {
             if (_languages.get(i).Code.equals(userSettings.Language)) {

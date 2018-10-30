@@ -11,8 +11,8 @@ import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.GenderHelper;
 import f.drunky.Helpers.LanguageHelper;
 import f.drunky.Helpers.SettingsHelper;
-import f.drunky.mvp.models.UserProfileModel;
-import f.drunky.mvp.models.UserSettingsModel;
+import f.drunky.mvp.models.UserProfile;
+import f.drunky.mvp.models.UserSettings;
 import f.drunky.mvp.views.SettingsView;
 
 /**
@@ -22,7 +22,7 @@ import f.drunky.mvp.views.SettingsView;
 @InjectViewState
 public class SettingsPresenter extends MvpPresenter<SettingsView> {
 
-    private UserProfileModel _userProfile;
+    private UserProfile _userProfile;
 
 
     @Override
@@ -33,7 +33,7 @@ public class SettingsPresenter extends MvpPresenter<SettingsView> {
         List<Gender> genders = GenderHelper.getGenders();
         getViewState().setGenders(genders);
 
-        UserSettingsModel userSettings = SettingsHelper.loadUserSettings();
+        UserSettings userSettings = SettingsHelper.loadUserSettings();
         getViewState().setUserSettings(userSettings);
 
         _userProfile = SettingsHelper.loadUserProfile();

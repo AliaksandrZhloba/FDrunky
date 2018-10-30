@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import f.drunky.Entity.DrunkItem;
 import f.drunky.Helpers.AlcoHelper;
 import f.drunky.Helpers.TimeHelper;
-import f.drunky.mvp.models.UserProfileModel;
+import f.drunky.mvp.models.UserProfile;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,7 +18,7 @@ public class AcloModelUnitTest {
 
     @Test
     public void emptyLog_isCorrect() throws Exception {
-        UserProfileModel userProfile = GetUnfilledUserProfile();
+        UserProfile userProfile = GetUnfilledUserProfile();
         ArrayList<DrunkItem> log = new ArrayList<>();
 
         assertEquals(0, AlcoHelper.calcMille(log, userProfile, TimeHelper.now()), DIF_DELTA);
@@ -26,7 +26,7 @@ public class AcloModelUnitTest {
 
     @Test
     public void singleItem_isCorrect() throws Exception {
-        UserProfileModel userProfile = GetUnfilledUserProfile();
+        UserProfile userProfile = GetUnfilledUserProfile();
         ArrayList<DrunkItem> log = new ArrayList<>();
 
         Date useTime = new Date(0);
@@ -39,7 +39,7 @@ public class AcloModelUnitTest {
 
     @Test
     public void multiItem_isCorrect() throws Exception {
-        UserProfileModel userProfile = GetUnfilledUserProfile();
+        UserProfile userProfile = GetUnfilledUserProfile();
         ArrayList<DrunkItem> log = new ArrayList<>();
 
         log.add(new DrunkItem(new Date(0), null, null, 5, 250));
@@ -54,8 +54,8 @@ public class AcloModelUnitTest {
     }
 
 
-    private UserProfileModel GetUnfilledUserProfile() {
-        UserProfileModel userProfileModel = new UserProfileModel();
+    private UserProfile GetUnfilledUserProfile() {
+        UserProfile userProfileModel = new UserProfile();
         userProfileModel.Gender = null;
         userProfileModel.Age = null;
         userProfileModel.Weight = null;

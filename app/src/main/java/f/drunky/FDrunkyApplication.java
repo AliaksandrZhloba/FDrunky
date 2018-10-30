@@ -3,9 +3,7 @@ package f.drunky;
 import android.app.Application;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Hashtable;
 
 import f.drunky.Entity.State;
 import f.drunky.Entity.Drink;
@@ -13,6 +11,7 @@ import f.drunky.Entity.DrunkItem;
 import f.drunky.Navigation.FRouter;
 import f.drunky.Navigation.MenuController;
 import f.drunky.Types.DrinkEffect;
+import f.drunky.mvp.models.UserProfile;
 import ru.terrakok.cicerone.Cicerone;
 import ru.terrakok.cicerone.NavigatorHolder;
 

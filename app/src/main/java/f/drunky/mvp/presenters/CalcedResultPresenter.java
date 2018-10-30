@@ -14,7 +14,7 @@ import f.drunky.Helpers.DrinkEffectHelper;
 import f.drunky.Helpers.SettingsHelper;
 import f.drunky.Navigation.Names.Views;
 import f.drunky.Types.DrinkEffect;
-import f.drunky.mvp.models.UserProfileModel;
+import f.drunky.mvp.models.UserProfile;
 import f.drunky.mvp.views.CalcedResultView;
 
 /**
@@ -54,7 +54,7 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
         DrinkEffect effect = FDrunkyApplication.INSTANCE.SharedData.DrinkEffect;
         Drink drink = FDrunkyApplication.INSTANCE.SharedData.Drink;
 
-        UserProfileModel userProfile = SettingsHelper.loadUserProfile();
+        UserProfile userProfile = SettingsHelper.loadUserProfile();
 
         int volume = DrinkEffectHelper.calcVolume(effect, drink, userProfile);
         getViewState().setMessage(effect, drink, volume);

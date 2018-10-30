@@ -92,8 +92,6 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
         _lDrinks.setVisibility(View.VISIBLE);
         _lDrinksAdapted.notifyDataSetChanged();
 
-        UpdateState();
-
         setUpItemTouchHelper();
     }
 
@@ -105,13 +103,15 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
                 final DrunkItem item = _drinks.get(position);
 
                 _lDrinksAdapted.removeItem(position);
-                DbReader.deleteLogItem(item);
+
+                presenter.removeItem(item);
 
                 Snackbar snackbar = Snackbar.make(getView().findViewById(R.id.stateLayout), "Item was removed from the list.", Snackbar.LENGTH_LONG);
                 snackbar.setAction("UNDO", view -> {
                     _lDrinksAdapted.restoreItem(item, position);
                     _lDrinks.scrollToPosition(position);
-                    DbReader.saveLogItem(item);
+
+                    presenter.restoreItem(item);
                 });
 
                 snackbar.setActionTextColor(Color.YELLOW);
@@ -123,23 +123,29 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     }
 
     @Override
-    public void refreshList() {
+    public void refresh() {
         getActivity().runOnUiThread(() -> {
             if (_lDrinksAdapted.getItemCount() > 0 && !_swipeToDeleteCallback.isSwiping()) {
                 _lDrinksAdapted.notifyDataSetChanged();
             }
+
+            updateState();
         });
     }
 
     @Override
-    public void refreshState() {
-        getActivity().runOnUiThread(() -> {
-            UpdateState();
-        });
-    }
-
-    private void UpdateState() {
+    public void updateState() {
         State state = FDrunkyApplication.INSTANCE.SharedData.State;
+
+        if (_drinks.size() == 0) {
+            _lDrinks.setVisibility(View.INVISIBLE);
+            _txtSober.setVisibility(View.VISIBLE);
+        }
+        else {
+            _lDrinks.setVisibility(View.VISIBLE);
+            _txtSober.setVisibility(View.INVISIBLE);
+        }
+
         if (state.Mille == 0) {
             _txtMille.setVisibility(View.INVISIBLE);
         }
@@ -155,15 +161,6 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
             _txtDriveAvailability.setText(String.format(getString(R.string.CanDriveIn), state.CanDriveInHours));
         }
     }
-
-    @Override
-    public void showSober() {
-        _lDrinks.setVisibility(View.INVISIBLE);
-        _txtSober.setVisibility(View.VISIBLE);
-        _txtMille.setVisibility(View.INVISIBLE);
-        _txtDriveAvailability.setText(R.string.CanDrive);
-    }
-
 
     @Override
     public void onBackPressed() {
