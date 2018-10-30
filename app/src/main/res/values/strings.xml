@@ -63,7 +63,7 @@
     <string name="DiffMinutes">%d min.</string>
     <string name="DiffHoursMinutes">%d h. %d min.</string>
     <string name="Sober">Sober</string>
-    <string name="Mille">Mille: %.2f </string>
+    <string name="Mille">BAC: %.2f </string>
     <string name="Info">Info</string>
     <string name="Cancel">Cancel</string>
     <string name="Repeat">Repeat</string>

@@ -34,11 +34,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txtMille"
+        android:id="@+id/txtBAC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="@string/CanDrive"
+        android:text="@string/Mille"
         android:textColor="@color/appTextColor"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/txtDriveAvailability"
@@ -56,7 +56,7 @@
         android:scrollbarSize="2sp"
         android:scrollbarThumbVertical="@drawable/drunk_item_scrollbar"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/txtMille"
+        app:layout_constraintBottom_toTopOf="@+id/txtBAC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

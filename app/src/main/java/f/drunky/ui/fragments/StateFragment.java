@@ -23,8 +23,6 @@ import java.util.ArrayList;
 import f.drunky.Entity.DrunkItem;
 import f.drunky.Entity.State;
 import f.drunky.FDrunkyApplication;
-import f.drunky.Helpers.DbHelper;
-import f.drunky.Helpers.DbReader;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.Navigation.IBackHandler;
 import f.drunky.R;
@@ -66,7 +64,7 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     @Override
     public void onViewCreated(View v, @Nullable Bundle savedInstanceState) {
         _txtSober = getView().findViewById(R.id.txtSober);
-        _txtMille = getView().findViewById(R.id.txtMille);
+        _txtMille = getView().findViewById(R.id.txtBAC);
         _txtDriveAvailability = getView().findViewById(R.id.txtDriveAvailability);
 
         _lDrinks = getView().findViewById(R.id.lDrinks);
