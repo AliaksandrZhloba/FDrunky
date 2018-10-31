@@ -67,6 +67,9 @@
     <string name="Info">Info</string>
     <string name="Cancel">Cancel</string>
     <string name="Repeat">Repeat</string>
+    <string name="Relax">Relax :)</string>
+    <string name="Funky">Funky!</string>
+    <string name="Legless">Legless :(</string>
 
     <!-- MAP -->
     <string name="PlaceWatermark">Choose a place</string>

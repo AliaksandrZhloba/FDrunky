@@ -1,6 +1,7 @@
 package f.drunky.ui.fragments;
 
 
+import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -22,7 +23,6 @@ import java.util.ArrayList;
 
 import f.drunky.Entity.DrunkItem;
 import f.drunky.Entity.State;
-import f.drunky.FDrunkyApplication;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.Navigation.IBackHandler;
 import f.drunky.R;
@@ -30,9 +30,9 @@ import f.drunky.mvp.presenters.StatePresenter;
 import f.drunky.mvp.views.StateView;
 import f.drunky.ui.adapters.DrunkItemsAdapter;
 import f.drunky.ui.adapters.SwipeToDeleteCallback;
+import f.drunky.ui.views.StateScaleView;
 
 
-//TODO: Move logic to Presenter?
 public class StateFragment extends ChainFragment implements StateView, IBackHandler {
 
     @InjectPresenter
@@ -42,7 +42,11 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     private DrunkItemsAdapter _lDrinksAdapted;
     private TextView _txtSober;
     private TextView _txtDriveAvailability;
-    private TextView _txtMille;
+    private TextView _txtBAC;
+    private TextView _txtRelax;
+    private TextView _txtFunky;
+    private TextView _txtLegless;
+    private StateScaleView _stateScaleView;
 
     private ArrayList<DrunkItem> _drinks;
 
@@ -64,8 +68,12 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     @Override
     public void onViewCreated(View v, @Nullable Bundle savedInstanceState) {
         _txtSober = getView().findViewById(R.id.txtSober);
-        _txtMille = getView().findViewById(R.id.txtBAC);
+        _txtBAC = getView().findViewById(R.id.txtBAC);
         _txtDriveAvailability = getView().findViewById(R.id.txtDriveAvailability);
+        _txtRelax = getView().findViewById(R.id.txtRelax);
+        _txtFunky = getView().findViewById(R.id.txtFunky);
+        _txtLegless = getView().findViewById(R.id.txtLegless);
+        _stateScaleView = getView().findViewById(R.id.StateScaleView);
 
         _lDrinks = getView().findViewById(R.id.lDrinks);
         _lDrinks.setHasFixedSize(true);
@@ -121,20 +129,18 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     }
 
     @Override
-    public void refresh() {
+    public void refresh(State state) {
         getActivity().runOnUiThread(() -> {
             if (_lDrinksAdapted.getItemCount() > 0 && !_swipeToDeleteCallback.isSwiping()) {
                 _lDrinksAdapted.notifyDataSetChanged();
             }
 
-            updateState();
+            updateState(state);
         });
     }
 
     @Override
-    public void updateState() {
-        State state = FDrunkyApplication.INSTANCE.SharedData.State;
-
+    public void updateState(State state) {
         if (_drinks.size() == 0) {
             _lDrinks.setVisibility(View.INVISIBLE);
             _txtSober.setVisibility(View.VISIBLE);
@@ -144,12 +150,12 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
             _txtSober.setVisibility(View.INVISIBLE);
         }
 
-        if (state.Mille == 0) {
-            _txtMille.setVisibility(View.INVISIBLE);
+        if (state.Bac == 0) {
+            _txtBAC.setVisibility(View.INVISIBLE);
         }
         else {
-            _txtMille.setText(String.format(getString(R.string.Mille), state.Mille));
-            _txtMille.setVisibility(View.VISIBLE);
+            _txtBAC.setText(String.format(getString(R.string.Mille), state.Bac));
+            _txtBAC.setVisibility(View.VISIBLE);
         }
 
         if (state.CanDriveInHours == 0) {
@@ -158,6 +164,8 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
         else {
             _txtDriveAvailability.setText(String.format(getString(R.string.CanDriveIn), state.CanDriveInHours));
         }
+
+        _stateScaleView.setState(state.Value);
     }
 
     @Override

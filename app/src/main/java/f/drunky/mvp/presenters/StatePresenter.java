@@ -28,14 +28,14 @@ public class StatePresenter extends MvpPresenter<StateView> {
         recalcState();
 
         getViewState().setList(FDrunkyApplication.INSTANCE.SharedData.DrunkList);
-        getViewState().updateState();
+        getViewState().updateState(FDrunkyApplication.INSTANCE.SharedData.State);
 
         _timer = new Timer("updateStateTimer");
         _timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 recalcState();
-                getViewState().refresh();
+                getViewState().refresh(FDrunkyApplication.INSTANCE.SharedData.State);
             }
         }, 1000, 1000);
     }
@@ -59,12 +59,12 @@ public class StatePresenter extends MvpPresenter<StateView> {
     public void removeItem(DrunkItem item) {
         DbReader.deleteLogItem(item);
         recalcState();
-        getViewState().updateState();
+        getViewState().updateState(FDrunkyApplication.INSTANCE.SharedData.State);
     }
 
     public void restoreItem(DrunkItem item) {
         DbReader.saveLogItem(item);
         recalcState();
-        getViewState().updateState();
+        getViewState().updateState(FDrunkyApplication.INSTANCE.SharedData.State);
     }
 }

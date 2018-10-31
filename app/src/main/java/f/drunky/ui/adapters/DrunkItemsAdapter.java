@@ -66,7 +66,6 @@ public class DrunkItemsAdapter extends RecyclerView.Adapter<DrunkItemsAdapter.Dr
 
     @Override
     public DrunkItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.drunk_item, parent, false);
         DrunkItemsAdapter.DrunkItemViewHolder vh = new DrunkItemsAdapter.DrunkItemViewHolder(v);

@@ -8,9 +8,12 @@ import f.drunky.Entity.DrunkItem;
 import f.drunky.Entity.State;
 import f.drunky.mvp.models.UserProfile;
 
+
 public class AlcoHelper {
     static double K = 0.0056;
     static double Betta60 = 0.11;
+
+    static double OptimalBac = 1.6;
 
 
     public static State calcState(List<DrunkItem> log, UserProfile userProfile, Date curTime) {
@@ -57,8 +60,13 @@ public class AlcoHelper {
             }
 
             State state = new State();
-            state.Mille = c_cur;
+            state.Bac = c_cur;
             state.CanDriveInHours = c_cur / Betta60;
+            state.Value = (int)(100 * state.Bac / OptimalBac);
+            if (state.Value > 100) {
+                state.Value = 100;
+            }
+
             return state;
         }
     }

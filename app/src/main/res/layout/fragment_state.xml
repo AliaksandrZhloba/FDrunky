@@ -8,6 +8,30 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/txtLegless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/Legless"
+        android:textColor="@color/appTextColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/StateScaleView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txtFunky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/Funky"
+        android:textColor="@color/appTextColor"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/StateScaleView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/txtSober"
         style="@style/AlcoApp.QuestionTextStyle"
         android:layout_width="wrap_content"
@@ -44,6 +68,29 @@
         app:layout_constraintBottom_toTopOf="@+id/txtDriveAvailability"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/txtRelax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/Relax"
+        android:textColor="@color/appTextColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/StateScaleView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <f.drunky.ui.views.StateScaleView
+        android:id="@+id/StateScaleView"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtBAC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lDrinks"
         android:layout_width="344dp"
@@ -51,13 +98,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="48dp"
         android:scrollIndicators="right"
         android:scrollbarSize="2sp"
         android:scrollbarThumbVertical="@drawable/drunk_item_scrollbar"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/txtBAC"
+        app:layout_constraintBottom_toTopOf="@+id/StateScaleView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
