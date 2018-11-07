@@ -70,8 +70,8 @@ public class MainPresenter extends MvpPresenter<MainView> {
                 break;
 
             // debug
-            case R.id.nav_result:
-                FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.CALC_RESULT);
+            case R.id.nav_debug:
+                FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.DEBUG);
                 break;
 
             case R.id.nav_map:

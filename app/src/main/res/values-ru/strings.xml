@@ -6,6 +6,7 @@
     <string name="about_chain_title">О программе</string>
     <string name="agreement_chain_title">Funky Drunky</string>
     <string name="settings_chain_title">Настройки</string>
+    <string name="debug_chain_title">Debug</string>
 
     <!-- AGREEMENT SCREEN -->
     <string name="user_agree_question">Согласен</string>
