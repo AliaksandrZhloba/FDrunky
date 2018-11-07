@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/stateLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -14,7 +13,7 @@
         android:layout_marginEnd="8dp"
         android:text="@string/Legless"
         android:textColor="@color/appTextColor"
-        android:textSize="20sp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/StateScaleView"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -26,7 +25,7 @@
         android:layout_marginEnd="8dp"
         android:text="@string/Funky"
         android:textColor="@color/appTextColor"
-        android:textSize="24sp"
+        android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@+id/StateScaleView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -53,7 +52,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/CanDrive"
         android:textColor="@color/appTextColor"
-        android:textSize="14sp"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -64,7 +63,7 @@
         android:layout_marginStart="8dp"
         android:text="@string/Mille"
         android:textColor="@color/appTextColor"
-        android:textSize="14sp"
+        android:textSize="14dp"
         app:layout_constraintBottom_toTopOf="@+id/txtDriveAvailability"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -75,7 +74,7 @@
         android:layout_marginStart="8dp"
         android:text="@string/Relax"
         android:textColor="@color/appTextColor"
-        android:textSize="20sp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/StateScaleView"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -100,7 +99,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="48dp"
         android:scrollIndicators="right"
-        android:scrollbarSize="2sp"
+        android:scrollbarSize="2dp"
         android:scrollbarThumbVertical="@drawable/drunk_item_scrollbar"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/StateScaleView"

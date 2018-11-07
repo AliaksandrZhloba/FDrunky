@@ -31,6 +31,8 @@ public class FDrunkyApplication extends Application {
 
         public ArrayList<DrunkItem> DrunkList = new ArrayList<>();
         public State State = new State();
+
+        public int Event;
     }
 
 

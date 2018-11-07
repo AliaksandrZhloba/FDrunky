@@ -162,7 +162,7 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
             _txtDriveAvailability.setText(R.string.CanDrive);
         }
         else {
-            _txtDriveAvailability.setText(String.format(getString(R.string.CanDriveIn), state.CanDriveInHours));
+            _txtDriveAvailability.setText(String.format(getString(R.string.CanDriveIn), Math.ceil(state.CanDriveInHours)));
         }
 
         _stateScaleView.setState(state.Value);

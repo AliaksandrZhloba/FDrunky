@@ -33,7 +33,7 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
     public void gotItClicked() {
         Date time = Calendar.getInstance().getTime();
         Drink drink = FDrunkyApplication.INSTANCE.SharedData.Drink;
-        DrunkItem item = new DrunkItem(time, drink.getTitle(), drink.getImage(), drink.getAlcohol(), FDrunkyApplication.INSTANCE.SharedData.Volume);
+        DrunkItem item = new DrunkItem(FDrunkyApplication.INSTANCE.SharedData.Event, time, drink.getTitle(), drink.getImage(), drink.getAlcohol(), FDrunkyApplication.INSTANCE.SharedData.Volume);
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(0, item);
         DbReader.saveLogItem(item);
 

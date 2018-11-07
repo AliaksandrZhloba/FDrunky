@@ -58,7 +58,7 @@
     <!-- STATE SCREEN -->
     <string name="RecentlyDrunk">Recently drunk</string>
     <string name="CanDrive">You can drive.</string>
-    <string name="CanDriveIn">You can drive in about %.1fh.</string>
+    <string name="CanDriveIn">Approx. %.0fh. before you can drive</string>
     <string name="DrunkItemTitle">%d ml %s</string>
     <string name="DiffMinutes">%d min.</string>
     <string name="DiffHoursMinutes">%d h. %d min.</string>

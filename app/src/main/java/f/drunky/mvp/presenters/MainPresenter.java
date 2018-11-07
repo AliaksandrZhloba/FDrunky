@@ -35,7 +35,7 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
         DbReader.init(dbHelper);
         DbReader.loadDrinks();
-        DbReader.loadLog();
+        DbReader.getLog();
 
 
         //String language = SettingsHelper.getLanguage();

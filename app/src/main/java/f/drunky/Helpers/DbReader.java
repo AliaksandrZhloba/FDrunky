@@ -12,7 +12,9 @@ import java.util.Collections;
 
 import f.drunky.Entity.Drink;
 import f.drunky.Entity.DrunkItem;
+import f.drunky.Entity.State;
 import f.drunky.FDrunkyApplication;
+import f.drunky.mvp.models.UserProfile;
 
 /**
  * Created by AZhloba on 10/5/2017.
@@ -63,13 +65,49 @@ public class DbReader {
         dbDrinks.close();
     }
 
-    public static void loadLog() {
+    public static void getLog() {
+        int lastEvent = getLastEvent();
+
+        if (lastEvent > 0) {
+            ArrayList<DrunkItem> lastEventLog = getLog(lastEvent);
+            State curState = AlcoHelper.calcState(lastEventLog, SettingsHelper.loadUserProfile(), TimeHelper.now());
+            if (curState.Bac > 0) {
+                FDrunkyApplication.INSTANCE.SharedData.Event = lastEvent;
+                FDrunkyApplication.INSTANCE.SharedData.State = curState;
+                FDrunkyApplication.INSTANCE.SharedData.DrunkList = lastEventLog;
+
+                return;
+            }
+        }
+
+        FDrunkyApplication.INSTANCE.SharedData.Event = lastEvent + 1;
+        FDrunkyApplication.INSTANCE.SharedData.State = State.Sober;
+        FDrunkyApplication.INSTANCE.SharedData.DrunkList.clear();
+    }
+
+    public static int getLastEvent() {
+        SQLiteDatabase dbLog = _dbHelper.openLogDataBase();
+
+        int lastEvent = 0;
+
+        String sql = "SELECT Event FROM Log";
+        Cursor mCur = dbLog.rawQuery(sql, null);
+        if (mCur.moveToLast()) {
+            lastEvent = mCur.getInt(0);
+        }
+
+        dbLog.close();
+
+        return lastEvent;
+    }
+
+    public static ArrayList<DrunkItem> getLog(int event) {
         SQLiteDatabase dbLog = _dbHelper.openLogDataBase();
 
         ArrayList<DrunkItem> items = new ArrayList<>();
 
-        String sql = "SELECT UseTime, Drink, Image, Alcohol, Volume FROM Log";
-        Cursor mCur = dbLog.rawQuery(sql, null);
+        String sql = "SELECT UseTime, Drink, Image, Alcohol, Volume FROM Log WHERE Event =?";
+        Cursor mCur = dbLog.rawQuery(sql, new String[] { Integer.toString(event) });
         if (mCur.moveToFirst())
         {
             do {
@@ -81,7 +119,7 @@ public class DbReader {
                 int volume = mCur.getInt(4);
 
                 try {
-                    DrunkItem item = new DrunkItem(DateHelper.fromString(useTime), drink, img, alcohol, volume);
+                    DrunkItem item = new DrunkItem(event, DateHelper.fromString(useTime), drink, img, alcohol, volume);
                     items.add(0, item);
                 }
                 catch (ParseException e)
@@ -90,14 +128,17 @@ public class DbReader {
         }
 
         Collections.sort(items, (o1, o2) -> o2.getUseTime().compareTo(o1.getUseTime()));
-        FDrunkyApplication.INSTANCE.SharedData.DrunkList.addAll(items);
         dbLog.close();
+
+        return items;
     }
+
 
     public static void saveLogItem(DrunkItem item) {
         SQLiteDatabase dbLog = _dbHelper.openLogDataBase();
 
         ContentValues values = new ContentValues();
+        values.put("Event", item.getEvent());
         values.put("UseTime", DateHelper.toString(item.getUseTime()));
         values.put("Drink", item.getDrink());
         values.put("Image", BitmapHelper.getBytes(item.getImage()));
