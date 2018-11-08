@@ -70,7 +70,7 @@ public class DbReader {
 
         if (lastEvent > 0) {
             ArrayList<DrunkItem> lastEventLog = getLog(lastEvent);
-            State curState = AlcoHelper.calcState(lastEventLog, SettingsHelper.loadUserProfile(), TimeHelper.now());
+            State curState = AlcoHelper.calcState(lastEventLog, FDrunkyApplication.INSTANCE.SharedData.UserProfile, TimeHelper.now());
             if (curState.Bac > 0) {
                 FDrunkyApplication.INSTANCE.SharedData.Event = lastEvent;
                 FDrunkyApplication.INSTANCE.SharedData.State = curState;

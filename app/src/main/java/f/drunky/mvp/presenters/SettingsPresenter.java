@@ -22,10 +22,7 @@ import f.drunky.mvp.views.SettingsView;
 @InjectViewState
 public class SettingsPresenter extends MvpPresenter<SettingsView> {
 
-    private UserProfile _userProfile;
-
-
-    @Override
+   @Override
     protected void onFirstViewAttach() {
         List<Language> languages = LanguageHelper.getLanguages();
         getViewState().setLanguages(languages);
@@ -33,11 +30,17 @@ public class SettingsPresenter extends MvpPresenter<SettingsView> {
         List<Gender> genders = GenderHelper.getGenders();
         getViewState().setGenders(genders);
 
-        UserSettings userSettings = SettingsHelper.loadUserSettings();
-        getViewState().setUserSettings(userSettings);
+        getViewState().setUserProfile(FDrunkyApplication.INSTANCE.SharedData.UserProfile);
 
-        _userProfile = SettingsHelper.loadUserProfile();
-        getViewState().setUserProfile(_userProfile);
+        getViewState().setUserSettings(FDrunkyApplication.INSTANCE.SharedData.UserSettings);
+   }
+
+    @Override
+    public void detachView(SettingsView view) {
+        super.detachView(view);
+
+        SettingsHelper.saveUserProfile(FDrunkyApplication.INSTANCE.SharedData.UserProfile);
+        SettingsHelper.saveUserSettings(FDrunkyApplication.INSTANCE.SharedData.UserSettings);
     }
 
     public void languageChanged(Language language) {
@@ -46,23 +49,14 @@ public class SettingsPresenter extends MvpPresenter<SettingsView> {
     }
 
     public void genderChanged(Gender gender) {
-        _userProfile.Gender = gender.Code;
-
-        // TODO: save UserProfile once (on leave SettingsFragment)
-        SettingsHelper.saveUserProfile(_userProfile);
+        FDrunkyApplication.INSTANCE.SharedData.UserProfile.Gender = gender.Code;
     }
 
     public void ageChanged(Integer age) {
-        _userProfile.Age = age;
-
-        // TODO: save UserProfile once (on leave SettingsFragment)
-        SettingsHelper.saveUserProfile(_userProfile);
+        FDrunkyApplication.INSTANCE.SharedData.UserProfile.Age = age;
     }
 
     public void weightChanged(Float weight) {
-        _userProfile.Weight = weight;
-
-        // TODO: save UserProfile once (on leave SettingsFragment)
-        SettingsHelper.saveUserProfile(_userProfile);
+        FDrunkyApplication.INSTANCE.SharedData.UserProfile.Weight = weight;
     }
 }

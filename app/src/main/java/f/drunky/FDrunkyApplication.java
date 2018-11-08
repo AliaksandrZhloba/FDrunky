@@ -12,6 +12,7 @@ import f.drunky.Navigation.FRouter;
 import f.drunky.Navigation.MenuController;
 import f.drunky.Types.DrinkEffect;
 import f.drunky.mvp.models.UserProfile;
+import f.drunky.mvp.models.UserSettings;
 import ru.terrakok.cicerone.Cicerone;
 import ru.terrakok.cicerone.NavigatorHolder;
 
@@ -33,6 +34,8 @@ public class FDrunkyApplication extends Application {
         public State State = new State();
 
         public int Event;
+        public UserSettings UserSettings = new UserSettings();
+        public UserProfile UserProfile = new UserProfile();
     }
 
 

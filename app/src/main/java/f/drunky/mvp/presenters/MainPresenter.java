@@ -5,6 +5,8 @@ import android.content.Context;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
+import java.util.Set;
+
 import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.DbHelper;
 import f.drunky.Helpers.DbReader;
@@ -37,6 +39,8 @@ public class MainPresenter extends MvpPresenter<MainView> {
         DbReader.loadDrinks();
         DbReader.getLog();
 
+        FDrunkyApplication.INSTANCE.SharedData.UserProfile = SettingsHelper.loadUserProfile();
+        FDrunkyApplication.INSTANCE.SharedData.UserSettings = SettingsHelper.loadUserSettings();
 
         //String language = SettingsHelper.getLanguage();
         //FDrunkyApplication.INSTANCE.LanguageController.setLanguage(language);

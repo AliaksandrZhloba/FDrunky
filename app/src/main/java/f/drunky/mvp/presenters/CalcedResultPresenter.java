@@ -54,7 +54,7 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
         DrinkEffect effect = FDrunkyApplication.INSTANCE.SharedData.DrinkEffect;
         Drink drink = FDrunkyApplication.INSTANCE.SharedData.Drink;
 
-        UserProfile userProfile = SettingsHelper.loadUserProfile();
+        UserProfile userProfile = FDrunkyApplication.INSTANCE.SharedData.UserProfile;
 
         int volume = DrinkEffectHelper.calcVolume(effect, drink, userProfile);
         getViewState().setMessage(effect, drink, volume);
