@@ -198,9 +198,11 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
                 backHandler.onBackPressed();
             }
             else {
-                ChainInfo chain = ((ChainFragment) fragment).getChainInfo();
                 super.onBackPressed();
+
+                ChainInfo chain = ((ChainFragment) getCurrentFragment()).getChainInfo();
                 FDrunkyApplication.INSTANCE.getRouter().setCurrentChainInfo(chain);
+
                 _navigationView.setCheckedItem(chain.menuId);
                 _txtHeader.setText(chain.titleId);
             }

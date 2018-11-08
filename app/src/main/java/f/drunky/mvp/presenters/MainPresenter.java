@@ -75,7 +75,7 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
             // debug
             case R.id.nav_debug:
-                FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.DEBUG);
+                gotoDebug();
                 break;
 
             case R.id.nav_map:
@@ -106,6 +106,12 @@ public class MainPresenter extends MvpPresenter<MainView> {
     private void gotoAbout() {
         if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.ABOUT)) {
             FDrunkyApplication.INSTANCE.getRouter().navigateToNewChain(Chains.ABOUT);
+        }
+    }
+
+    private void gotoDebug() {
+        if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.DEBUG)) {
+            FDrunkyApplication.INSTANCE.getRouter().navigateToNewChain(Chains.DEBUG);
         }
     }
 }
