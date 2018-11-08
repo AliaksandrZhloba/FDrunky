@@ -43,7 +43,8 @@ public class StatePresenter extends MvpPresenter<StateView> {
     private void recalcState() {
         FDrunkyApplication.INSTANCE.SharedData.State = AlcoHelper.calcState(FDrunkyApplication.INSTANCE.SharedData.DrunkList, SettingsHelper.loadUserProfile(), TimeHelper.now());
         if (FDrunkyApplication.INSTANCE.SharedData.State.Bac == 0) {
-            FDrunkyApplication.INSTANCE.SharedData.Event = DbReader.getLastEvent();
+            FDrunkyApplication.INSTANCE.SharedData.Event = DbReader.getLastEvent() + 1;
+            FDrunkyApplication.INSTANCE.SharedData.DrunkList.clear();
         }
     }
 
