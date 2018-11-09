@@ -7,13 +7,20 @@ android {
         minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
-        versionName "0.1 pre MVP 2018-11-09"
+        versionName "0.1-MVP"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def formattedDate = new Date().format('yyyy-MM-dd')
+                    def newName = "fdrunky " + versionName + " " + formattedDate
+                    outputFileName  = newName
+                }
+            }
         }
     }
     compileOptions {
