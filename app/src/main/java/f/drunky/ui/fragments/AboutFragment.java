@@ -1,6 +1,8 @@
 package f.drunky.ui.fragments;
 
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -35,5 +37,16 @@ public class AboutFragment extends ChainFragment {
         TextView txtAgreementLink = getView().findViewById(R.id.txtAgreementLink);
         txtAgreementLink.setPaintFlags(txtAgreementLink.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         txtAgreementLink.setOnClickListener(l -> FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.AGREEMENT_CONTENT));
+
+        try {
+            PackageInfo pInfo = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
+            String version = pInfo.versionName;
+
+            TextView txtVersion = getView().findViewById(R.id.txtVersion);
+            txtVersion.setText(version);
+
+        } catch (PackageManager.NameNotFoundException e) {
+
+        }
     }
 }
