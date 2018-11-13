@@ -1,5 +1,6 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -17,11 +18,12 @@
         android:id="@+id/lInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188sp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="4dp"
         android:layout_weight="0"
-        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="2sp"
+        android:padding="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,10 +51,10 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:hint="@string/DrinkWatermark"
-            android:textColorHint="@color/appHintTextColor"
             android:imeOptions="actionSearch"
             android:popupBackground="@drawable/autocomplete_drinks_dropdown"
             android:singleLine="true"
+            android:textColorHint="@color/appHintTextColor"
             android:textSize="20dp" />
 
         <ImageButton
@@ -81,20 +83,27 @@
         android:id="@+id/lDrinks"
         android:layout_width="match_parent"
         android:layout_height="100sp"
-        android:layout_marginEnd="8sp"
-        android:layout_marginStart="8sp"
-        android:layout_marginTop="280sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/lInput" />
 
     <TextView
         android:id="@+id/txtNotFound"
         style="@style/AlcoApp.BaseTextStyle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center_horizontal|clip_vertical"
         android:text="@string/NothingWasFound"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lInput" />
 
     <Button
         android:id="@+id/btnHowMuch"
