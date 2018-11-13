@@ -30,6 +30,26 @@ public class DrinkHelper {
             return result;
         }
 
+        String[] inputWords = input.split(" ");
+        for (int i = 0; i < inputWords.length; i++) {
+            inputWords[i] = inputWords[i].toUpperCase();
+        }
+
+        for (Drink drink : drinks) {
+            String drinkTitle = drink.getTitle().toUpperCase();
+            Boolean containsAllWords = true;
+            for (String word : inputWords) {
+                if (!drinkTitle.contains(word)) {
+                    containsAllWords = false;
+                    break;
+                }
+            }
+
+            if (containsAllWords) {
+                result.add(drink);
+            }
+        }
+
         Set<String> categories = catalog.keySet();
         ArrayList<String> suitableСategories = new ArrayList<>();
         for (String category : categories) {

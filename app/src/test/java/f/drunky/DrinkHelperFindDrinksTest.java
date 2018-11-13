@@ -16,19 +16,19 @@ public class DrinkHelperFindDrinksTest {
 
     @Test
     public void one_word_category_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "beer");
+        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "Beer");
         assertEquals(drinks.size(), 4);
     }
 
     @Test
     public void one_word_title_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "Finlandia");
+        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "finlandia");
         assertEquals(drinks.size(), 1);
     }
 
     @Test
     public void one_word_title_several_results_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "Red");
+        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "RED");
         assertEquals(drinks.size(), 5);
     }
 
@@ -40,7 +40,7 @@ public class DrinkHelperFindDrinksTest {
 
     @Test
     public void part_of_the_title_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "Ja");
+        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "ja");
         assertEquals(drinks.size(), 2);
     }
 
