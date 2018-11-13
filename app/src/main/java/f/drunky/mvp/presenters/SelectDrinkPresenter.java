@@ -7,7 +7,6 @@ import java.util.List;
 
 import f.drunky.Entity.Drink;
 import f.drunky.FDrunkyApplication;
-import f.drunky.Helpers.DbReader;
 import f.drunky.Helpers.DrinkHelper;
 import f.drunky.Navigation.Names.Views;
 import f.drunky.R;
@@ -29,7 +28,7 @@ public class SelectDrinkPresenter extends MvpPresenter<SelectDrinkView> {
     }
 
     public void search(String input) {
-        _shownDrinks = DrinkHelper.FindDrinks(input);
+        _shownDrinks = DrinkHelper.findDrinks(FDrunkyApplication.INSTANCE.SharedData.Catalog, input);
         getViewState().showSearchResult(_shownDrinks);
     }
 

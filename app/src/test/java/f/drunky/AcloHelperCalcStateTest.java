@@ -13,7 +13,7 @@ import f.drunky.mvp.models.UserProfile;
 
 import static org.junit.Assert.assertEquals;
 
-public class AcloModelUnitTest {
+public class AcloHelperCalcStateTest {
     private static final double DIF_DELTA = 0.0001;
 
 
@@ -33,7 +33,7 @@ public class AcloModelUnitTest {
         ArrayList<DrunkItem> log = new ArrayList<>();
 
         Date useTime = new Date(0);
-        log.add(new DrunkItem(useTime, null, null, 40, 100));
+        log.add(new DrunkItem(1, useTime, null, null, 40, 100));
 
         State state;
 
@@ -55,8 +55,8 @@ public class AcloModelUnitTest {
         UserProfile userProfile = GetUnfilledUserProfile();
         ArrayList<DrunkItem> log = new ArrayList<>();
 
-        log.add(new DrunkItem(new Date(0), null, null, 5, 250));
-        log.add(new DrunkItem(new Date(30 * 60 * 1000), null, null, 5, 250));
+        log.add(new DrunkItem(1, new Date(0), null, null, 5, 250));
+        log.add(new DrunkItem(1, new Date(30 * 60 * 1000), null, null, 5, 250));
 
         assertEquals(0.165680473, AlcoHelper.calcState(log, userProfile, new Date(0)).Bac, DIF_DELTA);
         assertEquals(0.14734714, AlcoHelper.calcState(log, userProfile, new Date(10 * 60 * 1000)).Bac, DIF_DELTA);

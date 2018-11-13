@@ -2,7 +2,9 @@ package f.drunky.Helpers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import f.drunky.Entity.Drink;
 import f.drunky.FDrunkyApplication;
@@ -12,9 +14,17 @@ import f.drunky.FDrunkyApplication;
  */
 
 public class DrinkHelper {
-    public static List<Drink> FindDrinks(String input) {
+    public static List<Drink> findDrinks(HashMap<String, ArrayList<Drink>> catalog, String input) {
+
         ArrayList<Drink> result = new ArrayList<>();
-        for (Drink drink:FDrunkyApplication.INSTANCE.SharedData.Drinks) {
+
+
+        ArrayList<Drink> drinks = new ArrayList<>();
+        for (ArrayList<Drink> drinkSet : catalog.values()) {
+            drinks.addAll(drinkSet);
+        }
+
+        for (Drink drink : drinks) {
             if (drink.getTitle().toUpperCase().contains(input.toUpperCase()))
                 result.add(drink);
         }
@@ -23,15 +33,17 @@ public class DrinkHelper {
             return result;
         }
 
-        ArrayList<String> categories = new ArrayList<>();
-        for (String category:FDrunkyApplication.INSTANCE.SharedData.Categories) {
-            if (category.toUpperCase().contains(input.toUpperCase()))
-                categories.add(category);
+        Set<String> categories = catalog.keySet();
+        ArrayList<String> suitableСategories = new ArrayList<>();
+        for (String category : categories) {
+            if (category.toUpperCase().contains(input.toUpperCase())) {
+                suitableСategories.add(category);
+            }
         }
 
-        if (categories.size() > 0) {
-            for (String category : categories) {
-                result.addAll(FDrunkyApplication.INSTANCE.SharedData.Catalog.get(category));
+        if (suitableСategories.size() > 0) {
+            for (String category : suitableСategories) {
+                result.addAll(catalog.get(category));
             }
         }
 
