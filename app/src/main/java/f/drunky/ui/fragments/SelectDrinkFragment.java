@@ -25,10 +25,14 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.Unregistrar;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import f.drunky.Entity.Drink;
+import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.AnimationHelper;
+import f.drunky.Helpers.DrinkHelper;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.R;
 import f.drunky.mvp.presenters.SelectDrinkPresenter;
@@ -149,12 +153,17 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
     }
 
     @Override
-    public void setupDrinkSearch(List<String> categories, List<Drink> drinks) {
-        _txtDrink.setAdapter(new DrinkAutoCompleteAdapter(getActivity(), categories, drinks));
+    public void setupDrinkSearch() {
+        _txtDrink.setAdapter(new DrinkAutoCompleteAdapter(getActivity()) {
+            @Override
+            public ArrayList<String> getSearchDrinkHints(String input) {
+                return presenter.getSearchDrinkHints(input);
+            }
+        });
     }
 
     @Override
-    public void showSearchResult(List<Drink> drinks) {
+    public void showSearchResult(ArrayList<Drink> drinks) {
         if (drinks.size() == 0) {
             _lDrinks.setVisibility(View.GONE);
             _txtNotFound.setVisibility(View.VISIBLE);

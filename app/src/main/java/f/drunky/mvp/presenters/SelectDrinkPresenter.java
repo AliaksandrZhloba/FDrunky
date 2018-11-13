@@ -3,6 +3,8 @@ package f.drunky.mvp.presenters;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import f.drunky.Entity.Drink;
@@ -18,7 +20,7 @@ import f.drunky.mvp.views.SelectDrinkView;
 
 @InjectViewState
 public class SelectDrinkPresenter extends MvpPresenter<SelectDrinkView> {
-     private List<Drink> _shownDrinks;
+     private ArrayList<Drink> _shownDrinks;
 
     public void toCalcedResult(int position) {
         Drink drink = _shownDrinks.get(position);
@@ -37,6 +39,17 @@ public class SelectDrinkPresenter extends MvpPresenter<SelectDrinkView> {
         _shownDrinks = FDrunkyApplication.INSTANCE.SharedData.Drinks;
 
         getViewState().setCalcButtonState(false, R.color.actionButtonDisabledBackgroundColor);
-        getViewState().setupDrinkSearch(FDrunkyApplication.INSTANCE.SharedData.Categories, _shownDrinks);
+        getViewState().setupDrinkSearch();
+    }
+
+    public ArrayList<String> getSearchDrinkHints(String input) {
+        ArrayList<Drink> drinks = DrinkHelper.findDrinks(FDrunkyApplication.INSTANCE.SharedData.Catalog, input);
+
+        ArrayList<String> hints = new ArrayList<>();
+        for (Drink drink : drinks) {
+            hints.add(drink.getTitle());
+        }
+
+        return hints;
     }
 }

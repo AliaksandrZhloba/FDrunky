@@ -12,31 +12,26 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import f.drunky.Entity.Drink;
 import f.drunky.R;
 
 /**
  * Created by AZhloba on 9/27/2017.
  */
 
-public class DrinkAutoCompleteAdapter extends BaseAdapter implements Filterable {
+public abstract class DrinkAutoCompleteAdapter extends BaseAdapter implements Filterable {
     private static final int MAX_RESULTS = 10;
-
-    private List<Drink> _drinks;
-    private List<String> _categories;
 
     private final Context mContext;
     private List<String> mResults;
 
 
-    public DrinkAutoCompleteAdapter(Context context, List<String> categories, List<Drink> drinks) {
+    public DrinkAutoCompleteAdapter(Context context) {
         mContext = context;
         mResults = new ArrayList<String>();
-        mResults.addAll(categories);
-
-        _categories = categories;
-        _drinks = drinks;
+        mResults.addAll(getSearchDrinkHints(""));
     }
+
+    public abstract ArrayList<String> getSearchDrinkHints(String input);
 
 
     @Override
@@ -73,7 +68,7 @@ public class DrinkAutoCompleteAdapter extends BaseAdapter implements Filterable 
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults filterResults = new FilterResults();
                 if (constraint != null) {
-                    List<String> hints = findDrinks(constraint.toString());
+                    List<String> hints = getSearchDrinkHints(constraint.toString());
                     // Assign the data to the FilterResults
                     filterResults.values = hints;
                     filterResults.count = hints.size();
@@ -92,28 +87,5 @@ public class DrinkAutoCompleteAdapter extends BaseAdapter implements Filterable 
             }};
 
         return filter;
-    }
-
-
-    private List<String> findDrinks(String input) {
-        if (input.length() == 0)
-            return _categories;
-
-        ArrayList<String> result = new ArrayList<String>();
-        for (String category:_categories) {
-            if (category.toUpperCase().contains(input.toUpperCase()))
-                result.add(category);
-        }
-
-        if (result.size() > 0) {
-            return result;
-        }
-
-        for (Drink drink:_drinks) {
-            if (drink.getTitle().toUpperCase().contains(input.toUpperCase()))
-                result.add(drink.getTitle());
-        }
-
-        return result;
     }
 }
