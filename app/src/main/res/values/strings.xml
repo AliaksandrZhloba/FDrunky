@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FunkyDrunky</string>
 
-    <string name="state_chain_title">State</string>
+    <string name="condition_chain_title">Condition</string>
     <string name="calculation_chain_title">Calculation</string>
     <string name="about_chain_title">About</string>
     <string name="agreement_chain_title">Funky Drunky</string>
@@ -56,7 +56,7 @@
     <string name="Age">Age</string>
     <string name="Weight">Weight</string>
 
-    <!-- STATE SCREEN -->
+    <!-- CONDITION SCREEN -->
     <string name="RecentlyDrunk">Recently drunk</string>
     <string name="CanDrive">You can drive.</string>
     <string name="CanDriveIn">Approx. %.0fh. before you can drive</string>

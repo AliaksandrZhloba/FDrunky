@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FunkyDrunky</string>
 
-    <string name="state_chain_title">Состояние</string>
+    <string name="condition_chain_title">Состояние</string>
     <string name="calculation_chain_title">Расчёт</string>
     <string name="about_chain_title">О программе</string>
     <string name="agreement_chain_title">Funky Drunky</string>
@@ -56,7 +56,7 @@
     <string name="Age">Возраст</string>
     <string name="Weight">Вес</string>
 
-    <!-- STATE SCREEN -->
+    <!-- CONDITION SCREEN -->
     <string name="RecentlyDrunk">Недавно выпито</string>
     <string name="CanDrive">Можно за руль.</string>
     <string name="CanDriveIn">Можно водить примерно через %.1fч.</string>

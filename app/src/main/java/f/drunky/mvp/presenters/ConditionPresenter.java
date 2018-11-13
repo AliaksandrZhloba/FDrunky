@@ -7,18 +7,16 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import f.drunky.Entity.DrunkItem;
-import f.drunky.Entity.State;
 import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.AlcoHelper;
 import f.drunky.Helpers.DbReader;
-import f.drunky.Helpers.SettingsHelper;
 import f.drunky.Helpers.TimeHelper;
 import f.drunky.Navigation.Names.Chains;
-import f.drunky.mvp.views.StateView;
+import f.drunky.mvp.views.ConditionView;
 
 
 @InjectViewState
-public class StatePresenter extends MvpPresenter<StateView> {
+public class ConditionPresenter extends MvpPresenter<ConditionView> {
 
     private Timer _timer;
 

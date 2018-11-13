@@ -1,7 +1,6 @@
 package f.drunky.ui.fragments;
 
 
-import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -26,26 +25,23 @@ import f.drunky.Entity.State;
 import f.drunky.Navigation.ChainFragment;
 import f.drunky.Navigation.IBackHandler;
 import f.drunky.R;
-import f.drunky.mvp.presenters.StatePresenter;
-import f.drunky.mvp.views.StateView;
+import f.drunky.mvp.presenters.ConditionPresenter;
+import f.drunky.mvp.views.ConditionView;
 import f.drunky.ui.adapters.DrunkItemsAdapter;
 import f.drunky.ui.adapters.SwipeToDeleteCallback;
 import f.drunky.ui.views.StateScaleView;
 
 
-public class StateFragment extends ChainFragment implements StateView, IBackHandler {
+public class ConditionFragment extends ChainFragment implements ConditionView, IBackHandler {
 
     @InjectPresenter
-    StatePresenter presenter;
+    ConditionPresenter presenter;
 
     private RecyclerView _lDrinks;
     private DrunkItemsAdapter _lDrinksAdapted;
     private TextView _txtSober;
     private TextView _txtDriveAvailability;
     private TextView _txtBAC;
-    private TextView _txtRelax;
-    private TextView _txtFunky;
-    private TextView _txtLegless;
     private StateScaleView _stateScaleView;
 
     private ArrayList<DrunkItem> _drinks;
@@ -54,7 +50,7 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
     private SwipeToDeleteCallback _swipeToDeleteCallback;
 
 
-    public StateFragment() {
+    public ConditionFragment() {
         // Required empty public constructor
     }
 
@@ -70,9 +66,6 @@ public class StateFragment extends ChainFragment implements StateView, IBackHand
         _txtSober = getView().findViewById(R.id.txtSober);
         _txtBAC = getView().findViewById(R.id.txtBAC);
         _txtDriveAvailability = getView().findViewById(R.id.txtDriveAvailability);
-        _txtRelax = getView().findViewById(R.id.txtRelax);
-        _txtFunky = getView().findViewById(R.id.txtFunky);
-        _txtLegless = getView().findViewById(R.id.txtLegless);
         _stateScaleView = getView().findViewById(R.id.StateScaleView);
 
         _lDrinks = getView().findViewById(R.id.lDrinks);

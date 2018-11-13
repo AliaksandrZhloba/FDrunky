@@ -11,7 +11,7 @@ import f.drunky.Entity.DrunkItem;
 import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.DbReader;
 import f.drunky.Helpers.DrinkEffectHelper;
-import f.drunky.Helpers.SettingsHelper;
+import f.drunky.Navigation.Names.Chains;
 import f.drunky.Navigation.Names.Views;
 import f.drunky.Types.DrinkEffect;
 import f.drunky.mvp.models.UserProfile;
@@ -37,7 +37,7 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
         FDrunkyApplication.INSTANCE.SharedData.DrunkList.add(0, item);
         DbReader.saveLogItem(item);
 
-        FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.STATE);
+        FDrunkyApplication.INSTANCE.getRouter().navigateToNewChain(Chains.CONDITION);
     }
 
     public void askToFillProfile_OkClicked() {

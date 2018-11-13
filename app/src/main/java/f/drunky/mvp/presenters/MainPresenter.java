@@ -5,8 +5,6 @@ import android.content.Context;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
-import java.util.Set;
-
 import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.DbHelper;
 import f.drunky.Helpers.DbReader;
@@ -86,8 +84,8 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
 
     private void gotoState() {
-        if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.STATE)) {
-            FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.STATE);
+        if (!FDrunkyApplication.INSTANCE.getRouter().isChain(Chains.CONDITION)) {
+            FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.CONDITION);
         }
     }
 

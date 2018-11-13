@@ -13,7 +13,7 @@ import f.drunky.ui.fragments.MapFragment;
 import f.drunky.ui.fragments.SelectDrinkFragment;
 import f.drunky.ui.fragments.SelectEffectFragment;
 import f.drunky.ui.fragments.SettingsFragment;
-import f.drunky.ui.fragments.StateFragment;
+import f.drunky.ui.fragments.ConditionFragment;
 
 /**
  * Created by AZhloba on 12/5/2017.
@@ -23,7 +23,7 @@ public class Views {
     public static final String SELECT_EFFECT = "SELECT_EFFECT";
     public static final String SELECT_DRINK = "SELECT_DRINK";
     public static final String CALC_RESULT = "CALC_RESULT";
-    public static final String STATE = "STATE";
+    public static final String STATE = "CONDITION";
     public static final String MAP = "MAP";
     public static final String AGREEMENT = "AGREEMENT";
     public static final String AGREEMENT_CONTENT = "AGREEMENT_CONTENT";
@@ -40,7 +40,7 @@ public class Views {
         views.put(SELECT_EFFECT, SelectEffectFragment.class);
         views.put(SELECT_DRINK, SelectDrinkFragment.class);
         views.put(CALC_RESULT, CalcedResultFragment.class);
-        views.put(STATE, StateFragment.class);
+        views.put(STATE, ConditionFragment.class);
         views.put(MAP, MapFragment.class);
         views.put(AGREEMENT, AgreementFragment.class);
         views.put(AGREEMENT_CONTENT, AgreementContentFragment.class);
