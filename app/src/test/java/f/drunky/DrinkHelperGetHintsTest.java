@@ -12,54 +12,18 @@ import f.drunky.Helpers.DrinkHelper;
 import static org.junit.Assert.assertEquals;
 
 
-public class DrinkHelperFindDrinksTest {
+public class DrinkHelperGetHintsTest {
 
     @Test
     public void one_word_category_1_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "Beer");
-        assertEquals(drinks.size(), 4);
+        ArrayList<String> hints = DrinkHelper.getHints(GetCatalogue(), "Beer");
+        assertEquals(hints.size(), 5);
     }
 
     @Test
     public void one_word_category_2_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "Wine");
-        assertEquals(drinks.size(), 8);
-    }
-
-    @Test
-    public void one_word_title_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "finlandia");
-        assertEquals(drinks.size(), 1);
-    }
-
-    @Test
-    public void one_word_title_several_results_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "RED");
-        assertEquals(drinks.size(), 5);
-    }
-
-    @Test
-    public void one_word_category_and_title_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "vodka");
-        assertEquals(drinks.size(), 11);
-    }
-
-    @Test
-    public void part_of_the_title_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "ja");
-        assertEquals(drinks.size(), 2);
-    }
-
-    @Test
-    public void two_words_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "Red semi");
-        assertEquals(drinks.size(), 2);
-    }
-
-    @Test
-    public void two_words_random_order_isCorrect() {
-        ArrayList<Drink> drinks = DrinkHelper.findDrinks(GetCatalogue(), "Red wine");
-        assertEquals(drinks.size(), 4);
+        ArrayList<String> hints = DrinkHelper.getHints(GetCatalogue(), "Wine");
+        assertEquals(hints.size(), 9);
     }
 
 
