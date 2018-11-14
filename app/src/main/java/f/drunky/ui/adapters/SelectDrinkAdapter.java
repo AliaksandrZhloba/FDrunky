@@ -1,5 +1,6 @@
 package f.drunky.ui.adapters;
 
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import f.drunky.R;
 
 
 public class SelectDrinkAdapter extends RecyclerView.Adapter<SelectDrinkAdapter.DrinkDetailsViewHolder> {
+    private static final double K_Fill  = 0.7;
+
     private List<Drink> _drinks;
 
     public static class DrinkDetailsViewHolder extends RecyclerView.ViewHolder {
@@ -33,21 +36,45 @@ public class SelectDrinkAdapter extends RecyclerView.Adapter<SelectDrinkAdapter.
         }
     }
 
+
     public SelectDrinkAdapter(List<Drink> drinks) {
         _drinks = drinks;
     }
 
+
+
     @Override
     public SelectDrinkAdapter.DrinkDetailsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
+        View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.drink_details_item, parent, false);
-        DrinkDetailsViewHolder vh = new DrinkDetailsViewHolder(v);
-        return vh;
+        DrinkDetailsViewHolder vh = new DrinkDetailsViewHolder(view);
+
+        int width = parent.getWidth();
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        params.width = (int)(width * K_Fill);
+        view.setLayoutParams(params);
+
+        return new DrinkDetailsViewHolder(view);
     }
+
 
     @Override
     public void onBindViewHolder(DrinkDetailsViewHolder holder, int position) {
         holder.setDrink(_drinks.get(position));
+
+        if (position == 0 || position == _drinks.size() - 1) {
+            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
+            double parentWidth = params.width / K_Fill;
+            double space = parentWidth * ((1.0 - K_Fill) / 2.0);
+
+            if (position == 0) {
+                params.setMarginStart(5 + (int) space);
+            } else {
+                params.setMarginEnd(5 + (int) space);
+            }
+
+            holder.itemView.setLayoutParams(params);
+        }
     }
 
     @Override
