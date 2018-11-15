@@ -10,4 +10,9 @@ import f.drunky.Types.DrinkEffect;
 
 public interface SelectEffectView extends MvpView {
     void changeButtonText(int stringId);
+
+    void disableToRelaxOption();
+    void disableToHaveAFunOption();
+    void enableToRelaxOption();
+    void enableToHaveAFunOption();
 }

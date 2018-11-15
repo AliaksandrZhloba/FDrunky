@@ -3,14 +3,16 @@ package f.drunky.mvp.presenters;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
 
 import f.drunky.Entity.Drink;
 import f.drunky.Entity.DrunkItem;
 import f.drunky.FDrunkyApplication;
+import f.drunky.Helpers.AlcoHelper;
 import f.drunky.Helpers.DbReader;
-import f.drunky.Helpers.DrinkEffectHelper;
+import f.drunky.Helpers.TimeHelper;
 import f.drunky.Navigation.Names.Chains;
 import f.drunky.Navigation.Names.Views;
 import f.drunky.Types.DrinkEffect;
@@ -55,8 +57,9 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
         Drink drink = FDrunkyApplication.INSTANCE.SharedData.Drink;
 
         UserProfile userProfile = FDrunkyApplication.INSTANCE.SharedData.UserProfile;
+        ArrayList<DrunkItem> drunkList = FDrunkyApplication.INSTANCE.SharedData.DrunkList;
 
-        int volume = DrinkEffectHelper.calcVolume(effect, drink, userProfile);
+        int volume = AlcoHelper.calcRequiredVolume(drunkList, userProfile, TimeHelper.now(), effect, drink);
         getViewState().setMessage(effect, drink, volume);
         FDrunkyApplication.INSTANCE.SharedData.Volume = volume;
 

@@ -1,6 +1,5 @@
 package f.drunky.Helpers;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -12,6 +11,7 @@ import f.drunky.Entity.Drink;
  */
 
 public class DrinkHelper {
+
     public static ArrayList<Drink> findDrinks(HashMap<String, ArrayList<Drink>> catalog, String input) {
 
         ArrayList<Drink> drinks = new ArrayList<>();

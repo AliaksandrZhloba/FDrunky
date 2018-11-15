@@ -6,7 +6,10 @@ import com.arellomobile.mvp.MvpPresenter;
 import java.util.List;
 
 import f.drunky.Entity.Drink;
+import f.drunky.Entity.State;
 import f.drunky.FDrunkyApplication;
+import f.drunky.Helpers.AlcoHelper;
+import f.drunky.Helpers.TimeHelper;
 import f.drunky.Navigation.Names.Views;
 import f.drunky.R;
 import f.drunky.Types.DrinkEffect;
@@ -25,7 +28,19 @@ public class SelectEffectPresenter extends MvpPresenter<SelectEffectView> {
 
     @Override
     protected void onFirstViewAttach() {
-        loadData();
+        State state = AlcoHelper.calcState(FDrunkyApplication.INSTANCE.SharedData.DrunkList, FDrunkyApplication.INSTANCE.SharedData.UserProfile, TimeHelper.now());
+
+        if (state.Bac < AlcoHelper.RelaxBac) {
+            getViewState().enableToRelaxOption();
+            getViewState().enableToHaveAFunOption();
+        }
+        else if (state.Bac >= AlcoHelper.FunBac) {
+            getViewState().disableToRelaxOption();
+            getViewState().disableToHaveAFunOption();
+        }
+        else if (state.Bac >= AlcoHelper.RelaxBac) {
+            getViewState().disableToRelaxOption();
+        }
     }
 
 
@@ -44,18 +59,6 @@ public class SelectEffectPresenter extends MvpPresenter<SelectEffectView> {
         getViewState().changeButtonText(R.string.ToDrunkOverButtonText);
     }
 
-
-    private void loadData() {
-        /*DbHelper dbHelper = new DbHelper(getAttachedViews());
-        dbHelper.createDataBases();
-        //dbHelper.openDrinksDataBase();
-
-        DbReader reader = new DbReader(dbHelper);
-        _categories = reader.LoadCategories();
-        _drinks = reader.loadDrinks();
-
-        dbHelper.close();*/
-    }
 
     public void SelectEffectClicked() {
         FDrunkyApplication.INSTANCE.SharedData.DrinkEffect = _effect;
