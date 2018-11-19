@@ -64,7 +64,8 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
         FDrunkyApplication.INSTANCE.SharedData.Volume = volume;
 
         if (!userProfile.isFilled()) {
-            getViewState().showAskToFillProfileDialog();
+            if (drunkList.size() == 0)
+                getViewState().showAskToFillProfileDialog();
         }
     }
 }
