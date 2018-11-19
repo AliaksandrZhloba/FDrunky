@@ -8,5 +8,6 @@ public enum DrinkEffect {
     Undefined,
     ToRelax,
     ToHaveAFun,
-    ToDrunkOver
+    ToDrunkOver,
+    ToContinueAnyway
 }

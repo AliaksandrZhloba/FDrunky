@@ -1,7 +1,9 @@
 package f.drunky.Helpers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 import f.drunky.Entity.Drink;
@@ -96,5 +98,22 @@ public class DrinkHelper {
         }
 
         return result;
+    }
+
+    public static List<Integer> getVolumes(Drink drink) {
+        switch (drink.getCategory().toLowerCase()) {
+            case "vodka":
+            case "whiskey":
+            case "brandy":
+            case "cognac":
+            case "rum":
+            case "tequila":
+                return Arrays.asList(50, 100, 150, 200, 250, 350, 400);
+            case "wine": return Arrays.asList(100, 150, 200, 300, 500);
+            case "beer": return Arrays.asList(250, 300, 500, 1000);
+            case "cocktail": return Arrays.asList(100, 150, 200, 300, 500);
+        }
+
+        return null;
     }
 }

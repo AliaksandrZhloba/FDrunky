@@ -11,6 +11,8 @@ import f.drunky.Entity.State;
 import f.drunky.Types.DrinkEffect;
 import f.drunky.mvp.models.UserProfile;
 
+import static java.lang.Math.abs;
+
 
 public class AlcoHelper {
     static double K = 0.0056;
@@ -81,6 +83,12 @@ public class AlcoHelper {
     public static int calcRequiredVolume(ArrayList<DrunkItem> drunkList, UserProfile userProfile, Date curTime, DrinkEffect desiredEffect, Drink selectedDrink) {
         State curState = calcState(drunkList, userProfile, curTime);
 
+        List<Integer> volumes = DrinkHelper.getVolumes(selectedDrink);
+
+        if (desiredEffect == DrinkEffect.ToContinueAnyway) {
+            return volumes.get(0);
+        }
+
         double requiredBac = getDesiredBac(desiredEffect) - curState.Bac;
         if (requiredBac <= 0) {
             return 0;
@@ -98,9 +106,16 @@ public class AlcoHelper {
 
 
         double A = requiredBac * m * r;
-        double volume = A / ( selectedDrink.getAlcohol() * K);
+        double requiredVolume = A / ( selectedDrink.getAlcohol() * K);
 
-        return (int)volume;
+        int nearestVolume = volumes.get(0);
+        for (int i = 1; i < volumes.size(); i++) {
+            if (abs(volumes.get(i) - requiredVolume) < abs(nearestVolume - requiredVolume)) {
+                nearestVolume = volumes.get(i);
+            }
+        }
+
+        return nearestVolume;
     }
 
     private static double getDesiredBac(DrinkEffect desiredEffect) {

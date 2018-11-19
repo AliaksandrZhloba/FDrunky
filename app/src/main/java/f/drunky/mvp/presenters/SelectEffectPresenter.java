@@ -28,18 +28,20 @@ public class SelectEffectPresenter extends MvpPresenter<SelectEffectView> {
 
     @Override
     protected void onFirstViewAttach() {
+        double minBac = 0.1;
         State state = AlcoHelper.calcState(FDrunkyApplication.INSTANCE.SharedData.DrunkList, FDrunkyApplication.INSTANCE.SharedData.UserProfile, TimeHelper.now());
 
-        if (state.Bac < AlcoHelper.RelaxBac) {
+        if (state.Bac <= AlcoHelper.RelaxBac - minBac) {
             getViewState().enableToRelaxOption();
+        }
+        else if (state.Bac <= AlcoHelper.FunBac - minBac) {
             getViewState().enableToHaveAFunOption();
         }
-        else if (state.Bac >= AlcoHelper.FunBac) {
-            getViewState().disableToRelaxOption();
-            getViewState().disableToHaveAFunOption();
+        else if (state.Bac <= AlcoHelper.DrunkOverBac - minBac) {
+            getViewState().enableToDrunkOverOption();
         }
-        else if (state.Bac >= AlcoHelper.RelaxBac) {
-            getViewState().disableToRelaxOption();
+        else {
+            getViewState().enableToContinueAnywayOption();
         }
     }
 
@@ -57,6 +59,11 @@ public class SelectEffectPresenter extends MvpPresenter<SelectEffectView> {
     public void switchToToDrunkOverEffect() {
         _effect = DrinkEffect.ToDrunkOver;
         getViewState().changeButtonText(R.string.ToDrunkOverButtonText);
+    }
+
+    public void switchToToContinueAnywayEffect() {
+        _effect = DrinkEffect.ToContinueAnyway;
+        getViewState().changeButtonText(R.string.ToDContinueAnywayButtonText);
     }
 
 

@@ -110,6 +110,11 @@ public class CalcedResultFragment extends ChainFragment implements CalcedResultV
             case ToDrunkOver:
                 messageId = R.string.ToDrunkOverMessage;
                 break;
+
+
+            case ToContinueAnyway:
+                messageId = R.string.ToContinueAnywayMessage;
+                break;
         }
 
         return String.format(getString(messageId), volume, drink.getTitle());

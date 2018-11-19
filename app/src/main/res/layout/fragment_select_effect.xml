@@ -48,6 +48,16 @@
             android:layout_weight="1"
             android:text="@string/ToDrunkOver" />
 
+        <RadioButton
+            android:id="@+id/rbToContinueAnyway"
+            style="@style/AlcoApp.EffectRadioButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="@string/ToContinueAnyway"
+            android:visibility="gone" />
+
     </RadioGroup>
 
     <Button

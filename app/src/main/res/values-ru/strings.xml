@@ -27,6 +27,8 @@
     <string name="ToHaveAFunButtonText">УХ ТЫ!</string>
     <string name="ToDrunkOver">Напиться...</string>
     <string name="ToDrunkOverButtonText">СЕРЬЁЗНО?</string>
+    <string name="ToContinueAnyway">Продолжить всё равно...</string>
+    <string name="ToDContinueAnywayButtonText">Точно?..</string>
 
     <!-- SELECT DRINK SCREEN -->
     <string name="SelectDrinkCaption">Выберите напиток</string>
@@ -39,9 +41,10 @@
     <!-- CALCED RESULT SCREEN -->
     <string name="WhereToGo">КУДА ПОЙТИ?</string>
     <string name="GotIt">ПОНЯЛ!</string>
-    <string name="ToRelaxMessage">"Чтобы расслабиться, хватит\n%d мл %s."</string>
-    <string name="ToHaveAFunMessage">"Чтобы повеселиться, хватит\n%d мл %s."</string>
-    <string name="ToDrunkOverMessage">"Чтобы напиться, надо не меньше\n%d мл %s."</string>
+    <string name="ToRelaxMessage">Чтобы расслабиться, хватит\n%d мл %s.</string>
+    <string name="ToHaveAFunMessage">Чтобы повеселиться, хватит\n%d мл %s.</string>
+    <string name="ToDrunkOverMessage">Чтобы напиться, надо не меньше\n%d мл %s.</string>
+    <string name="ToContinueAnywayMessage">%d мл of\n%s.\n</string>
 
     <!-- ASK TO FILL PROFILE DIALOG -->
     <string name="AskToFillProfile_Title">Рассчёт</string>

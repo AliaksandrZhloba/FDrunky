@@ -27,6 +27,8 @@
     <string name="ToHaveAFunButtonText">WOW!</string>
     <string name="ToDrunkOver">Legless...</string>
     <string name="ToDrunkOverButtonText">REALLY?</string>
+    <string name="ToContinueAnyway">Continue anyway...</string>
+    <string name="ToDContinueAnywayButtonText">Are you sure?..</string>
 
     <!-- SELECT DRINK SCREEN -->
     <string name="SelectDrinkCaption">Choose a drink</string>
@@ -42,6 +44,7 @@
     <string name="ToRelaxMessage">"To relax tonight don't drink\nmore than %d ml of\n%s."</string>
     <string name="ToHaveAFunMessage">"To have a fun tonight don't drink\nmore than %d ml of\n%s."</string>
     <string name="ToDrunkOverMessage">"To be legless tonight drink\nat least %d ml of\n%s."</string>
+    <string name="ToContinueAnywayMessage">"%d ml of\n%s."</string>
 
     <!-- ASK TO FILL PROFILE DIALOG -->
     <string name="AskToFillProfile_Title">Calculation</string>

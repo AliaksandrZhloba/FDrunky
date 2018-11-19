@@ -27,6 +27,7 @@ public class SelectEffectFragment extends ChainFragment implements SelectEffectV
     private RadioButton _rbToRelax;
     private RadioButton _rbToHaveAFun;
     private RadioButton _rbToDrunkOver;
+    private RadioButton _rbToContinueAnyway;
 
     public SelectEffectFragment() {
         // Required empty public constructor
@@ -47,10 +48,12 @@ public class SelectEffectFragment extends ChainFragment implements SelectEffectV
         _rbToRelax = getView().findViewById(R.id.rbToRelax);
         _rbToHaveAFun = getView().findViewById(R.id.rbToHaveAFun);
         _rbToDrunkOver = getView().findViewById(R.id.rbToDrunkOver);
+        _rbToContinueAnyway = getView().findViewById(R.id.rbToContinueAnyway);
 
         SetOnCheckedListener(R.id.rbToRelax, () -> { presenter.switchToToRelaxEffect();  });
         SetOnCheckedListener(R.id.rbToHaveAFun, () -> { presenter.switchToToHaveAFunEffect(); });
         SetOnCheckedListener(R.id.rbToDrunkOver, () -> { presenter.switchToToDrunkOverEffect();  });
+        SetOnCheckedListener(R.id.rbToContinueAnyway, () -> { presenter.switchToToContinueAnywayEffect();  });
     }
 
     private void SetOnCheckedListener(int rButtonId, Runnable run) {
@@ -63,21 +66,40 @@ public class SelectEffectFragment extends ChainFragment implements SelectEffectV
         _btnSelectEffect.setText(stringId);
     }
 
-    public void disableToRelaxOption() {
-        _rbToRelax.setEnabled(false);
-        _rbToHaveAFun.setChecked(true);
-    }
-
-    public void disableToHaveAFunOption() {
-        _rbToHaveAFun.setEnabled(false);
-        _rbToDrunkOver.setChecked(false);
-    }
 
     public void enableToRelaxOption() {
         _rbToRelax.setEnabled(true);
+        _rbToRelax.setChecked(true);
+        _rbToHaveAFun.setEnabled(true);
+        _rbToDrunkOver.setEnabled(true);
+
+        _rbToContinueAnyway.setVisibility(View.GONE);
     }
 
     public void enableToHaveAFunOption() {
+        _rbToRelax.setEnabled(false);
         _rbToHaveAFun.setEnabled(true);
+        _rbToHaveAFun.setChecked(true);
+        _rbToDrunkOver.setEnabled(true);
+
+        _rbToContinueAnyway.setVisibility(View.GONE);
+    }
+
+    public void enableToDrunkOverOption() {
+        _rbToRelax.setEnabled(false);
+        _rbToHaveAFun.setEnabled(false);
+        _rbToDrunkOver.setEnabled(true);
+        _rbToDrunkOver.setChecked(true);
+
+        _rbToContinueAnyway.setVisibility(View.GONE);
+    }
+
+    public void enableToContinueAnywayOption() {
+        _rbToRelax.setEnabled(false);
+        _rbToHaveAFun.setEnabled(false);
+        _rbToDrunkOver.setEnabled(false);
+
+        _rbToContinueAnyway.setVisibility(View.VISIBLE);
+        _rbToContinueAnyway.setChecked(true);
     }
 }

@@ -47,7 +47,7 @@ public class DbReader {
                 Bitmap img = BitmapFactory.decodeByteArray(imgByte, 0, imgByte.length);
                 String info = mCur.getString(5);
 
-                Drink drink = new Drink(id, alcohol, title, img);
+                Drink drink = new Drink(id, alcohol, category, title, img);
                 String[] categories = category.split(",");
                 for (String cat : categories) {
                     if (!FDrunkyApplication.INSTANCE.SharedData.Catalog.containsKey(cat)) {
