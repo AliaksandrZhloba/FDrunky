@@ -5,8 +5,8 @@
 
     <color name="background">#140A26</color>
     <color name="appTextColor">#E1BEE7</color>
-    <color name="appHintTextColor">#9e86a1</color>
-    <color name="appInactiveButtonTextColor">#9e86a1</color>
+    <color name="appHintTextColor">#5B3E96</color>
+    <color name="appInactiveButtonTextColor">#5B3E96</color>
     <color name="colorPrimary">#140A26</color>
     <color name="colorPrimaryDark">#140A26</color>
     <color name="navigationBarColor">#140A26</color>
