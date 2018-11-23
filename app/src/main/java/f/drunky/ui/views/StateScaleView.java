@@ -11,6 +11,8 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 
+import f.drunky.R;
+
 
 public class StateScaleView extends View {
     private static final int LINE_WIDTH = 6;
@@ -59,7 +61,7 @@ public class StateScaleView extends View {
 
         _backPaint = new Paint();
         _backPaint.setAntiAlias(true);
-        _backPaint.setColor(Color.parseColor("#4A148C"));
+        _backPaint.setColor(getContext().getColor(R.color.mainDarkColor));
         _backPaint.setStyle(Paint.Style.FILL);
         _backPaint.setStrokeJoin(Paint.Join.ROUND);
         _backPaint.setStrokeWidth(LINE_WIDTH);
@@ -72,7 +74,7 @@ public class StateScaleView extends View {
         canvas.drawPath(_backPath, _backPaint);
 
         Paint statePaint = new Paint();
-        statePaint.setShader(new LinearGradient(0, 0, _width, getHeight(), Color.parseColor("#FF80AB"), Color.parseColor("#C51162"), Shader.TileMode.MIRROR));
+        statePaint.setShader(new LinearGradient(0, 0, _width, getHeight(), Color.parseColor("#FF80AB"), Color.parseColor("#C51162"), Shader.TileMode.CLAMP));
 
         int x = _state * _width / 100;
         Path statePath;

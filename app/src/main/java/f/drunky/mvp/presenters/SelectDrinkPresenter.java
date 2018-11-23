@@ -38,7 +38,7 @@ public class SelectDrinkPresenter extends MvpPresenter<SelectDrinkView> {
     protected void onFirstViewAttach() {
         _shownDrinks = FDrunkyApplication.INSTANCE.SharedData.Drinks;
 
-        getViewState().setCalcButtonState(false, R.color.actionButtonDisabledBackgroundColor);
+        getViewState().setCalcButtonState(false, R.color.mainDarkColor);
         getViewState().setupDrinkSearch();
     }
 

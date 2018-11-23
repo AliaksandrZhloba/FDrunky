@@ -168,7 +168,7 @@ public class SelectDrinkFragment extends ChainFragment implements SelectDrinkVie
             _lDrinks.setVisibility(View.GONE);
             _txtNotFound.setVisibility(View.VISIBLE);
             _btnCalcHowMuch.setEnabled(false);
-            _btnCalcHowMuch.setBackgroundColor(getActivity().getColor(R.color.actionButtonDisabledBackgroundColor));
+            _btnCalcHowMuch.setBackgroundColor(getActivity().getColor(R.color.mainDarkColor));
         }
         else {
             _txtNotFound.setVisibility(View.GONE);

@@ -54,7 +54,7 @@
             android:imeOptions="actionSearch"
             android:popupBackground="@drawable/autocomplete_drinks_dropdown"
             android:singleLine="true"
-            android:textColorHint="@color/appHintTextColor"
+            android:textColorHint="@color/mainDarkColor"
             android:textSize="20dp" />
 
         <ImageButton

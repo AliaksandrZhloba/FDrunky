@@ -21,7 +21,7 @@ public class AgreementPresenter extends MvpPresenter<AgreementView> {
             getViewState().setContinueButtonState(true, R.color.mainColor);
         }
         else {
-            getViewState().setContinueButtonState(false, R.color.actionButtonDisabledBackgroundColor);
+            getViewState().setContinueButtonState(false, R.color.mainDarkColor);
         }
     }
 

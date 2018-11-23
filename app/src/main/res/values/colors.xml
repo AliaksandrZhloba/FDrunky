@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#140A26</color>
+    <color name="colorPrimaryDark">#140A26</color>
+
     <color name="mainColor">#FF8AB8</color>
+    <color name="mainDarkColor">#5B3E96</color>
     <color name="auxiliaryColor">#4A148C</color>
 
     <color name="background">#140A26</color>
     <color name="appTextColor">#E1BEE7</color>
-    <color name="appHintTextColor">#5B3E96</color>
-    <color name="appInactiveButtonTextColor">#5B3E96</color>
-    <color name="colorPrimary">#140A26</color>
-    <color name="colorPrimaryDark">#140A26</color>
-    <color name="navigationBarColor">#140A26</color>
-    <color name="actionButtonDisabledBackgroundColor">#5B3E96</color>
-
-    <color name="statusBarColor">#000000</color>
 </resources>
