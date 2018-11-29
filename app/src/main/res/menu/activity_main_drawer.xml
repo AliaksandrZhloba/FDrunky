@@ -24,11 +24,13 @@
         <item
             android:id="@+id/nav_debug"
             android:icon="@drawable/ic_about_24dp"
-            android:title="[DEBUG]" />
+            android:title="[DEBUG]"
+            android:visible="false" />
         <item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_about_24dp"
-            android:title="[MAP]" />
+            android:title="[MAP]"
+            android:visible="false" />
     </group>
 
 </menu>
