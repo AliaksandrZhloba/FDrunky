@@ -1,10 +1,12 @@
 package f.drunky.ui.fragments;
 
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
@@ -14,6 +16,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -43,6 +46,7 @@ public class ConditionFragment extends ChainFragment implements ConditionView, I
     private TextView _txtDriveAvailability;
     private TextView _txtBAC;
     private StateScaleView _stateScaleView;
+    private FloatingActionButton _fabAddDrink;
 
     private ArrayList<DrunkItem> _drinks;
 
@@ -67,6 +71,7 @@ public class ConditionFragment extends ChainFragment implements ConditionView, I
         _txtBAC = getView().findViewById(R.id.txtBAC);
         _txtDriveAvailability = getView().findViewById(R.id.txtDriveAvailability);
         _stateScaleView = getView().findViewById(R.id.StateScaleView);
+        _fabAddDrink = getView().findViewById(R.id.fabAddDrink);
 
         _lDrinks = getView().findViewById(R.id.lDrinks);
         _lDrinks.setHasFixedSize(true);
@@ -77,8 +82,9 @@ public class ConditionFragment extends ChainFragment implements ConditionView, I
 
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(_lDrinks);
-    }
 
+        _fabAddDrink.setOnClickListener(v1 -> presenter.addDrink());
+    }
 
     @Override
     public void setList(ArrayList<DrunkItem> drinks) {
@@ -92,6 +98,11 @@ public class ConditionFragment extends ChainFragment implements ConditionView, I
         _lDrinksAdapted.notifyDataSetChanged();
 
         setUpItemTouchHelper();
+    }
+
+    @Override
+    public void animateFabAddDrink() {
+        _fabAddDrink.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.fab_add_drink_enter_animation));
     }
 
     private void setUpItemTouchHelper() {

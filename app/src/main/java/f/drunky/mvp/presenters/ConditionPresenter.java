@@ -36,6 +36,8 @@ public class ConditionPresenter extends MvpPresenter<ConditionView> {
                 getViewState().refresh(FDrunkyApplication.INSTANCE.SharedData.State);
             }
         }, 1000, 1000);
+
+        getViewState().animateFabAddDrink();
     }
 
     private void recalcState() {
@@ -68,5 +70,9 @@ public class ConditionPresenter extends MvpPresenter<ConditionView> {
         DbReader.saveLogItem(item);
         recalcState();
         getViewState().updateState(FDrunkyApplication.INSTANCE.SharedData.State);
+    }
+
+    public void addDrink() {
+        FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.CALCULATION);
     }
 }
