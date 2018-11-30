@@ -44,7 +44,7 @@
     <string name="ToRelaxMessage">Чтобы расслабиться, хватит\n%d мл %s.</string>
     <string name="ToHaveAFunMessage">Чтобы повеселиться, хватит\n%d мл %s.</string>
     <string name="ToDrunkOverMessage">Чтобы напиться, надо не меньше\n%d мл %s.</string>
-    <string name="ToContinueAnywayMessage">%d мл of\n%s.\n</string>
+    <string name="ToContinueAnywayMessage">%d мл\n%s.\n</string>
 
     <!-- ASK TO FILL PROFILE DIALOG -->
     <string name="AskToFillProfile_Title">Рассчёт</string>
