@@ -4,6 +4,7 @@ import f.drunky.Navigation.Commands.ForwardToNewChain;
 import f.drunky.Navigation.Commands.RemoveCurrent;
 import f.drunky.Navigation.Names.ChainInfo;
 import ru.terrakok.cicerone.BaseRouter;
+import ru.terrakok.cicerone.commands.Back;
 import ru.terrakok.cicerone.commands.BackTo;
 import ru.terrakok.cicerone.commands.Forward;
 import ru.terrakok.cicerone.commands.Replace;
@@ -42,6 +43,10 @@ public class FRouter extends BaseRouter {
     public void navigateToChainStart() {
         executeCommand(new RemoveCurrent());
         executeCommand(new BackTo(null));
+    }
+
+    public void navigateBack() {
+        executeCommand(new Back());
     }
 
 

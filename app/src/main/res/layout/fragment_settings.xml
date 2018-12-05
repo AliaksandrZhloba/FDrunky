@@ -90,15 +90,15 @@
         android:id="@+id/spLanguages"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         android:layout_weight="1"
         android:backgroundTint="#FF4081"
         android:popupBackground="@color/background"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <View
         android:layout_width="0dp"
@@ -107,6 +107,17 @@
         android:layout_marginStart="24dp"
         android:background="@drawable/line"
         app:layout_constraintBottom_toBottomOf="@+id/spLanguages"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSave"
+        style="@style/AlcoApp.ActionButtonStyle"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="115dp"
+        android:text="@string/Save"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

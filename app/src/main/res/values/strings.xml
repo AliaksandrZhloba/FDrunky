@@ -58,6 +58,7 @@
     <string name="Female">Female</string>
     <string name="Age">Age</string>
     <string name="Weight">Weight</string>
+    <string name="Save">Save</string>
 
     <!-- CONDITION SCREEN -->
     <string name="RecentlyDrunk">Recently drunk</string>

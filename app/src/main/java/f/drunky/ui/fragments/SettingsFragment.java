@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -43,6 +44,8 @@ public class SettingsFragment extends ChainFragment implements SettingsView {
     private int _genderNum;
     private TextInputEditText _txtAge;
     private TextInputEditText _txtWeight;
+    private Button _btnSave;
+
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -60,10 +63,10 @@ public class SettingsFragment extends ChainFragment implements SettingsView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        _spLanguages = getActivity().findViewById(R.id.spLanguages);
-        _spGenders = getActivity().findViewById(R.id.spGenders);
+        _spLanguages = getView().findViewById(R.id.spLanguages);
+        _spGenders = getView().findViewById(R.id.spGenders);
 
-        _txtAge = getActivity().findViewById(R.id.txtAge);
+        _txtAge = getView().findViewById(R.id.txtAge);
         _txtAge.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -90,7 +93,7 @@ public class SettingsFragment extends ChainFragment implements SettingsView {
             }
         });
 
-        _txtWeight = getActivity().findViewById(R.id.txtWeight);
+        _txtWeight = getView().findViewById(R.id.txtWeight);
         _txtWeight.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -115,6 +118,9 @@ public class SettingsFragment extends ChainFragment implements SettingsView {
             public void afterTextChanged(Editable editable) {
             }
         });
+
+        _btnSave = getView().findViewById(R.id.btnSave);
+        _btnSave.setOnClickListener(v -> presenter.save());
     }
 
     @Override

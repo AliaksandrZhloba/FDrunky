@@ -38,9 +38,7 @@ public class SettingsPresenter extends MvpPresenter<SettingsView> {
     @Override
     public void detachView(SettingsView view) {
         super.detachView(view);
-
-        SettingsHelper.saveUserProfile(FDrunkyApplication.INSTANCE.SharedData.UserProfile);
-        SettingsHelper.saveUserSettings(FDrunkyApplication.INSTANCE.SharedData.UserSettings);
+        SaveSettings();
     }
 
     public void languageChanged(Language language) {
@@ -58,5 +56,15 @@ public class SettingsPresenter extends MvpPresenter<SettingsView> {
 
     public void weightChanged(Float weight) {
         FDrunkyApplication.INSTANCE.SharedData.UserProfile.Weight = weight;
+    }
+
+    public void save() {
+        FDrunkyApplication.INSTANCE.getRouter().navigateBack();
+    }
+
+
+    private void SaveSettings() {
+        SettingsHelper.saveUserProfile(FDrunkyApplication.INSTANCE.SharedData.UserProfile);
+        SettingsHelper.saveUserSettings(FDrunkyApplication.INSTANCE.SharedData.UserSettings);
     }
 }

@@ -58,6 +58,7 @@
     <string name="Female">Женский</string>
     <string name="Age">Возраст</string>
     <string name="Weight">Вес</string>
+    <string name="Save">Сохранить</string>
 
     <!-- CONDITION SCREEN -->
     <string name="RecentlyDrunk">Недавно выпито</string>
