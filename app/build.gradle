@@ -7,7 +7,7 @@ android {
         minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
-        versionName "0.0.3-MVP"
+        versionName "0.0.4-MVP"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -17,7 +17,7 @@ android {
             applicationVariants.all { variant ->
                 variant.outputs.all {
                     def formattedDate = new Date().format('yyyy-MM-dd')
-                    def newName = "fdrunky " + versionName + " " + formattedDate
+                    def newName = "fdrunky " + versionName + " " + formattedDate + ".apk"
                     outputFileName  = newName
                 }
             }
