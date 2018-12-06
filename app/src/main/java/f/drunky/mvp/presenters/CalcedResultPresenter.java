@@ -44,7 +44,7 @@ public class CalcedResultPresenter extends MvpPresenter<CalcedResultView> {
 
     public void askToFillProfile_OkClicked() {
         _askToFillProfile = false;
-        FDrunkyApplication.INSTANCE.getRouter().navigateTo(Views.SETTINGS);
+        FDrunkyApplication.INSTANCE.getRouter().navigateToNewChain(Chains.SETTINGS);
     }
 
     public void askToFillProfile_SkipClicked() {
