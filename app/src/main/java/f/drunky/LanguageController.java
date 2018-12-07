@@ -1,14 +1,21 @@
 package f.drunky;
 
+import f.drunky.Helpers.SettingsHelper;
+
 /**
  * Created by AZhloba on 12/22/2017.
  */
 
 public abstract class LanguageController {
-    private String _currentLanguage = null;
+    private String _language = null;
 
-    public String getCurrentLanguage() { return _currentLanguage; }
-    public void setCurrentLanguage(String language) { _currentLanguage = language; }
+    public String getLanguage() { return _language; }
+    public void setLanguage(String language) { _language = language; }
 
-    public abstract void setLanguage(String language);
+
+    public LanguageController() {
+        _language = SettingsHelper.getLanguage();
+    }
+
+    public abstract void switchLanguage(String language);
 }

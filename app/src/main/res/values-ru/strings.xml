@@ -33,7 +33,7 @@
     <!-- SELECT DRINK SCREEN -->
     <string name="SelectDrinkCaption">Выберите напиток</string>
     <string name="WhatToDrink">Что будете пить?</string>
-    <string name="DrinkWatermark">medium dry red wine</string>
+    <string name="DrinkWatermark">что будем пить?</string>
     <string name="HowMuch">СКОЛЬКО МНЕ НУЖНО?</string>
     <string name="MoreAboutIt">ИНФОРМАЦИЯ</string>
     <string name="NothingWasFound">Ничего не найдено. Попробуйте ещё.</string>

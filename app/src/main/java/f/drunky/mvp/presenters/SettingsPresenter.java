@@ -11,8 +11,6 @@ import f.drunky.FDrunkyApplication;
 import f.drunky.Helpers.GenderHelper;
 import f.drunky.Helpers.LanguageHelper;
 import f.drunky.Helpers.SettingsHelper;
-import f.drunky.mvp.models.UserProfile;
-import f.drunky.mvp.models.UserSettings;
 import f.drunky.mvp.views.SettingsView;
 
 /**
@@ -43,7 +41,7 @@ public class SettingsPresenter extends MvpPresenter<SettingsView> {
 
     public void languageChanged(Language language) {
         SettingsHelper.setLanguage(language.Code);
-        FDrunkyApplication.INSTANCE.LanguageController.setLanguage(language.Code);
+        FDrunkyApplication.INSTANCE.LanguageController.switchLanguage(language.Code);
     }
 
     public void genderChanged(Gender gender) {

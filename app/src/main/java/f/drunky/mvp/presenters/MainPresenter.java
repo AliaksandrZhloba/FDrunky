@@ -40,9 +40,6 @@ public class MainPresenter extends MvpPresenter<MainView> {
         FDrunkyApplication.INSTANCE.SharedData.UserProfile = SettingsHelper.loadUserProfile();
         FDrunkyApplication.INSTANCE.SharedData.UserSettings = SettingsHelper.loadUserSettings();
 
-        //String language = SettingsHelper.getLanguage();
-        //FDrunkyApplication.INSTANCE.LanguageController.setLanguage(language);
-
         if (SettingsHelper.getIsFirstLaunch()) {
             FDrunkyApplication.INSTANCE.getMenuController().disableMenu();
             FDrunkyApplication.INSTANCE.getRouter().startNewChain(Chains.AGREEMENT);

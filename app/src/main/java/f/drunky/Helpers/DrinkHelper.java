@@ -106,12 +106,26 @@ public class DrinkHelper {
             case "whiskey":
             case "brandy":
             case "cognac":
+            case "brandy, cognac":
             case "rum":
             case "tequila":
+            case "водка":
+            case "виски":
+            case "бренди":
+            case "коньяк":
+            case "бренди, коньяк":
+            case "ром":
+            case "текила":
                 return Arrays.asList(50, 100, 150, 200, 250, 350, 400);
-            case "wine": return Arrays.asList(100, 150, 200, 300, 500);
-            case "beer": return Arrays.asList(250, 300, 500, 1000);
-            case "cocktail": return Arrays.asList(100, 150, 200, 300, 500);
+            case "wine":
+            case "вино":
+                return Arrays.asList(100, 150, 200, 300, 500);
+            case "beer":
+            case "пиво":
+                return Arrays.asList(250, 300, 500, 1000);
+            case "cocktail":
+            case "коктейль":
+                return Arrays.asList(100, 150, 200, 300, 500);
         }
 
         return null;

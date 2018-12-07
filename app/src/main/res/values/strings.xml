@@ -33,7 +33,7 @@
     <!-- SELECT DRINK SCREEN -->
     <string name="SelectDrinkCaption">Choose a drink</string>
     <string name="WhatToDrink">What would you like to drink?</string>
-    <string name="DrinkWatermark">medium dry red wine</string>
+    <string name="DrinkWatermark">find a drink you want</string>
     <string name="HowMuch">HOW MUCH DO I NEED?</string>
     <string name="MoreAboutIt">MORE ABOUT IT</string>
     <string name="NothingWasFound">Nothing was found. Try again.</string>

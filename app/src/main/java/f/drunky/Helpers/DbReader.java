@@ -14,7 +14,6 @@ import f.drunky.Entity.Drink;
 import f.drunky.Entity.DrunkItem;
 import f.drunky.Entity.State;
 import f.drunky.FDrunkyApplication;
-import f.drunky.mvp.models.UserProfile;
 
 /**
  * Created by AZhloba on 10/5/2017.
@@ -35,7 +34,10 @@ public class DbReader {
 
         SQLiteDatabase dbDrinks = _dbHelper.openDrinksDataBase();
 
-        sql = "SELECT Id, Category, Title, Alcohol, Image, Info FROM Drinks";
+        String lang = FDrunkyApplication.INSTANCE.LanguageController.getLanguage();
+        String categoryColumn = "Category" + lang;
+        String titleColumn = "Title" + lang;
+        sql = "SELECT Id, " + categoryColumn +", " + titleColumn + ", Alcohol, Image, Info FROM Drinks";
         mCur = dbDrinks.rawQuery(sql, null);
         if (mCur.moveToFirst()) {
             do {

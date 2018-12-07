@@ -106,20 +106,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         }
     };
 
-    private LanguageController languageController = new LanguageController() {
-        @Override
-        public void setLanguage(String language) {
-            if (!language.equals(getCurrentLanguage())) {
-                setCurrentLanguage(language);
-                setLanguage(language);
-                finish();
-
-                Intent refreshIntent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(refreshIntent);
-            }
-        }
-    };
-
     private MenuController menuController = new MenuController() {
         @Override
         public void enableMenu() {
@@ -133,6 +119,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
             _toggle.setDrawerIndicatorEnabled(false);
         }
     };
+    private LanguageController languageController;
 
     @Override
     protected void onResume() {
@@ -156,8 +143,21 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
         SettingsHelper.init();
 
+        languageController = new LanguageController() {
+            @Override
+            public void switchLanguage(String language) {
+                if (!language.equals(getLanguage())) {
+                    setLanguage(language);
+                    finish();
+
+                    Intent refreshIntent = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(refreshIntent);
+                }
+            }
+        };
+
         String language = SettingsHelper.getLanguage();
-        setLanguage(language);
+        switchLanguage(language);
 
         setContentView(R.layout.activity_main);
 
@@ -214,7 +214,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     }
 
 
-    private void setLanguage(String language) {
+    private void switchLanguage(String language) {
         Locale mylocale = new Locale(language);
         Resources resources = getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
