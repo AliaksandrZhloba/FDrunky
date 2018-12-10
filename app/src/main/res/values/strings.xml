@@ -28,7 +28,7 @@
     <string name="ToDrunkOver">Legless...</string>
     <string name="ToDrunkOverButtonText">REALLY?</string>
     <string name="ToContinueAnyway">Continue anyway...</string>
-    <string name="ToDContinueAnywayButtonText">Are you sure?..</string>
+    <string name="ToDContinueAnywayButtonText">AS YOU WISH..</string>
 
     <!-- SELECT DRINK SCREEN -->
     <string name="SelectDrinkCaption">Choose a drink</string>

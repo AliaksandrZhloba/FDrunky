@@ -28,7 +28,7 @@
     <string name="ToDrunkOver">Напиться...</string>
     <string name="ToDrunkOverButtonText">СЕРЬЁЗНО?</string>
     <string name="ToContinueAnyway">Продолжить всё равно...</string>
-    <string name="ToDContinueAnywayButtonText">Точно?..</string>
+    <string name="ToDContinueAnywayButtonText">ТОЧНО?..</string>
 
     <!-- SELECT DRINK SCREEN -->
     <string name="SelectDrinkCaption">Выберите напиток</string>
@@ -63,7 +63,7 @@
     <!-- CONDITION SCREEN -->
     <string name="RecentlyDrunk">Недавно выпито</string>
     <string name="CanDrive">Можно за руль.</string>
-    <string name="CanDriveIn">Можно водить примерно через %.1fч.</string>
+    <string name="CanDriveIn">Можно водить примерно через %.0fч.</string>
     <string name="DrunkItemTitle">%d мл %s</string>
     <string name="DiffMinutes">%d мин.</string>
     <string name="DiffHoursMinutes">%d ч. %d мин.</string>
